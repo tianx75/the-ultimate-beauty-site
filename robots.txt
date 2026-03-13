@@ -1,0 +1,7 @@
+# The Ultimate Beauty Clinic
+# https://theultimatebeauty.hu
+
+User-agent: *
+Allow: /
+
+Sitemap: https://theultimatebeauty.hu/sitemap.xml
