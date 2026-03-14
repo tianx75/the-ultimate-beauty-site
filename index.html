@@ -2747,13 +2747,10 @@
       <div class="footer-newsletter">
         <h3>Maradjon naprakész</h3>
         <p>Protocol újdonságok, exkluzív ajánlatok és a TREAT fázis elindulásáról elsőként értesülhet.</p>
-        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); var email=this.querySelector('input').value; if(!email)return; var list=JSON.parse(localStorage.getItem('tub_newsletter')||'[]'); if(list.indexOf(email)===-1){list.push(email); localStorage.setItem('tub_newsletter',JSON.stringify(list));} this.querySelector('button').textContent='Feliratkozva ✓'; this.querySelector('button').disabled=true; this.querySelector('input').disabled=true; this.querySelector('input').value=email;">
+        <form class="footer-newsletter-form" onsubmit="event.preventDefault(); var email=this.querySelector('input').value; if(!email)return; tubSendEmail(email, 'newsletter', {page:'footer'}); this.querySelector('button').textContent='Feliratkozva ✓'; this.querySelector('button').disabled=true; this.querySelector('input').disabled=true; this.querySelector('input').value=email;">
           <input type="email" placeholder="Email cím" required class="footer-newsletter-input" />
           <button type="submit" class="footer-newsletter-btn">Feliratkozás</button>
         </form>
-        <!-- TODO: Éles indulás előtt bekötni email szolgáltatóhoz (Mailchimp/Brevo/stb.)
-             Addig a feliratkozott email-ek localStorage-ban gyűlnek: tub_newsletter kulcs alatt.
-             Lekérdezés konzolból: JSON.parse(localStorage.getItem('tub_newsletter')) -->
       </div>
 
       <div class="footer-grid">
@@ -3855,12 +3852,13 @@
       }
 
       function saveQuizEmail(email) {
-        var list = JSON.parse(localStorage.getItem('tub_quiz_leads') || '[]');
-        if (list.indexOf(email) === -1) { list.push(email); localStorage.setItem('tub_quiz_leads', JSON.stringify(list)); }
         localStorage.setItem('tub_quiz_email', email);
-        // Hozzáadjuk a newsletter listához is
-        var nl = JSON.parse(localStorage.getItem('tub_newsletter') || '[]');
-        if (nl.indexOf(email) === -1) { nl.push(email); localStorage.setItem('tub_newsletter', JSON.stringify(nl)); }
+        tubSendEmail(email, 'quiz', {
+          answer1: state.answers[0] || '',
+          answer2: state.answers[1] || '',
+          answer3: state.answers[2] || '',
+          result: state.answers[0] || 'Általános'
+        });
       }
 
       function showQuizResultContent(subtitle) {
@@ -4076,6 +4074,54 @@
   });
   </script>
 
+  <!-- ═══ GOOGLE SHEETS EMAIL INTEGRÁCIÓ ═══ -->
+  <script>
+  // TUB Email Collector — Google Sheets integráció
+  // FONTOS: Az alábbi URL-t cseréld ki a saját Google Apps Script URL-edre!
+  var TUB_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyrSC_wtCpsdQ6fnoLDi1WPu8JWC2tSm4WEm5_WRoeNfPtgQF1HWVpb8Kp5Kcvmibu7zg/exec';
+
+  /**
+   * Központi email küldő függvény.
+   * @param {string} email - A felhasználó email címe
+   * @param {string} source - Forrás: 'newsletter', 'quiz', 'exit', 'pdf'
+   * @param {object} extra - Egyéb adatok (quiz válaszok, pdf url, stb.)
+   */
+  function tubSendEmail(email, source, extra) {
+    // 1. localStorage mentés (fallback + offline támogatás)
+    var nlKey = 'tub_newsletter';
+    var nl = JSON.parse(localStorage.getItem(nlKey) || '[]');
+    if (nl.indexOf(email) === -1) { nl.push(email); localStorage.setItem(nlKey, JSON.stringify(nl)); }
+
+    var sourceKey = 'tub_' + source + '_leads';
+    var srcList = JSON.parse(localStorage.getItem(sourceKey) || '[]');
+    if (source === 'pdf') {
+      srcList.push(email + '|' + (extra.pdfUrl || ''));
+    } else if (srcList.indexOf(email) === -1) {
+      srcList.push(email);
+    }
+    localStorage.setItem(sourceKey, JSON.stringify(srcList));
+
+    // 2. Google Sheets küldés (aszinkron, nem blokkolja a UI-t)
+    if (TUB_SHEET_URL === 'GOOGLE_APPS_SCRIPT_URL_IDE') {
+      console.warn('[TUB] Google Apps Script URL nincs beállítva! Email csak localStorage-ban mentve:', email, source);
+      return;
+    }
+
+    var payload = Object.assign({ email: email, source: source, pageUrl: window.location.href }, extra || {});
+
+    fetch(TUB_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      console.log('[TUB] Email mentve Google Sheets-be:', email, source);
+    }).catch(function(err) {
+      console.warn('[TUB] Sheets küldés sikertelen (localStorage-ba mentve):', err);
+    });
+  }
+  </script>
+
   <!-- EXIT-INTENT POPUP -->
   <div class="email-gate-overlay exit-popup" id="exitPopup">
     <div class="email-gate-box">
@@ -4083,7 +4129,7 @@
       <span class="section-label" style="text-align:center;">Exkluzív ajánlat</span>
       <h3>Ajándék Observ 520x bőrdiagnosztika</h3>
       <p>Hagyja meg email címét — és a következő látogatása alkalmával ajándékba kapja a 8 klinikai módú professzionális bőrelemzést.</p>
-      <form class="email-gate-form" onsubmit="event.preventDefault(); var email=this.querySelector('input').value; if(!email)return; var list=JSON.parse(localStorage.getItem('tub_exit_leads')||'[]'); if(list.indexOf(email)===-1){list.push(email); localStorage.setItem('tub_exit_leads',JSON.stringify(list));} var nl=JSON.parse(localStorage.getItem('tub_newsletter')||'[]'); if(nl.indexOf(email)===-1){nl.push(email); localStorage.setItem('tub_newsletter',JSON.stringify(nl));} this.innerHTML='<p style=\'color:var(--gold); font-size:0.9rem; font-family:Cormorant Garamond,serif; font-style:italic;\'>Köszönjük! Hamarosan felvesszük Önnel a kapcsolatot.</p>'; localStorage.setItem('tub_exit_shown','1'); setTimeout(function(){ document.getElementById('exitPopup').classList.remove('active'); }, 2500);">
+      <form class="email-gate-form" onsubmit="event.preventDefault(); var email=this.querySelector('input').value; if(!email)return; tubSendEmail(email, 'exit', {}); this.innerHTML='<p style=\'color:var(--gold); font-size:0.9rem; font-family:Cormorant Garamond,serif; font-style:italic;\'>Köszönjük! Hamarosan felvesszük Önnel a kapcsolatot.</p>'; localStorage.setItem('tub_exit_shown','1'); setTimeout(function(){ document.getElementById('exitPopup').classList.remove('active'); }, 2500);">
         <input type="email" placeholder="Email cím" required class="email-gate-input" />
         <button type="submit" class="email-gate-submit">Kérem az ajándékot</button>
       </form>
@@ -4098,7 +4144,7 @@
       <span class="section-label" style="text-align:center;">Szakmai anyag</span>
       <h3 id="pdfGateTitle">Töltse le az anyagot</h3>
       <p>Adja meg email címét, és azonnal elküldjük a dokumentumot — plusz értesítjük az újdonságokról.</p>
-      <form class="email-gate-form" id="pdfGateForm" onsubmit="event.preventDefault(); var email=this.querySelector('input').value; if(!email)return; var list=JSON.parse(localStorage.getItem('tub_pdf_leads')||'[]'); var entry=email+'|'+window._pdfGateUrl; list.push(entry); localStorage.setItem('tub_pdf_leads',JSON.stringify(list)); var nl=JSON.parse(localStorage.getItem('tub_newsletter')||'[]'); if(nl.indexOf(email)===-1){nl.push(email); localStorage.setItem('tub_newsletter',JSON.stringify(nl));} localStorage.setItem('tub_pdf_unlocked','1'); document.getElementById('pdfGate').classList.remove('active'); if(window._pdfGateUrl) window.open(window._pdfGateUrl,'_blank');">
+      <form class="email-gate-form" id="pdfGateForm" onsubmit="event.preventDefault(); var email=this.querySelector('input').value; if(!email)return; tubSendEmail(email, 'pdf', {pdfUrl: window._pdfGateUrl || '', pdfTitle: document.getElementById('pdfGateTitle').textContent || ''}); localStorage.setItem('tub_pdf_unlocked','1'); document.getElementById('pdfGate').classList.remove('active'); if(window._pdfGateUrl) window.open(window._pdfGateUrl,'_blank');">
         <input type="email" placeholder="Email cím" required class="email-gate-input" />
         <button type="submit" class="email-gate-submit">Letöltés</button>
       </form>
