@@ -4951,6 +4951,12 @@
   text-transform: uppercase;
   color: var(--text-light);
 }
+.ba-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px 12px 0 0;
+}
 .before-after-images .ba-divider {
   position: absolute;
   left: 50%;
@@ -5303,4 +5309,10 @@
 @media (max-width: 680px) {
   .manifesto-quote { font-size: 1.5rem; }
   .protocol-manifesto { padding: 56px 20px; }
+}
+
+/* ═══ PULSE DOT ANIMATION ═══ */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
 }
