@@ -1547,6 +1547,30 @@
       section { padding: 70px 0; }
       .sticky-cta { display: flex; }
       .cream-section { margin: 0 -20px; padding: 70px 20px; }
+
+      /* ── Auto-hide nav + sticky CTA on scroll down ── */
+      .nav {
+        transition: transform 0.3s ease, background 0.35s, padding 0.35s;
+      }
+      .nav.nav--hidden {
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+      .sticky-cta {
+        transition: transform 0.3s ease;
+      }
+      .sticky-cta.sticky--hidden {
+        transform: translateY(calc(100% + 20px));
+        pointer-events: none;
+      }
+      /* Floating mask follows sticky CTA */
+      .float-mask {
+        bottom: 90px;
+        transition: bottom 0.3s ease;
+      }
+      .float-mask.float--lowered {
+        bottom: 24px;
+      }
     }
 
     @media (max-width: 680px) {
@@ -1558,6 +1582,25 @@
       .fps-section { padding: 36px; }
       .hileft-pillars-grid { grid-template-columns: 1fr; }
       .hileft-challenges-grid { grid-template-columns: 1fr; }
+
+      /* ── Compact mobile header ── */
+      .product-switcher { height: 42px; }
+      .tab-btn { height: 42px; }
+      .nav { top: 42px; padding: 10px 0; }
+      .nav.scrolled { padding: 8px 0; }
+      .nav-logo { font-size: 1rem; letter-spacing: 2px; }
+      .nav-cta { display: none !important; }
+      .page-content { margin-top: 42px; }
+      .drawer { top: 42px; }
+
+      /* ── Fix horizontal overflow ── */
+      .hero { padding-left: 20px; padding-right: 20px; }
+      .hero-content { max-width: 100%; }
+      .hero-title { word-break: break-word; }
+      .hero-cta-row { flex-direction: column; }
+      .hero-cta-row .btn { text-align: center; }
+      .hero-social-proof { flex-wrap: wrap; }
+      .home-promo-banner { font-size: 0.72rem; }
     }
 
     /* ═══════════════════════════════════════

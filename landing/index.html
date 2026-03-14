@@ -3031,14 +3031,45 @@
       return activeBtn ? activeBtn.id.replace('tab-', '') : 'home';
     }
 
-    /* ═══ NAV SCROLL ═══ */
+    /* ═══ NAV SCROLL + AUTO-HIDE (MOBILE) ═══ */
     var lastScroll = 0;
+    var scrollDelta = 0;
+    var navHidden = false;
+    var isMobile = window.innerWidth <= 900;
+    window.addEventListener('resize', function() { isMobile = window.innerWidth <= 900; });
+
     window.addEventListener('scroll', function() {
       var s = window.scrollY;
-      document.querySelectorAll('.nav').forEach(function(nav) {
+      var allNavs = document.querySelectorAll('.nav');
+      allNavs.forEach(function(nav) {
         if (s > 60) nav.classList.add('scrolled');
         else nav.classList.remove('scrolled');
       });
+
+      /* Auto-hide nav + sticky CTA on mobile (outside forEach!) */
+      if (isMobile) {
+        if (s > lastScroll && s > 120) {
+          scrollDelta += (s - lastScroll);
+          if (scrollDelta > 80 && !navHidden) {
+            allNavs.forEach(function(n) { n.classList.add('nav--hidden'); });
+            var stickyCta = document.querySelector('.sticky-cta');
+            var floatMask = document.querySelector('.float-mask');
+            if (stickyCta) stickyCta.classList.add('sticky--hidden');
+            if (floatMask) floatMask.classList.add('float--lowered');
+            navHidden = true;
+          }
+        } else if (s < lastScroll) {
+          scrollDelta = 0;
+          if (navHidden) {
+            allNavs.forEach(function(n) { n.classList.remove('nav--hidden'); });
+            var stickyCta2 = document.querySelector('.sticky-cta');
+            var floatMask2 = document.querySelector('.float-mask');
+            if (stickyCta2) stickyCta2.classList.remove('sticky--hidden');
+            if (floatMask2) floatMask2.classList.remove('float--lowered');
+            navHidden = false;
+          }
+        }
+      }
       lastScroll = s;
     }, { passive: true });
 
