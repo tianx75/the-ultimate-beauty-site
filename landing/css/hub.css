@@ -157,6 +157,8 @@
       color: var(--text-muted);
       font-size: 1.05rem;
       max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
       line-height: 1.8;
     }
 
@@ -1606,6 +1608,32 @@
       .hero-cta-row .btn { text-align: center; }
       .hero-social-proof { flex-wrap: wrap; }
       .home-promo-banner { font-size: 0.72rem; }
+
+      /* ── Szekció címek — túlcsordulás megelőzés ── */
+      .section-title {
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        padding: 0 4px;
+      }
+      .section-subtitle {
+        font-size: 0.95rem;
+        padding: 0 4px;
+      }
+      .section-label,
+      .section-tag {
+        font-size: 0.62rem;
+      }
+      /* Szekciók minimális padding */
+      .problem-section,
+      .home-skin-quiz,
+      .protocol-cards-section,
+      .protocol-philosophy,
+      .protocol-pillars {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
     }
 
     /* ═══════════════════════════════════════
@@ -2320,69 +2348,159 @@
     /* ═══ FLOATING LED MASK IKON ═══ */
     /* ═══════════════════════════════════════ */
 
+    /* ═══ LUXURY FLOATING MASK ICON ═══ */
     .float-mask {
       position: fixed;
       bottom: 24px;
       right: 24px;
       z-index: 1350;
+      perspective: 600px;
     }
 
     .float-mask-btn {
-      width: 56px;
-      height: 56px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      background: var(--charcoal);
-      border: 1px solid rgba(184, 150, 90, 0.3);
+      background: radial-gradient(ellipse at 30% 20%, rgba(253,250,246,0.95) 0%, rgba(245,240,232,0.9) 100%);
+      border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      transition: var(--transition);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    }
-    .float-mask-btn:hover {
-      border-color: var(--gold);
-      transform: scale(1.08);
-      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.35);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+      box-shadow:
+        0 4px 20px rgba(0,0,0,0.12),
+        0 0 0 1.5px rgba(184,150,90,0.4),
+        0 0 30px rgba(184,150,90,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+      animation: fmFloat 4s ease-in-out infinite;
     }
 
-    .float-mask-svg {
-      width: 32px;
-      height: 32px;
+    @keyframes fmFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .float-mask-btn:hover {
+      transform: translateY(-4px) scale(1.1) rotateY(-8deg);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,0.15),
+        0 0 0 2px var(--gold),
+        0 0 40px rgba(184,150,90,0.15),
+        0 0 20px rgba(255,68,68,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      animation: none;
+    }
+
+    .float-mask-btn.fm-active {
+      animation: none;
+      transform: translateY(-2px) scale(1.05);
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.15),
+        0 0 0 2px var(--gold),
+        0 0 24px rgba(184,150,90,0.2);
+    }
+
+    /* Arany gyűrűk */
+    .fm-ring {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .fm-ring--outer {
+      inset: -3px;
+      border: 1px solid rgba(184,150,90,0.25);
+      animation: fmRingSpin 12s linear infinite;
+      background: conic-gradient(from 0deg, transparent 0%, rgba(184,150,90,0.3) 25%, transparent 50%, rgba(184,150,90,0.15) 75%, transparent 100%);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1.5px));
+      mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1.5px));
+    }
+    .fm-ring--inner {
+      inset: 2px;
+      border: 0.5px solid rgba(212,176,119,0.15);
+    }
+
+    @keyframes fmRingSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Üveg réteg */
+    .fm-glass {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(255,255,255,0.02) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .float-mask-svg,
+    .float-mask-logo {
+      width: 44px;
+      height: 44px;
       position: relative;
       z-index: 2;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+      transition: transform 0.4s ease;
+      object-fit: contain;
+      border-radius: 0;
+    }
+    .float-mask-btn:hover .float-mask-svg,
+    .float-mask-btn:hover .float-mask-logo {
+      transform: scale(1.08);
     }
 
-    .float-mask-glow {
+    /* Pulzáló aura — arany */
+    .fm-aura {
       position: absolute;
-      inset: -4px;
+      inset: -8px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 51, 51, 0.25), transparent 70%);
-      animation: maskPulse 2.5s ease-in-out infinite;
-      z-index: 1;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .fm-aura::before,
+    .fm-aura::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      animation: fmAuraPulse 3s ease-in-out infinite;
+    }
+    .fm-aura::before {
+      background: radial-gradient(circle, rgba(184,150,90,0.25) 0%, transparent 70%);
+    }
+    .fm-aura::after {
+      background: radial-gradient(circle, rgba(184,150,90,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(212,176,119,0.15) 0%, transparent 70%);
+      animation-delay: 1.5s;
     }
 
-    @keyframes maskPulse {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.15); }
+    @keyframes fmAuraPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.35); opacity: 0; }
     }
 
-    /* Panel */
+    /* ── Panel — prémium glassmorphism ── */
     .float-mask-panel {
       position: absolute;
-      bottom: 68px;
+      bottom: 80px;
       right: 0;
-      width: 300px;
-      background: var(--charcoal);
-      border: 1px solid rgba(184, 150, 90, 0.2);
-      border-radius: 16px;
+      width: 320px;
+      background: linear-gradient(165deg, rgba(26,24,22,0.97) 0%, rgba(20,18,16,0.99) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(184, 150, 90, 0.15);
+      border-radius: 20px;
       overflow: hidden;
       opacity: 0;
-      transform: translateY(12px) scale(0.95);
+      transform: translateY(16px) scale(0.92);
       pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+      transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.4),
+        0 0 0 0.5px rgba(184,150,90,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.03);
     }
     .float-mask-panel.open {
       opacity: 1;
@@ -2394,21 +2512,32 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 20px;
-      border-bottom: 1px solid rgba(253, 250, 246, 0.08);
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(184,150,90,0.1);
+      background: linear-gradient(180deg, rgba(184,150,90,0.04) 0%, transparent 100%);
+    }
+    .float-panel-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .float-panel-icon {
+      color: var(--gold);
+      font-size: 0.6rem;
     }
     .float-panel-header strong {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--ivory);
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-weight: 500;
     }
     .float-panel-close {
       background: none;
-      border: none;
+      border: 1px solid rgba(253,250,246,0.08);
       color: var(--text-light);
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       width: 28px;
       height: 28px;
       display: flex;
@@ -2419,24 +2548,49 @@
     }
     .float-panel-close:hover {
       background: rgba(253, 250, 246, 0.08);
+      border-color: rgba(184,150,90,0.3);
       color: var(--ivory);
     }
 
     .float-panel-body {
-      padding: 20px;
+      padding: 22px;
     }
     .float-panel-body p {
       font-size: 0.85rem;
-      color: rgba(253, 250, 246, 0.7);
+      color: rgba(253, 250, 246, 0.6);
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
     }
+
+    .fm-cta {
+      width: 100%;
+      text-align: center;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 0.8rem !important;
+    }
+    .fm-cta:first-of-type { margin-top: 0; }
+    .fm-cta svg { flex-shrink: 0; }
 
     /* Floating responsive */
     @media (max-width: 900px) {
       .float-mask {
         bottom: 80px;
         right: 14px;
+      }
+      .float-mask-btn {
+        width: 60px;
+        height: 60px;
+      }
+      .float-mask-svg {
+        width: 38px;
+        height: 38px;
       }
       .float-mask-panel {
         width: calc(100vw - 28px);
@@ -3217,6 +3371,181 @@
       .plb__nav { padding: 0.75rem 1.25rem; }
       .ultima-modal__footer-btns { flex-direction: column; align-items: center; }
       .btn-protocol-detail { width: 100%; justify-content: center; }
+    }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PDF LIGHTBOX (Protocol könyv)
+   ═══════════════════════════════════════════════════════════════ */
+
+    .pdf-lb-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2100;
+      background: rgba(26,24,22,0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
+    }
+    .pdf-lb-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .pdf-lb {
+      width: 92vw;
+      max-width: 820px;
+      height: 92vh;
+      max-height: 920px;
+      background: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    }
+    .pdf-lb__close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 5;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--charcoal);
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .pdf-lb__close:hover { background: #2b2723; }
+
+    .pdf-lb__title-bar {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid rgba(26,24,22,0.06);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .pdf-lb__title-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .pdf-lb__title-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--charcoal);
+    }
+
+    .pdf-lb__canvas-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px;
+      background: #f0ece6;
+      position: relative;
+    }
+    .pdf-lb__canvas-wrap canvas {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .pdf-lb__loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #f0ece6;
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .pdf-lb__spinner {
+      width: 28px;
+      height: 28px;
+      border: 2px solid rgba(184,150,90,0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: pdfSpin 0.8s linear infinite;
+    }
+    @keyframes pdfSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .pdf-lb__nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      border-top: 1px solid rgba(26,24,22,0.06);
+      flex-shrink: 0;
+      background: var(--ivory);
+    }
+    .pdf-lb__arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid rgba(26,24,22,0.12);
+      color: var(--charcoal);
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .pdf-lb__arrow:hover:not(:disabled) {
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-color: var(--charcoal);
+    }
+    .pdf-lb__arrow:disabled {
+      opacity: 0.25;
+      cursor: default;
+    }
+    .pdf-lb__indicator {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 680px) {
+      .pdf-lb {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
+      }
+      .pdf-lb__title-bar { padding: 1rem 1.25rem; }
+      .pdf-lb__canvas-wrap { padding: 12px; }
+      .pdf-lb__nav { padding: 0.75rem 1.25rem; gap: 1.5rem; }
     }
 
 

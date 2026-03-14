@@ -6,7 +6,7 @@
   <title>The Ultimate Beauty Clinic | ULTIMA LED Mask · Observ 520x · HILEFT</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="The Ultimate Beauty Clinic — prémium boutique esztétikai klinika Budán. ULTIMA LED Beauty Mask kizárólagos forgalmazó, Observ 520x bőrdiagnosztika, ULTIMA HILEFT szövetelőkészítés. Személyre szabott Protocol rendszer, max. 3 vendég naponta." />
+  <meta name="description" content="The Ultimate Beauty Clinic — prémium boutique esztétikai klinika Budán. ULTIMA LED Beauty Mask kizárólagos forgalmazó, Observ 520x bőrdiagnosztika, ULTIMA HILEFT szövet-előkészítés. Személyre szabott Protocol rendszer, max. 3 vendég naponta." />
   <meta name="keywords" content="esztétikai klinika Budapest, LED maszk, bőrdiagnosztika, Observ 520x, HILEFT, orvosesztétika, bőrfiatalítás, anti-aging, prémium szépségszalon Buda, kollagén stimuláció, fotobiomoduláció, bőrápolás" />
   <meta name="author" content="The Ultimate Beauty Clinic" />
   <meta name="robots" content="index, follow" />
@@ -14,7 +14,7 @@
 
   <!-- Open Graph (Facebook, LinkedIn) -->
   <meta property="og:title" content="The Ultimate Beauty Clinic | Prémium Esztétika, Budán" />
-  <meta property="og:description" content="Diagnosztika. Stimuláció. Regeneráció. — Egy rendszer, ami láthatóan hat. ULTIMA LED Mask kizárólagos forgalmazó, Observ 520x, HILEFT szövetelőkészítés." />
+  <meta property="og:description" content="Diagnosztika. Stimuláció. Regeneráció. — Egy rendszer, ami láthatóan hat. ULTIMA LED Mask kizárólagos forgalmazó, Observ 520x, HILEFT szövet-előkészítés." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://theultimatebeauty.net/" />
   <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg" />
@@ -41,7 +41,7 @@
     "@type": "BeautySalon",
     "name": "The Ultimate Beauty Clinic",
     "alternateName": "TUB",
-    "description": "Prémium boutique esztétikai klinika Budán. ULTIMA LED Beauty Mask kizárólagos forgalmazó, Observ 520x bőrdiagnosztika, ULTIMA HILEFT szövetelőkészítés. Személyre szabott Protocol rendszer.",
+    "description": "Prémium boutique esztétikai klinika Budán. ULTIMA LED Beauty Mask kizárólagos forgalmazó, Observ 520x bőrdiagnosztika, ULTIMA HILEFT szövet-előkészítés. Személyre szabott Protocol rendszer.",
     "url": "https://theultimatebeauty.net",
     "telephone": "+36-1-790-3017",
     "email": "info@theultimatebeauty.net",
@@ -109,6 +109,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
   <link rel="stylesheet" href="css/hub.css">
+
+  <!-- PDF.js for Protocol PDF viewer -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
 </head>
 
 <body>
@@ -118,10 +122,10 @@
   <!-- TERMÉKVÁLASZTÓ -->
   <div class="product-switcher" role="tablist" aria-label="Termékválasztó">
     <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="home-page" id="tab-home" onclick="switchTab('home')">Home</button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="mask-page" id="tab-mask" onclick="switchTab('mask')">ULTIMA LED Mask</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="protocol-page" id="tab-protocol" onclick="switchTab('protocol')">Protocol</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="observ-page" id="tab-observ" onclick="switchTab('observ')">Observ 520x</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="hileft-page" id="tab-hileft" onclick="switchTab('hileft')">ULTIMA HILEFT</button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="protocol-page" id="tab-protocol" onclick="switchTab('protocol')">Protocol</button>
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="mask-page" id="tab-mask" onclick="switchTab('mask')">ULTIMA LED Mask</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="program-page" id="tab-program" onclick="switchTab('program')">Program</button>
   </div>
 
@@ -167,7 +171,7 @@
         <div class="hero-content">
           <span class="hero-tag">Soft Opening · Buda · Időpontra</span>
           <h1 class="hero-title">Ahol a tudomány<br><em>személyessé válik.</em></h1>
-          <p class="hero-description">A megközelítés, ami megkülönböztet. Observ diagnosztika, ULTIMA HILEFT™ szövetelőkészítés, LED Mask otthoni regeneráció — személyre szabott Protocol, maximum napi 3 vendéggel.</p>
+          <p class="hero-description">A megközelítés, ami megkülönböztet. Observ diagnosztika, ULTIMA HILEFT™ szövet-előkészítés, LED Mask otthoni regeneráció — személyre szabott Protocol, maximum napi 3 vendéggel.</p>
           <div class="hero-social-proof" style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
             <span style="display:inline-flex; align-items:center; gap:8px; background:var(--charcoal); color:var(--ivory); font-family:'Montserrat',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; padding:8px 16px; border-radius:6px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -180,7 +184,6 @@
           </div>
           <div class="hero-cta-row">
             <a class="btn btn-gold" href="#home-contact">Ingyenes Observ bőrelemzés kérése →</a>
-            <a class="btn btn-ghost" href="#home-protocol">A Protocol rendszer megismerése</a>
           </div>
           <div class="home-promo-banner">
             <span class="home-promo-icon">✦</span>
@@ -272,7 +275,7 @@
             <span class="protocol-card-phase">I. fázis</span>
             <h3>PREPARE</h3>
             <p class="protocol-card-tech">ULTIMA HILEFT™</p>
-            <p class="protocol-card-desc">Neuromuszkuláris stimuláció és mélyszöveti fotobiomoduláció. A szövetelőkészítés, ami nélkül az eredmény nem tartós.</p>
+            <p class="protocol-card-desc">Neuromuszkuláris stimuláció és mélyszöveti fotobiomoduláció. A szövet-előkészítés, ami nélkül az eredmény nem tartós.</p>
             <a class="protocol-card-link" href="#" onclick="switchTab('hileft'); return false;">Hogyan hat a kezelés →</a>
             <div class="protocol-card-treatments">
               <span class="protocol-card-treatments-label">Elérhető kezelések:</span>
@@ -283,11 +286,11 @@
             </div>
           </div>
           <div class="protocol-card protocol-card-coming" onclick="openTreatModal()" role="button" tabindex="0" aria-label="Protocol Treatments megtekintése">
-            <div class="protocol-card-badge" style="background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--charcoal); font-size: 0.6rem;">Hamarosan elérhető</div>
+            <div class="protocol-card-badge" style="background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--charcoal); font-size: 0.6rem;">Előjegyzés nyitva</div>
             <span class="protocol-card-phase">II. fázis</span>
             <h3>TREAT</h3>
             <p class="protocol-card-tech">Orvosesztétikai kezelések</p>
-            <p class="protocol-card-desc">A rendszer következő lépése: célzott esztétikai beavatkozások előkészített szöveten. Iratkozzon fel, és elsőként értesítjük az indulásról.</p>
+            <p class="protocol-card-desc">A rendszer következő lépése: célzott esztétikai beavatkozások előkészített szöveten. Regisztráljon, és elsőként értesítjük az indulásról.</p>
             <span class="protocol-card-link" style="color: var(--gold); font-weight: 500;">Értesítést kérek →</span>
           </div>
           <div class="protocol-card">
@@ -424,7 +427,7 @@
               „Több mint 8 000 páciensnek segítettem megtalálni a számára ideális kezelési utat. Közben megértettem: Budapestnek nem még egy szalonra van szüksége — hanem egy rendszerre, ami valóban működik."
             </div>
             <p class="founder-bio">
-              Domik Henrietta több mint 6 évet töltött az orvosesztétika élvonalában szakreferensként és vezető értékesítőként. 8 000 páciens személyes konzultációja tanította meg, mi az, ami tényleg hat — és mi az, ami csak ígéret. Ezt a tudást építette a The Ultimate Beauty Protocol rendszerébe: Observ diagnosztika, ULTIMA HILEFT™ szövetelőkészítés, és ULTIMA LED Mask regeneráció. Maximum napi 3 vendég. Kizárólag személyes Protocol terv.
+              Domik Henrietta több mint 6 évet töltött az orvosesztétika élvonalában szakreferensként és vezető értékesítőként. 8 000 páciens személyes konzultációja tanította meg, mi az, ami tényleg hat — és mi az, ami csak ígéret. Ezt a tudást építette a The Ultimate Beauty Protocol rendszerébe: Observ diagnosztika, ULTIMA HILEFT™ szövet-előkészítés, és ULTIMA LED Mask regeneráció. Maximum napi 3 vendég. Kizárólag személyes Protocol terv.
             </p>
             <div class="founder-credentials">
               <span class="founder-credential">
@@ -445,10 +448,10 @@
       </section>
 
       <!-- TESTIMONIALS — Vendégvélemények -->
-      <section class="home-testimonials-section reveal" aria-label="Vendégvélemények">
+      <section class="home-testimonials-section reveal" aria-label="Korábbi pácienseink tapasztalatai">
         <div class="section-header">
           <span class="section-label">Tapasztalatok</span>
-          <h2 class="section-title">Vendégeink <em>mondták</em></h2>
+          <h2 class="section-title">Korábbi pácienseink <em>tapasztalatai</em></h2>
           <div class="divider"></div>
         </div>
         <div class="testimonial-carousel" id="homeTestimonials">
@@ -466,15 +469,15 @@
               <p class="testimonial-text">Féltem az injekcióktól, ezért kerestem természetes megoldást. Az ULTIMA rendszer pontosan azt adta, amit vártam — látható eredmény, fájdalom nélkül.</p>
               <div class="testimonial-author">
                 <span class="testimonial-name">M. Eszter, 38</span>
-                <span class="testimonial-result">Protocol Member</span>
+                <span class="testimonial-result">HILEFT + LED Mask vendég</span>
               </div>
             </div>
             <div class="testimonial-card">
               <div class="testimonial-quote">"</div>
-              <p class="testimonial-text">A LED Mask napi 10 perce lett az esti rutinom része. 3 hónap után az Observ kontroll vizsgálat igazolta — a bőröm textúrája objektíven javult.</p>
+              <p class="testimonial-text">A LED Mask napi 10 perce lett az esti rutinom része. Már az első heteken éreztem a változást — a bőröm tapintása, textúrája egyértelműen javult.</p>
               <div class="testimonial-author">
                 <span class="testimonial-name">Sz. Réka, 51</span>
-                <span class="testimonial-result">Inner Circle tag</span>
+                <span class="testimonial-result">LED Mask felhasználó</span>
               </div>
             </div>
           </div>
@@ -534,7 +537,7 @@
           <details class="faq-item">
             <summary class="faq-question">Mi az a Protocol rendszer?</summary>
             <div class="faq-answer">
-              <p>A Protocol egy háromfázisú esztétikai rendszer: <strong>Prepare</strong> (ULTIMA HILEFT™ szövetelőkészítés), <strong>Treat</strong> (célzott beavatkozások) és <strong>Recover</strong> (LED Mask otthoni regeneráció). Nem egyedi kezeléseket kap, hanem koordinált programot, amely tartós eredményt biztosít.</p>
+              <p>A Protocol egy háromfázisú esztétikai rendszer: <strong>Prepare</strong> (ULTIMA HILEFT™ szövet-előkészítés), <strong>Treat</strong> (célzott beavatkozások) és <strong>Recover</strong> (LED Mask otthoni regeneráció). Nem egyedi kezeléseket kap, hanem koordinált programot, amely tartós eredményt biztosít.</p>
             </div>
           </details>
           <details class="faq-item">
@@ -552,7 +555,7 @@
           <details class="faq-item">
             <summary class="faq-question">Mennyi idő alatt látok eredményt?</summary>
             <div class="faq-answer">
-              <p>Tesztjeink tapasztalatai alapján az első HILEFT kezelés után sokan tapasztalnak feszességnövekedést. Az Observ 520x mérhető bőrjavulást jellemzően 4 hét után mutat. A teljes Protocol eredmény 8 hét után éri el a maximumát — ezt objektíven dokumentáljuk kontroll vizsgálatokkal.</p>
+              <p>Tesztjeink tapasztalatai alapján az első HILEFT kezelés után sokan tapasztalnak feszességnövekedést. Az Observ 520x-szel a mérhető bőrjavulás jellemzően 4 hét után mutatkozik meg. A teljes Protocol eredmény 8 hét után éri el a maximumát — ezt objektíven dokumentáljuk kontroll vizsgálatokkal.</p>
             </div>
           </details>
           <details class="faq-item">
@@ -626,7 +629,7 @@
         <div class="hero-bg-glow" aria-hidden="true"></div>
         <div class="hero-content">
           <span class="hero-tag">Kizárólagos forgalmazás Magyarországon</span>
-          <h1 class="hero-title">Visszatérő ragyogás,<br /><em>tudományos precizitással.</em></h1>
+          <h2 class="hero-title">Visszatérő ragyogás,<br /><em>tudományos precizitással.</em></h2>
           <p class="hero-description">
             Az ULTIMA LED Beauty Mask a professzionális fényterápia erejét hozza el otthonába. Négy tudományosan validált hullámhossz egyetlen, pehelykönnyű eszközben.
           </p>
@@ -793,7 +796,7 @@
             <div class="protocol-flow__step protocol-flow__step--muted">
               <span class="protocol-flow__num">03</span>
               <span class="protocol-flow__name">Treat</span>
-              <span class="protocol-flow__desc">Hamarosan</span>
+              <span class="protocol-flow__desc">Előjegyzés</span>
             </div>
             <div class="protocol-flow__line"></div>
             <div class="protocol-flow__step">
@@ -844,7 +847,7 @@
                 <h3 class="ultima-treatment-card__name">LED + HILEFT Szinergia</h3>
                 <p class="ultima-treatment-card__tech">Stúdió + Otthon · Kombinált protokoll</p>
               </div>
-              <p class="ultima-treatment-card__desc">A stúdióban végzett HILEFT szövetelőkészítés és az otthoni LED Mask regeneráció összehangolt kúrája — a kettős hatásmechanizmus maximalizálja az eredményt.</p>
+              <p class="ultima-treatment-card__desc">A stúdióban végzett HILEFT szövet-előkészítés és az otthoni LED Mask regeneráció összehangolt kúrája — a kettős hatásmechanizmus maximalizálja az eredményt.</p>
               <div class="ultima-treatment-card__specs">
                 <span class="ultima-treatment-card__spec">HILEFT™ + LED Mask</span>
                 <span class="ultima-treatment-card__spec">4–6 hét kombinált</span>
@@ -997,9 +1000,9 @@
       </section>
 
       <!-- MASK TESTIMONIALS -->
-      <section class="testimonial-section testimonial-section--spaced" aria-label="Maszkhasználók véleményei">
+      <section class="testimonial-section testimonial-section--spaced" aria-label="LED Mask felhasználók tapasztalatai">
         <span class="section-label">Tapasztalatok</span>
-        <h2 class="section-title">Maszkhasználóink <em>mondták</em></h2>
+        <h2 class="section-title">LED Mask felhasználók <em>tapasztalatai</em></h2>
         <div class="testimonial-carousel">
           <div class="testimonial-track">
             <div class="testimonial-card">
@@ -1070,7 +1073,7 @@
             <div class="mode-card">
               <h3 class="mode-title serif">Kinek nem ajánlott?</h3>
               <p class="mode-desc">Bizonyos gyógyszerek / fényérzékenység esetén, illetve speciális bőrállapotoknál előzetes konzultáció szükséges.</p>
-              <span class="mode-highlight">Kérdezz rá nálunk.</span>
+              <span class="mode-highlight">Kérdezzen rá nálunk.</span>
             </div>
           </div>
         </div>
@@ -1158,7 +1161,7 @@
         <div class="hero-bg-glow" style="background: radial-gradient(circle, rgba(0, 119, 182, 0.08) 0%, transparent 70%);" aria-hidden="true"></div>
         <div class="hero-content">
           <span class="hero-tag text-observ">Szakértői bőrelemzés</span>
-          <h1 class="hero-title">Observ 520x<br /><em>Lássa meg a láthatatlant.</em></h1>
+          <h2 class="hero-title">Observ 520x<br /><em>Lássa meg a láthatatlant.</em></h2>
           <p class="hero-description">
             Modern bőrelemzési rendszer, amely speciális LED-technológiával és fényszűrőkkel tárja fel a bőr állapotát — és segít mérhető, követhető kezelési tervet készíteni.
           </p>
@@ -1197,14 +1200,14 @@
             <img src="assets/images/slides/observ-04.jpg" alt="4/14 — Healthy Skin" class="doc-carousel__slide" loading="lazy" />
             <img src="assets/images/slides/observ-05.jpg" alt="5/14 — Rosacea" class="doc-carousel__slide" loading="lazy" />
             <img src="assets/images/slides/observ-06.jpg" alt="6/14 — SPF" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-07.jpg" alt="7/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-08.jpg" alt="8/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-09.jpg" alt="9/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-10.jpg" alt="10/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-11.jpg" alt="11/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-12.jpg" alt="12/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-13.jpg" alt="13/14" class="doc-carousel__slide" loading="lazy" />
-            <img src="assets/images/slides/observ-14.jpg" alt="14/14" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-07.jpg" alt="7/14 — Observ 520x bőrelemzés módok" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-08.jpg" alt="8/14 — UV károsodás feltérképezése" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-09.jpg" alt="9/14 — Bőrhidratáció mérés" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-10.jpg" alt="10/14 — Pigmentáció elemzés" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-11.jpg" alt="11/14 — Pórusméret vizsgálat" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-12.jpg" alt="12/14 — Kontrollvizsgálat összehasonlítás" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-13.jpg" alt="13/14 — Személyre szabott kezelési terv" class="doc-carousel__slide" loading="lazy" />
+            <img src="assets/images/slides/observ-14.jpg" alt="14/14 — Observ 520x prémium bőrdiagnosztika" class="doc-carousel__slide" loading="lazy" />
           </div>
           <button class="doc-carousel__btn doc-carousel__btn--prev" aria-label="Előző oldal">&#8249;</button>
           <button class="doc-carousel__btn doc-carousel__btn--next" aria-label="Következő oldal">&#8250;</button>
@@ -1273,7 +1276,7 @@
         <span class="section-tag text-observ">A vizsgálat menete</span>
         <h2 class="section-title">Mi történik <em>az Observ vizsgálaton?</em></h2>
         <p class="section-subtitle">
-          20–30 perc alatt objektív képet kapsz a bőrödről, és egy olyan tervet, amiből tényleg tudsz építkezni.
+          20–30 perc alatt objektív képet kap a bőréről, és egy olyan személyre szabott tervet, amiből valóban építkezhet.
         </p>
 
         <div class="mode-grid">
@@ -1350,7 +1353,7 @@
               <div class="ultima-treatment-card__header">
                 <span class="ultima-treatment-card__phase text-observ">Diagnosztika → I. Prepare</span>
                 <h3 class="ultima-treatment-card__name">Observ → HILEFT Útvonal</h3>
-                <p class="ultima-treatment-card__tech">Elemzés alapú szövetelőkészítés</p>
+                <p class="ultima-treatment-card__tech">Elemzés alapú szövet-előkészítés</p>
               </div>
               <p class="ultima-treatment-card__desc">Ha az Observ elemzés tónusvesztést vagy kontúrváltozást mutat — az útvonal a HILEFT neuromuszkuláris stimulációhoz vezet.</p>
               <div class="ultima-treatment-card__specs">
@@ -1511,9 +1514,9 @@
       </section>
 
       <!-- OBSERV TESTIMONIALS -->
-      <section class="testimonial-section testimonial-section--spaced" aria-label="Observ tapasztalatok">
+      <section class="testimonial-section testimonial-section--spaced" aria-label="Observ diagnosztika tapasztalatok">
         <span class="section-label text-observ">Tapasztalatok</span>
-        <h2 class="section-title">Vendégeink mondták az Observ vizsgálatról</h2>
+        <h2 class="section-title">Korábbi pácienseink az <em>Observ vizsgálatról</em></h2>
         <div class="testimonial-carousel">
           <div class="testimonial-track">
             <div class="testimonial-card">
@@ -1620,7 +1623,7 @@
         <div class="hero-bg-glow" style="background: radial-gradient(circle, rgba(184, 150, 90, 0.1) 0%, transparent 70%);" aria-hidden="true"></div>
         <div class="hero-content">
           <span class="hero-tag">Professzionális technológia</span>
-          <h1 class="hero-title">ULTIMA HILEFT™<br /><em>Fény és izom szinergiája.</em></h1>
+          <h2 class="hero-title">ULTIMA HILEFT™<br /><em>Fény és izom szinergiája.</em></h2>
           <p class="hero-description">
             Neuromuszkuláris stimuláció és fotobiomoduláció egyetlen kezelésben — 15 éves fejlesztés, tripoláris elektródák, a sejtek saját biológiai potenciáljának aktiválása. Az esztétika jövője.
           </p>
@@ -1965,9 +1968,9 @@
       </section>
 
       <!-- HILEFT TESTIMONIALS -->
-      <section class="testimonial-section testimonial-section--spaced" aria-label="HILEFT tapasztalatok">
+      <section class="testimonial-section testimonial-section--spaced" aria-label="HILEFT kezelés tapasztalatok">
         <span class="section-label">Tapasztalatok</span>
-        <h2 class="section-title">HILEFT kezelés — vendégeink mondták</h2>
+        <h2 class="section-title">HILEFT kezelés — <em>pácienstapasztalatok</em></h2>
         <div class="testimonial-carousel">
           <div class="testimonial-track">
             <div class="testimonial-card">
@@ -2060,14 +2063,14 @@
       <section class="protocol-hero">
         <div class="protocol-hero__inner">
           <span class="protocol-hero__label">The Ultimate Beauty Protocol</span>
-          <h1 class="protocol-hero__title">
+          <h2 class="protocol-hero__title">
             Nem kezelésekben<br>gondolkodunk.<br><em>Rendszerben.</em>
-          </h1>
+          </h2>
           <p class="protocol-hero__subtitle">
             Egy háromlépcsős, orvos által felépített esztétikai rendszer — ahol minden kezelés a következőt erősíti, és az egész összetettebb eredményt ad, mint a részek összege.
           </p>
           <div class="protocol-hero__actions">
-            <a class="btn btn-gold" href="#protocol-philosophy">A filozófia</a>
+            <a class="btn btn-gold" href="#" onclick="event.preventDefault(); openPdfLightbox();">A Protocol könyv</a>
             <a class="btn btn-ghost" href="#" onclick="switchTab('observ'); return false;" style="border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.6);">Observ vizsgálat →</a>
           </div>
         </div>
@@ -2131,15 +2134,17 @@
             <span class="protocol-hub-card__arrow">→</span>
           </a>
 
-          <!-- 03 — Protocol Treatments -->
-          <a href="#" class="protocol-hub-card" onclick="if(typeof openTreatModal==='function')openTreatModal(); return false;">
+          <!-- 03 — Eredmények -->
+          <a href="#protocol-results" class="protocol-hub-card" onclick="document.getElementById('protocol-results')?.scrollIntoView({behavior:'smooth', block:'start'}); return false;">
             <span class="protocol-hub-card__num">03</span>
             <svg class="protocol-hub-card__icon" viewBox="0 0 40 40" fill="none">
-              <rect x="6" y="10" width="28" height="20" rx="2" stroke="var(--gold)" stroke-width="1.2"/>
-              <path d="M12 20h16M12 15h8M12 25h12" stroke="var(--gold)" stroke-width="1.2"/>
+              <path d="M8 32L14 20l6 6 6-12 6 10" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="14" cy="20" r="2" stroke="var(--gold)" stroke-width="1"/>
+              <circle cx="20" cy="26" r="2" stroke="var(--gold)" stroke-width="1"/>
+              <circle cx="26" cy="14" r="2" stroke="var(--gold)" stroke-width="1"/>
             </svg>
-            <h3 class="protocol-hub-card__title">Protocol<br>Treatments</h3>
-            <p class="protocol-hub-card__desc">15 Signature Protocol — mindegyik a Prepare–Treat–Recover rendszerre épül, személyre szabottan.</p>
+            <h3 class="protocol-hub-card__title">Eredmények<br>& Bizonyítékok</h3>
+            <p class="protocol-hub-card__desc">Observ 520x kontrollvizsgálatok, Before/After eredmények és klinikai statisztikák.</p>
             <span class="protocol-hub-card__arrow">→</span>
           </a>
 
@@ -2231,7 +2236,7 @@
           <!-- II. Treat -->
           <div class="protocol-pillar">
             <div class="protocol-pillar__roman">II</div>
-            <span class="protocol-pillar__badge">Hamarosan elérhető</span>
+            <span class="protocol-pillar__badge">Előjegyzés nyitva</span>
             <div class="protocol-pillar__phase">II. Fázis · Treat</div>
             <h3 class="protocol-pillar__title">Medical<br>Precision</h3>
             <p class="protocol-pillar__desc">A megfelelően előkészített szöveti alapra érkezik a célzott orvosesztétikai korrekció — botox, hialuronsav, biostimulátorok — anatómiai logika mentén, személyre szabva.</p>
@@ -2327,7 +2332,7 @@
               <text x="60" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">RECOVER</text>
 
               <!-- Él-feliratok -->
-              <text x="280" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(60, 280, 170)">szövetelőkészítés →</text>
+              <text x="280" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(60, 280, 170)">szövet-előkészítés →</text>
               <text x="200" y="340" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em">← otthoni regeneráció →</text>
               <text x="120" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(-60, 120, 170)">← diagnosztika</text>
             </svg>
@@ -2364,7 +2369,7 @@
       <section class="protocol-venus" id="protocol-venus">
         <div class="protocol-venus__inner">
           <span class="section-label">Testkezelési technológia</span>
-          <div class="badge--coming-soon">Hamarosan elérhető</div>
+          <div class="badge--coming-soon">Előjegyzés nyitva</div>
           <div class="divider"></div>
           <h2 class="section-title">Venus Legacy™ —<br>mélyszöveti <em>megújítás.</em></h2>
 
@@ -2492,7 +2497,7 @@
         <div class="hero-bg-glow" style="background: radial-gradient(ellipse 60% 50% at 75% 0%, rgba(184,150,90,0.15), transparent);" aria-hidden="true"></div>
         <div class="hero-content">
           <span class="hero-tag">A Protocol nem kezelés. Hanem tagság.</span>
-          <h1 class="hero-title">Nem vendég lesz.<br><em>Részese a rendszernek.</em></h1>
+          <h2 class="hero-title">Nem vendég lesz.<br><em>Részese a rendszernek.</em></h2>
           <p class="hero-description">A The Ultimate Beauty Protocol egy zárt, személyre szabott esztétikai rendszer — maximum 3 vendég naponta, egyéni terv, folyamatos utánkövetés. A Program biztosítja, hogy ez a figyelem az Öné maradjon.</p>
           <div class="founding-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
@@ -2628,7 +2633,7 @@
             <div class="program-why-item">
               <span class="program-why-num">01</span>
               <h4>A rendszer már aktív</h4>
-              <p>Observ 520x diagnosztika, ULTIMA HILEFT™ szövetelőkészítés és LED Mask otthoni regeneráció — a három technológiai pillér most elérhető.</p>
+              <p>Observ 520x diagnosztika, ULTIMA HILEFT™ szövet-előkészítés és LED Mask otthoni regeneráció — a három technológiai pillér most elérhető.</p>
             </div>
             <div class="program-why-item">
               <span class="program-why-num">02</span>
@@ -2719,7 +2724,7 @@
     <button class="btn btn-ghost" onclick="openDrawer(getActiveTab())">Menü</button>
   </div>
 
-  <!-- INSTAGRAM FEED -->
+  <!-- INSTAGRAM FEED — elrejtve amíg nincs valós tartalom
   <section class="insta-section">
     <span class="section-label">Kövessen minket</span>
     <h2 class="section-title" style="font-size: clamp(1.4rem, 3vw, 2rem);">@theultimatebeauty</h2>
@@ -2729,6 +2734,7 @@
       Kövessen az Instagramon →
     </a>
   </section>
+  -->
 
   <!-- FOOTER -->
   <div class="container">
@@ -2794,7 +2800,7 @@
       <!-- GOOGLE MAPS -->
       <div style="margin-top: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
         <iframe
-          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.5!2d18.9856!3d47.4926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1124+Budapest+Gy%C3%B6ngyir%C3%A1g+%C3%BAt+68!5e0!3m2!1shu!2shu!4v1"
+          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.5!2d18.9856!3d47.4926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dde1a5b67c73%3A0x8a0e2f8b9c3d5e7a!2s1124+Budapest%2C+Gy%C3%B6ngyir%C3%A1g+%C3%BAt+68!5e0!3m2!1shu!2shu!4v1"
           width="100%" height="180" style="border:0; display:block;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade" title="The Ultimate Beauty Clinic térkép"
           id="mapIframe">
@@ -3042,50 +3048,61 @@
     }
   </script>
 
-  <!-- FLOATING LED MASK IKON -->
+  <!-- FLOATING LED MASK IKON — Luxury 3D -->
   <div class="float-mask" id="floatMask">
     <button class="float-mask-btn" onclick="toggleFloatPanel()" aria-label="Kapcsolat">
-      <svg class="float-mask-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Maszk sziluett -->
-        <ellipse cx="20" cy="19" rx="15" ry="17" fill="#1A1816" stroke="#2C2926" stroke-width="1"/>
-        <!-- Honeycomb jelzés -->
-        <line x1="12" y1="12" x2="28" y2="12" stroke="#333" stroke-width="0.5" opacity="0.5"/>
-        <line x1="11" y1="16" x2="29" y2="16" stroke="#333" stroke-width="0.5" opacity="0.5"/>
-        <line x1="11" y1="20" x2="29" y2="20" stroke="#333" stroke-width="0.5" opacity="0.5"/>
-        <line x1="12" y1="24" x2="28" y2="24" stroke="#333" stroke-width="0.5" opacity="0.5"/>
-        <line x1="14" y1="28" x2="26" y2="28" stroke="#333" stroke-width="0.5" opacity="0.5"/>
-        <!-- Szem kivágások -->
-        <ellipse cx="14.5" cy="16" rx="3.5" ry="2" fill="#FDFAF6" opacity="0.12"/>
-        <ellipse cx="25.5" cy="16" rx="3.5" ry="2" fill="#FDFAF6" opacity="0.12"/>
-        <!-- Piros LED glow belülről -->
-        <ellipse cx="20" cy="20" rx="10" ry="12" fill="url(#ledGlow)" opacity="0.35"/>
-        <defs>
-          <radialGradient id="ledGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#ff3333"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </radialGradient>
-        </defs>
-      </svg>
-      <span class="float-mask-glow" aria-hidden="true"></span>
+      <!-- Arany ring rétegek -->
+      <span class="fm-ring fm-ring--outer" aria-hidden="true"></span>
+      <span class="fm-ring fm-ring--inner" aria-hidden="true"></span>
+      <!-- Üveg felület -->
+      <span class="fm-glass" aria-hidden="true"></span>
+      <!-- UB Logo — valódi logó kép -->
+      <img class="float-mask-logo" src="assets/images/ub-logo-gold.png" alt="The Ultimate Beauty" width="48" height="48" />
+      <!-- Finom arany aura -->
+      <span class="fm-aura" aria-hidden="true"></span>
     </button>
+    <!-- Mini panel -->
     <div class="float-mask-panel" id="floatPanel" aria-hidden="true">
       <div class="float-panel-header">
-        <strong>The Ultimate Beauty Clinic</strong>
+        <div class="float-panel-brand">
+          <span class="float-panel-icon">◆</span>
+          <strong>The Ultimate Beauty</strong>
+        </div>
         <button class="float-panel-close" onclick="toggleFloatPanel()" aria-label="Panel bezárása">✕</button>
       </div>
       <div class="float-panel-body">
-        <p>Kérdése van az ULTIMA technológiáról vagy szeretne időpontot foglalni?</p>
-        <a class="btn btn-gold" href="mailto:info@theultimatebeauty.net" style="width:100%;text-align:center;">Email küldése</a>
-        <a class="btn btn-ghost" href="tel:+3617903017" style="width:100%;text-align:center;margin-top:8px;">+36 1 790 3017</a>
+        <p>Személyes konzultáció vagy kérdés az ULTIMA technológiáról?</p>
+        <a class="btn btn-gold fm-cta" href="mailto:info@theultimatebeauty.net">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email küldése
+        </a>
+        <a class="btn btn-ghost fm-cta" href="tel:+3617903017">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +36 1 790 3017
+        </a>
+        <a class="btn btn-ghost fm-cta" href="https://wa.me/3617903017" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          WhatsApp
+        </a>
       </div>
     </div>
   </div>
   <script>
     function toggleFloatPanel() {
       var panel = document.getElementById('floatPanel');
+      var btn = document.querySelector('.float-mask-btn');
       var isOpen = panel.classList.toggle('open');
+      btn.classList.toggle('fm-active', isOpen);
       panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
     }
+    // Kívülre kattintás bezárja
+    document.addEventListener('click', function(e) {
+      var fm = document.getElementById('floatMask');
+      var panel = document.getElementById('floatPanel');
+      if (panel.classList.contains('open') && !fm.contains(e.target)) {
+        toggleFloatPanel();
+      }
+    });
   </script>
 
   <!-- ═══════════════════════════════════════
@@ -3452,7 +3469,7 @@
         phase: 'I. Prepare',
         name: 'ULTIMA Face',
         tech: 'HILEFT™ · Arckezelés',
-        desc: '6 csatornás neuromuszkuláris stimuláció és 730/940 nm fotobiomoduláció. A rendszer fő arckezelése — helyreállítja az izomtónust, javítja a bőrminőséget és elősegíti a kollagéntermelést. A szövetelőkészítés alapja, ami nélkül az esztétikai eredmény nem tartós.',
+        desc: '6 csatornás neuromuszkuláris stimuláció és 730/940 nm fotobiomoduláció. A rendszer fő arckezelése — helyreállítja az izomtónust, javítja a bőrminőséget és elősegíti a kollagéntermelést. A szövet-előkészítés alapja, ami nélkül az esztétikai eredmény nem tartós.',
         indications: ['Arcfeszesítés', 'Izomtónus helyreállítás', 'Bőrminőség javítás', 'Kollagén stimuláció', 'Anti-aging'],
         specs: [
           { label: 'Technológia', value: 'HILEFT™ 730nm + 940nm' },
@@ -3521,7 +3538,7 @@
         phase: 'I. + III. Prepare & Recover',
         name: 'Preventív Anti-Aging Kúra',
         tech: 'ULTIMA HILEFT + LED Mask · Kombinált',
-        desc: '30–40 éves vendégek számára tervezett strukturált kúra — az öregedés megelőzése és a bőrminőség fenntartása. Az ULTIMA HILEFT szövetelőkészítése és az LED Mask regenerációja együtt biztosítja a tartós, természetes eredményt.',
+        desc: '30–40 éves vendégek számára tervezett strukturált kúra — az öregedés megelőzése és a bőrminőség fenntartása. Az ULTIMA HILEFT szövet-előkészítése és az LED Mask regenerációja együtt biztosítja a tartós, természetes eredményt.',
         indications: ['Öregedés megelőzés', 'Bőrminőség fenntartás', '30–40 évesek', 'Kollagén stimuláció'],
         specs: [
           { label: 'Technológia', value: 'HILEFT™ + LED Mask' },
@@ -3534,7 +3551,7 @@
         phase: 'I. + III. Prepare & Recover',
         name: 'LED + HILEFT Szinergia',
         tech: 'Stúdió + Otthon · Kombinált protokoll',
-        desc: 'A stúdióban végzett HILEFT szövetelőkészítés és az otthoni LED Mask regeneráció összehangolt kúrája. A HILEFT 730/940nm hullámhossza mélyen stimulálja az izomszövetet és a dermiszt, míg a LED Mask 4 hullámhossza otthon folytatja a regenerációt — a kollagénaktiváció így nem áll le a kezelések között.',
+        desc: 'A stúdióban végzett HILEFT szövet-előkészítés és az otthoni LED Mask regeneráció összehangolt kúrája. A HILEFT 730/940nm hullámhossza mélyen stimulálja az izomszövetet és a dermiszt, míg a LED Mask 4 hullámhossza otthon folytatja a regenerációt — a kollagénaktiváció így nem áll le a kezelések között.',
         indications: ['Maximális szöveti válasz', 'Kúra közbeni regeneráció', 'Kollagén fenntartás', 'Mikrokeringés optimalizálás', 'Tartósabb eredmény'],
         specs: [
           { label: 'Stúdió', value: 'HILEFT™ 730nm + 940nm' },
@@ -3572,7 +3589,7 @@
       observhileft: {
         phase: 'Diagnosztika → I. Prepare',
         name: 'Observ → HILEFT Útvonal',
-        tech: 'Elemzés alapú szövetelőkészítés',
+        tech: 'Elemzés alapú szövet-előkészítés',
         desc: 'Ha az Observ elemzés tónusvesztést, kontúrváltozást vagy izomtónus-csökkenést mutat, az útvonal a HILEFT neuromuszkuláris stimulációhoz vezet. 4–6 alkalmas kúra, majd Observ kontrollvizsgálat az eredmény objektív dokumentálásához.',
         indications: ['Tónusvesztés', 'Kontúr elmosódás', 'Izomtónus csökkenés', 'Gravitációs ptózis jelei', 'Bőr lazaság'],
         specs: [
@@ -3882,7 +3899,7 @@
         progressSteps.forEach(function(s) { s.classList.add('active'); });
         var concern = state.answers[0] || '';
         var subtitle = 'A bőrdiagnosztika alapján személyre szabott Protocol-t állítunk össze.';
-        if (concern.indexOf('Ráncok') > -1) subtitle = 'A ráncok kezelésében a szövetelőkészítés és az otthoni regeneráció együtt adja a tartós eredményt.';
+        if (concern.indexOf('Ráncok') > -1) subtitle = 'A ráncok kezelésében a szövet-előkészítés és az otthoni regeneráció együtt adja a tartós eredményt.';
         else if (concern.indexOf('Tónus') > -1) subtitle = 'A petyhüdt bőr stimulálásához a HILEFT neuromuszkuláris technológia ideális kiindulópont.';
         else if (concern.indexOf('Pigment') > -1) subtitle = 'Az egyenetlen bőrtónus kezelése az Observ pontos diagnózisával kezdődik.';
         else if (concern.indexOf('Problémás') > -1) subtitle = 'A problémás bőr esetén a LED Mask kék fénymódja célzott segítséget nyújt.';
@@ -3954,94 +3971,173 @@
     </div>
   </div>
 
+  <!-- PDF LIGHTBOX (Protocol könyv) -->
+  <div class="pdf-lb-overlay" id="pdfLbOverlay" onclick="if(event.target===this)closePdfLightbox()">
+    <div class="pdf-lb">
+      <button class="pdf-lb__close" onclick="closePdfLightbox()" aria-label="Bezárás">&times;</button>
+      <div class="pdf-lb__title-bar">
+        <span class="pdf-lb__title-label">The Ultimate Beauty</span>
+        <span class="pdf-lb__title-name">Protocol</span>
+      </div>
+      <div class="pdf-lb__canvas-wrap" id="pdfCanvasWrap">
+        <canvas id="pdfCanvas"></canvas>
+        <div class="pdf-lb__loading" id="pdfLoading">
+          <div class="pdf-lb__spinner"></div>
+          <span>Betöltés...</span>
+        </div>
+      </div>
+      <div class="pdf-lb__nav">
+        <button class="pdf-lb__arrow pdf-lb__arrow--prev" id="pdfPrev" onclick="pdfGoPage(-1)" aria-label="Előző oldal">‹</button>
+        <span class="pdf-lb__indicator" id="pdfIndicator">1 / 15</span>
+        <button class="pdf-lb__arrow pdf-lb__arrow--next" id="pdfNext" onclick="pdfGoPage(1)" aria-label="Következő oldal">›</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* ─── PDF LIGHTBOX ─── */
+  var pdfDoc = null, pdfPageNum = 1, pdfRendering = false, pdfPendingPage = null;
+
+  function openPdfLightbox() {
+    var overlay = document.getElementById('pdfLbOverlay');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (!pdfDoc) {
+      loadPdf();
+    } else {
+      renderPdfPage(pdfPageNum);
+    }
+  }
+
+  function closePdfLightbox() {
+    document.getElementById('pdfLbOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  async function loadPdf() {
+    document.getElementById('pdfLoading').style.display = 'flex';
+    try {
+      pdfDoc = await pdfjsLib.getDocument('The_Ultimate_Beauty_Protocol (2).pdf').promise;
+      document.getElementById('pdfIndicator').textContent = '1 / ' + pdfDoc.numPages;
+      pdfPageNum = 1;
+      renderPdfPage(1);
+    } catch(e) {
+      document.getElementById('pdfLoading').innerHTML = '<span style="color:#8a847e">A dokumentum nem tölthető be.</span>';
+    }
+  }
+
+  async function renderPdfPage(num) {
+    if (pdfRendering) { pdfPendingPage = num; return; }
+    pdfRendering = true;
+    document.getElementById('pdfLoading').style.display = 'flex';
+    var page = await pdfDoc.getPage(num);
+    var wrap = document.getElementById('pdfCanvasWrap');
+    var canvas = document.getElementById('pdfCanvas');
+    var ctx = canvas.getContext('2d');
+
+    /* Calculate scale to fit container width */
+    var wrapW = wrap.clientWidth - 40; /* padding */
+    var wrapH = wrap.clientHeight - 20;
+    var vp = page.getViewport({ scale: 1 });
+    var scaleW = wrapW / vp.width;
+    var scaleH = wrapH / vp.height;
+    var scale = Math.min(scaleW, scaleH);
+    /* High DPI */
+    var dpr = window.devicePixelRatio || 1;
+    var viewport = page.getViewport({ scale: scale * dpr });
+
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    canvas.style.width = (viewport.width / dpr) + 'px';
+    canvas.style.height = (viewport.height / dpr) + 'px';
+
+    await page.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+    document.getElementById('pdfLoading').style.display = 'none';
+    document.getElementById('pdfIndicator').textContent = num + ' / ' + pdfDoc.numPages;
+
+    /* Update buttons */
+    document.getElementById('pdfPrev').disabled = (num <= 1);
+    document.getElementById('pdfNext').disabled = (num >= pdfDoc.numPages);
+
+    pdfRendering = false;
+    if (pdfPendingPage !== null) {
+      var p = pdfPendingPage;
+      pdfPendingPage = null;
+      renderPdfPage(p);
+    }
+  }
+
+  function pdfGoPage(delta) {
+    var newPage = pdfPageNum + delta;
+    if (newPage < 1 || newPage > pdfDoc.numPages) return;
+    pdfPageNum = newPage;
+    renderPdfPage(pdfPageNum);
+  }
+
+  /* Keyboard navigation for PDF lightbox */
+  document.addEventListener('keydown', function(e) {
+    var overlay = document.getElementById('pdfLbOverlay');
+    if (!overlay.classList.contains('active')) return;
+    if (e.key === 'Escape') closePdfLightbox();
+    if (e.key === 'ArrowLeft') pdfGoPage(-1);
+    if (e.key === 'ArrowRight') pdfGoPage(1);
+  });
+  </script>
+
   <script>
   /* ─── PROTOCOL LIGHTBOX (scroll mode) ─── */
   var plbConfig = {
     hilift: {
       label: 'Clinical Program',
       name: 'Mini Facelift Integráció',
-      url: '/protocol-mini-facelift-integracio.html'
+      url: 'protocol-mini-facelift-integracio.html'
     },
     mama: {
       label: 'Protocol Treatment',
       name: 'Szülés Utáni Hasfali Regeneráció',
-      url: '/protocol-szules-utani-regeneracio.html'
+      url: 'protocol-szules-utani-regeneracio.html'
     },
     kutatas: {
       label: 'Tudományos Megközelítés',
       name: 'Klinikai Kutatás & Pilot Programok',
-      url: '/kutatas.html'
+      url: 'kutatas.html'
     }
   };
 
-  async function openProtocolLightbox(key) {
+  function openProtocolLightbox(key) {
     var cfg = plbConfig[key];
     if (!cfg) return;
 
     document.getElementById('plbLabel').textContent = cfg.label;
     document.getElementById('plbName').textContent = cfg.name;
-    document.getElementById('plbContent').innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--c30);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase">Betöltés...</div>';
 
     var overlay = document.getElementById('plbOverlay');
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    try {
-      var resp = await fetch(cfg.url);
-      var html = await resp.text();
-      var parser = new DOMParser();
-      var doc = parser.parseFromString(html, 'text/html');
+    /* Mindig iframe — működik file:// és http:// protokollal is */
+    var contentEl = document.getElementById('plbContent');
+    var iframe = document.createElement('iframe');
+    iframe.src = cfg.url;
+    iframe.style.cssText = 'width:100%;height:100%;border:none;background:#FDFAF6;display:block;';
+    iframe.setAttribute('title', cfg.name);
+    contentEl.innerHTML = '';
+    contentEl.appendChild(iframe);
 
-      /* Extract styles */
-      var styleEl = doc.querySelector('style');
-      var styleText = styleEl ? styleEl.textContent : '';
-
-      /* Remove nav, breadcrumb, footer, CTA */
-      var removeSelectors = ['.nav', '.breadcrumb', '.footer', 'footer', '.cta-sec'];
-      removeSelectors.forEach(function(sel) {
-        var els = doc.querySelectorAll(sel);
-        els.forEach(function(el) { el.remove(); });
-      });
-
-      /* Get all remaining body children (sections) */
-      var sections = [];
-      var bodyChildren = doc.body.children;
-      for (var i = 0; i < bodyChildren.length; i++) {
-        var el = bodyChildren[i];
-        if (el.tagName === 'SCRIPT' || el.tagName === 'STYLE') continue;
-        sections.push(el.outerHTML);
-      }
-
-      /* Build scrollable content — all sections in one flow */
-      var contentEl = document.getElementById('plbContent');
-      var scopedStyle = '<style>.plb__scroll-inner{' +
-        'font-family:\'Montserrat\',sans-serif;font-size:15px;font-weight:300;line-height:1.7;color:#1A1816;' +
-        '}.plb__scroll-inner .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}' +
-        '.plb__scroll-inner .hero{padding:2rem 0 3rem}' +
-        '.plb__scroll-inner .hero__image{display:none}' +
-        '.plb__scroll-inner .hero__grid{display:block}' +
-        '.plb__scroll-inner .sec{padding:3rem 0}.plb__scroll-inner .sec--sm{padding:2rem 0}' +
-        '.plb__scroll-inner .d-xl{font-family:\'Cormorant Garamond\',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.08}' +
-        '.plb__scroll-inner .d-lg{font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.1}' +
-        '.plb__scroll-inner .d-md{font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;line-height:1.2}' +
-        '.plb__scroll-inner .sec__grid-2,.plb__scroll-inner .mech-cards,.plb__scroll-inner .ind-grid,.plb__scroll-inner .safety-grid{gap:2rem}' +
-        '@media(max-width:768px){.plb__scroll-inner .sec__grid-2,.plb__scroll-inner .mech-cards,.plb__scroll-inner .ind-grid,.plb__scroll-inner .safety-grid,.plb__scroll-inner .sec__grid-3{grid-template-columns:1fr}.plb__scroll-inner .phase{grid-template-columns:80px 1fr;gap:1.5rem}.plb__scroll-inner .synergy__diagram{flex-direction:column}.plb__scroll-inner .synergy__arrow{transform:rotate(90deg)}}' +
-        '</style>';
-
-      contentEl.innerHTML = '<style>' + styleText + '</style>' + scopedStyle +
-        '<div class="plb__scroll-inner">' + sections.join('') + '</div>';
-
-      /* Make all .reveal elements visible inside lightbox (no IntersectionObserver here) */
-      contentEl.querySelectorAll('.reveal').forEach(function(el) {
-        el.classList.add('visible');
-      });
-
-      contentEl.scrollTop = 0;
-
-    } catch (err) {
-      document.getElementById('plbContent').innerHTML =
-        '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--c60);font-size:.8rem;padding:2rem;text-align:center">A tartalom betöltése nem sikerült. Kérjük, próbálja újra később.</div>';
-    }
+    iframe.onload = function() {
+      try {
+        var idoc = iframe.contentDocument || iframe.contentWindow.document;
+        if (idoc) {
+          /* Nav, footer, CTA elrejtése */
+          ['.nav', '.breadcrumb', 'footer', '.footer', '.cta-sec', '.cta-banner'].forEach(function(sel) {
+            idoc.querySelectorAll(sel).forEach(function(el) { el.style.display = 'none'; });
+          });
+          /* Reveal animációk aktiválása */
+          idoc.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+        }
+      } catch(e) { /* cross-origin — az iframe amúgy is megjeleníti */ }
+    };
   }
 
   function closeProtocolLightbox() {
