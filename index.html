@@ -2401,6 +2401,86 @@
             <div class="protocol-tl-detail">LED Mask + utókövetés</div>
           </div>
         </div>
+
+        <!-- ── 3 PILLÉR VIZUÁLIS DIAGRAM ── -->
+        <div class="protocol-cycle-diagram reveal">
+          <div class="cycle-visual">
+            <svg viewBox="0 0 400 380" class="cycle-svg" aria-label="A Protocol három fázisa — ciklikus diagram">
+              <!-- Háromszög vonalak -->
+              <defs>
+                <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#B8965A;stop-opacity:0.8"/>
+                  <stop offset="100%" style="stop-color:#D4B077;stop-opacity:0.4"/>
+                </linearGradient>
+                <filter id="glowFilter">
+                  <feGaussianBlur stdDeviation="3" result="glow"/>
+                  <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <!-- Háttér háromszög -->
+              <polygon points="200,40 60,320 340,320" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.3"/>
+
+              <!-- Animált körök az éleken -->
+              <circle r="3" fill="#B8965A" opacity="0.7">
+                <animateMotion dur="6s" repeatCount="indefinite" path="M200,40 L340,320 L60,320 Z"/>
+              </circle>
+              <circle r="2" fill="#D4B077" opacity="0.5">
+                <animateMotion dur="6s" repeatCount="indefinite" begin="2s" path="M200,40 L340,320 L60,320 Z"/>
+              </circle>
+
+              <!-- Középső kör + szöveg -->
+              <circle cx="200" cy="227" r="52" fill="rgba(184,150,90,0.08)" stroke="#B8965A" stroke-width="1" opacity="0.6"/>
+              <text x="200" y="220" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="13" font-weight="600" letter-spacing="0.05em">PROTOCOL</text>
+              <text x="200" y="240" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-family="Montserrat, sans-serif" font-size="8" letter-spacing="0.15em" text-transform="uppercase">RENDSZER</text>
+
+              <!-- Csomópontok: I. Prepare (felső) -->
+              <circle cx="200" cy="40" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
+              <text x="200" y="36" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">I</text>
+              <text x="200" y="50" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">PREPARE</text>
+
+              <!-- II. Treat (jobb alsó) -->
+              <circle cx="340" cy="320" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
+              <text x="340" y="316" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">II</text>
+              <text x="340" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">TREAT</text>
+
+              <!-- III. Recover (bal alsó) -->
+              <circle cx="60" cy="320" r="28" fill="rgba(26,24,22,0.9)" stroke="#B8965A" stroke-width="1.5" filter="url(#glowFilter)"/>
+              <text x="60" y="316" text-anchor="middle" fill="#B8965A" font-family="Cormorant Garamond, serif" font-size="11" font-weight="700">III</text>
+              <text x="60" y="330" text-anchor="middle" fill="#fff" font-family="Montserrat, sans-serif" font-size="7" letter-spacing="0.1em">RECOVER</text>
+
+              <!-- Él-feliratok -->
+              <text x="280" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(60, 280, 170)">szövetelőkészítés →</text>
+              <text x="200" y="340" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em">← otthoni regeneráció →</text>
+              <text x="120" y="170" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-family="Montserrat, sans-serif" font-size="7.5" letter-spacing="0.08em" transform="rotate(-60, 120, 170)">← diagnosztika</text>
+            </svg>
+          </div>
+
+          <div class="cycle-legend">
+            <div class="cycle-legend-item">
+              <span class="cycle-legend-num">I</span>
+              <div>
+                <strong>Prepare — ULTIMA Activation</strong>
+                <p>Observ diagnosztika + neuromuszkuláris stimuláció. A szövetek előkészítése a beavatkozásra.</p>
+              </div>
+            </div>
+            <div class="cycle-legend-item">
+              <span class="cycle-legend-num">II</span>
+              <div>
+                <strong>Treat — Medical Precision</strong>
+                <p>Célzott orvosesztétikai korrekció az előkészített szöveti alapra. Botox, hialuronsav, biostimulátorok.</p>
+              </div>
+            </div>
+            <div class="cycle-legend-item">
+              <span class="cycle-legend-num">III</span>
+              <div>
+                <strong>Recover — LED Mask Regeneration</strong>
+                <p>Otthoni fotobiomoduláció 4 hullámhosszon. A kezelés nem ér véget a klinikán.</p>
+              </div>
+            </div>
+            <p class="cycle-legend-footer">A ciklus ismétlődik — minden kör javítja az eredményt.</p>
+          </div>
+        </div>
       </section>
 
       <!-- ── VENUS LEGACY TESTKEZELÉS ── -->
@@ -2534,22 +2614,50 @@
       <section class="hero program-hero" aria-label="Program hero">
         <div class="hero-bg-glow" style="background: radial-gradient(ellipse 60% 50% at 75% 0%, rgba(184,150,90,0.15), transparent);" aria-hidden="true"></div>
         <div class="hero-content">
-          <span class="hero-tag">Founding Access · Limitált · Exkluzív</span>
-          <h1 class="hero-title">Legyen az elsők között.<br><em>A rendszer most nyílik meg.</em></h1>
-          <p class="hero-description">A technológiai alapok már elérhetők — diagnosztika, szövetelőkészítés, otthoni regeneráció. Csatlakozzon a nyitási időszakhoz, és értesüljön elsőként a teljes Protocol indulásáról.</p>
+          <span class="hero-tag">A Protocol nem kezelés. Hanem tagság.</span>
+          <h1 class="hero-title">Nem vendég lesz.<br><em>Részese a rendszernek.</em></h1>
+          <p class="hero-description">A The Ultimate Beauty Protocol egy zárt, személyre szabott esztétikai rendszer — maximum 3 vendég naponta, egyéni terv, folyamatos utánkövetés. A Program biztosítja, hogy ez a figyelem az Öné maradjon.</p>
           <div class="founding-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-            Founding Access: nyitási időszak
+            Founding Access — nyitási időszak, limitált helyek
           </div>
           <div class="hero-cta-row">
-            <a class="btn btn-gold" href="#program-tiers">Hozzáférési szintek</a>
-            <a class="btn btn-ghost" href="#" onclick="switchTab('observ'); return false;">Observ vizsgálat</a>
+            <a class="btn btn-gold" href="#program-tiers">Szintek megtekintése</a>
+            <a class="btn btn-ghost" href="#" onclick="switchTab('protocol'); return false;">A Protocol megismerése</a>
           </div>
         </div>
         <div class="hero-visual" aria-hidden="true">
           <div class="home-hero-badge" style="border-color: rgba(184,150,90,0.35);">
             <span class="home-hero-badge-label">Soft Opening</span>
-            <span class="home-hero-badge-sub">legyen az elsők között</span>
+            <span class="home-hero-badge-sub">25 Founding Member hely</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MIÉRT PROGRAM, NEM SZOLGÁLTATÁS -->
+      <section class="program-philosophy reveal" aria-label="Program filozófia">
+        <span class="section-label">Paradigmaváltás</span>
+        <h2 class="section-title">Miért <em>tagság</em>, nem szolgáltatás?</h2>
+        <div class="program-philosophy-grid">
+          <div class="program-phil-card">
+            <div class="program-phil-icon">✕</div>
+            <h4>A hagyományos klinika</h4>
+            <ul>
+              <li>Bejelentkezés → kezelés → távozás</li>
+              <li>Nincs előkészítés, nincs utánkövetés</li>
+              <li>Napi 15-20 vendég, gyors átfutás</li>
+              <li>Eredmény: kiszámíthatatlan</li>
+            </ul>
+          </div>
+          <div class="program-phil-card program-phil-card--gold">
+            <div class="program-phil-icon">◆</div>
+            <h4>A TUB Protocol Program</h4>
+            <ul>
+              <li>Diagnosztika → előkészítés → kezelés → regeneráció</li>
+              <li>Folyamatos monitoring, személyes terv</li>
+              <li>Maximum napi 3 vendég, teljes figyelem</li>
+              <li>Eredmény: rendszerszintű, mérhető</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -2638,22 +2746,27 @@
       <section class="program-why-section" id="program-why" aria-label="Miért csatlakozzon">
         <div class="program-why-content">
           <span class="section-label text-gold-light">Miért most?</span>
-          <h2 class="section-title" style="color: #fff;">A nyitási időszak előnyei<br>csak most érhetők el</h2>
+          <h2 class="section-title" style="color: #fff;">Amit a Founding Memberek <em style="color:var(--gold-light);">kapnak</em></h2>
           <div class="program-why-grid">
             <div class="program-why-item">
               <span class="program-why-num">01</span>
-              <h4>Technológia már elérhető</h4>
-              <p>Az Observ 520x diagnosztika, az ULTIMA HILEFT™ és a LED Mask már aktív — a rendszer alapjai az Ön rendelkezésére állnak.</p>
+              <h4>A rendszer már aktív</h4>
+              <p>Observ 520x diagnosztika, ULTIMA HILEFT™ szövetelőkészítés és LED Mask otthoni regeneráció — a három technológiai pillér most elérhető.</p>
             </div>
             <div class="program-why-item">
               <span class="program-why-num">02</span>
-              <h4>Elsőbbség a bővítéskor</h4>
-              <p>Amikor a teljes Protocol elindul, a Founding Access tagok kapják az első időpontokat és a legjobb feltételeket.</p>
+              <h4>Alapítói árazás — örökre</h4>
+              <p>A Founding Member feltételek nem akciós ár. Hanem egy pozíció: amit most kap, azt a későbbi emelések nem érintik. Ez a befektetés, nem költség.</p>
             </div>
             <div class="program-why-item">
               <span class="program-why-num">03</span>
-              <h4>Alapítói közösség</h4>
-              <p>Személyes konzultáció, workshopok, bőrápolási terv — az első tagok különleges figyelmet kapnak, amit később már nem tudunk biztosítani.</p>
+              <h4>Személyes figyelem</h4>
+              <p>Maximum 25 alapító — személyes konzultáció a tulajdonossal, közvetlen elérhetőség, saját esztétikai terv. Ezt később a kapacitás nem teszi lehetővé.</p>
+            </div>
+            <div class="program-why-item">
+              <span class="program-why-num">04</span>
+              <h4>Elsőbbség a teljes Protocol-nál</h4>
+              <p>Amikor az orvosesztétikai fázis is elindul (botox, hialuronsav, biostimulátorok) — a Founding Memberek kapják az első időpontokat és a legjobb csomagokat.</p>
             </div>
           </div>
         </div>
