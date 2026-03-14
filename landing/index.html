@@ -4012,19 +4012,11 @@
         <span class="plb__title-name" id="plbName"></span>
       </div>
       <div class="plb__content" id="plbContent"></div>
-      <div class="plb__nav">
-        <button class="plb__arrow" id="plbPrev" onclick="plbNavigate(-1)">&#8249;</button>
-        <span class="plb__indicator" id="plbIndicator"></span>
-        <button class="plb__arrow" id="plbNext" onclick="plbNavigate(1)">&#8250;</button>
-      </div>
     </div>
   </div>
 
   <script>
-  /* ─── PROTOCOL LIGHTBOX ─── */
-  var plbPages = [];
-  var plbCurrent = 0;
-
+  /* ─── PROTOCOL LIGHTBOX (scroll mode) ─── */
   var plbConfig = {
     hilift: {
       label: 'Clinical Program',
@@ -4076,70 +4068,26 @@
         sections.push(el.outerHTML);
       }
 
-      /* Group sections into pages (1-2 sections per page) */
-      plbPages = [];
-      var pageGroupings;
-      if (key === 'hilift') {
-        /* Mini Facelift: hero, info-bar, key-insight, why-relevant, tech-pillars, timeline, clinical-targets, quote, safety */
-        pageGroupings = [
-          [0, 1],     /* hero + info bar */
-          [2],        /* key insight */
-          [3, 4],     /* why relevant + tech pillars */
-          [5],        /* timeline (big section) */
-          [6, 7],     /* clinical targets + quote */
-          [8]         /* safety */
-        ];
-      } else {
-        /* Szülés Utáni: hero, info-bar, problem, consequences, mechanism, synergy, clinical-goals, phases, venus, quote, indications, safety, safety-note, disclaimer */
-        pageGroupings = [
-          [0, 1],     /* hero + info bar */
-          [2, 3],     /* problem + consequences */
-          [4],        /* dual mechanism */
-          [5, 6],     /* synergy + clinical goals */
-          [7],        /* protocol phases (big) */
-          [8, 9],     /* venus legacy + quote */
-          [10, 11, 12] /* indications + safety + disclaimer */
-        ];
-      }
-
-      pageGroupings.forEach(function(indices) {
-        var pageHtml = '';
-        indices.forEach(function(idx) {
-          if (idx < sections.length) pageHtml += sections[idx];
-        });
-        if (pageHtml) plbPages.push(pageHtml);
-      });
-
-      /* If groupings produced nothing, fallback: one section per page */
-      if (plbPages.length === 0) {
-        plbPages = sections.map(function(s) { return s; });
-      }
-
-      /* Build page DOM */
+      /* Build scrollable content — all sections in one flow */
       var contentEl = document.getElementById('plbContent');
-      var scopedStyle = '<style>.plb__page-inner{' +
+      var scopedStyle = '<style>.plb__scroll-inner{' +
         'font-family:\'Montserrat\',sans-serif;font-size:15px;font-weight:300;line-height:1.7;color:#1A1816;' +
-        '}.plb__page-inner .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}' +
-        '.plb__page-inner .hero{padding:2rem 0 3rem}' +
-        '.plb__page-inner .hero__image{display:none}' +
-        '.plb__page-inner .hero__grid{display:block}' +
-        '.plb__page-inner .sec{padding:3rem 0}.plb__page-inner .sec--sm{padding:2rem 0}' +
-        '.plb__page-inner .d-xl{font-family:\'Cormorant Garamond\',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.08}' +
-        '.plb__page-inner .d-lg{font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.1}' +
-        '.plb__page-inner .d-md{font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;line-height:1.2}' +
+        '}.plb__scroll-inner .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}' +
+        '.plb__scroll-inner .hero{padding:2rem 0 3rem}' +
+        '.plb__scroll-inner .hero__image{display:none}' +
+        '.plb__scroll-inner .hero__grid{display:block}' +
+        '.plb__scroll-inner .sec{padding:3rem 0}.plb__scroll-inner .sec--sm{padding:2rem 0}' +
+        '.plb__scroll-inner .d-xl{font-family:\'Cormorant Garamond\',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.08}' +
+        '.plb__scroll-inner .d-lg{font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;line-height:1.1}' +
+        '.plb__scroll-inner .d-md{font-family:\'Cormorant Garamond\',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;line-height:1.2}' +
+        '.plb__scroll-inner .sec__grid-2,.plb__scroll-inner .mech-cards,.plb__scroll-inner .ind-grid,.plb__scroll-inner .safety-grid{gap:2rem}' +
+        '@media(max-width:768px){.plb__scroll-inner .sec__grid-2,.plb__scroll-inner .mech-cards,.plb__scroll-inner .ind-grid,.plb__scroll-inner .safety-grid,.plb__scroll-inner .sec__grid-3{grid-template-columns:1fr}.plb__scroll-inner .phase{grid-template-columns:80px 1fr;gap:1.5rem}.plb__scroll-inner .synergy__diagram{flex-direction:column}.plb__scroll-inner .synergy__arrow{transform:rotate(90deg)}}' +
         '</style>';
 
-      contentEl.innerHTML = '<style>' + styleText + '</style>' + scopedStyle;
+      contentEl.innerHTML = '<style>' + styleText + '</style>' + scopedStyle +
+        '<div class="plb__scroll-inner">' + sections.join('') + '</div>';
 
-      plbPages.forEach(function(html, idx) {
-        var page = document.createElement('div');
-        page.className = 'plb__page' + (idx === 0 ? ' active' : '');
-        page.innerHTML = '<div class="plb__page-inner">' + html + '</div>';
-        contentEl.appendChild(page);
-      });
-
-      plbCurrent = 0;
-      plbUpdateNav();
+      contentEl.scrollTop = 0;
 
     } catch (err) {
       document.getElementById('plbContent').innerHTML =
@@ -4155,23 +4103,6 @@
     }
   }
 
-  function plbNavigate(dir) {
-    var next = plbCurrent + dir;
-    if (next < 0 || next >= plbPages.length) return;
-    var pages = document.querySelectorAll('#plbContent .plb__page');
-    pages[plbCurrent].classList.remove('active');
-    plbCurrent = next;
-    pages[plbCurrent].classList.add('active');
-    pages[plbCurrent].scrollTop = 0;
-    plbUpdateNav();
-  }
-
-  function plbUpdateNav() {
-    document.getElementById('plbPrev').disabled = (plbCurrent === 0);
-    document.getElementById('plbNext').disabled = (plbCurrent >= plbPages.length - 1);
-    document.getElementById('plbIndicator').textContent = (plbCurrent + 1) + ' / ' + plbPages.length;
-  }
-
   /* Close on overlay click */
   document.getElementById('plbOverlay').addEventListener('click', function(e) {
     if (e.target === this) closeProtocolLightbox();
@@ -4179,10 +4110,6 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && document.getElementById('plbOverlay').classList.contains('active')) {
       closeProtocolLightbox();
-    }
-    if (document.getElementById('plbOverlay').classList.contains('active')) {
-      if (e.key === 'ArrowLeft') plbNavigate(-1);
-      if (e.key === 'ArrowRight') plbNavigate(1);
     }
   });
   </script>
