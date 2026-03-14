@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kezelések — The Ultimate Beauty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ivory:#FDFAF6;--cream:#F5F0E8;--charcoal:#1A1816;
+      --c60:rgba(26,24,22,.6);--c30:rgba(26,24,22,.3);--c10:rgba(26,24,22,.08);--c05:rgba(26,24,22,.04);
+      --gold:#B8965A;--gold-l:#D4B077;--gold-p:rgba(184,150,90,.12);
+      --w20:rgba(255,255,255,.2);--w10:rgba(255,255,255,.1);--w45:rgba(255,255,255,.45);--w70:rgba(255,255,255,.7);
+      --font-d:'Cormorant Garamond',serif;--font-s:'Montserrat',sans-serif;
+      --ease:cubic-bezier(.25,.46,.45,.94);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{background:var(--ivory);color:var(--charcoal);font-family:var(--font-s);font-weight:300;font-size:15px;line-height:1.7;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    button{border:none;background:none;cursor:pointer;font-family:inherit}
+    ul{list-style:none}
+    .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}
+    .label{font-family:var(--font-s);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s var(--ease)}
+    .nav.on{background:rgba(253,250,246,.95);backdrop-filter:blur(12px);padding:1rem 2rem;box-shadow:0 1px 0 var(--c10)}
+    .nav__logo{font-family:var(--font-d);font-size:1.2rem;font-weight:500;letter-spacing:.04em}
+    .nav__logo span{color:var(--gold)}
+    .nav__links{display:flex;gap:2.5rem;align-items:center}
+    .nav__link{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--c60);transition:color .2s}
+    .nav__link:hover,.nav__link.active{color:var(--charcoal)}
+    .nav__cta{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.6rem;border:1px solid var(--charcoal);transition:all .2s}
+    .nav__cta:hover{background:var(--charcoal);color:var(--ivory)}
+
+    /* COMPACT HERO */
+    .hero{padding:7.5rem 0 2.5rem;background:var(--charcoal);color:#fff}
+    .hero__inner{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem}
+    .hero__title{font-family:var(--font-d);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.1;color:#fff}
+    .hero__sub{font-size:.8rem;color:var(--w45);max-width:38ch;line-height:1.7}
+    .hero__count{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w45);white-space:nowrap}
+    .hero__count strong{color:var(--gold-l);font-weight:500;font-size:1.5rem;display:block;line-height:1;margin-bottom:.15rem}
+
+    /* STICKY FILTER BAR */
+    .filter-bar{background:var(--charcoal);border-top:1px solid rgba(255,255,255,.06);position:sticky;top:0;z-index:90;transition:top .3s}
+    .filter-bar.nav-down{top:62px}
+    .filter-bar__inner{display:flex;align-items:center;gap:0}
+    .filter-bar__row{display:flex;gap:0;align-items:center;overflow-x:auto;flex:1;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .filter-bar__row::-webkit-scrollbar{display:none}
+    .fbtn{font-size:.6rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 1.3rem;color:rgba(255,255,255,.3);white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;flex-shrink:0}
+    .fbtn:hover{color:rgba(255,255,255,.65)}
+    .fbtn.active{color:var(--gold-l);border-bottom-color:var(--gold)}
+    .filter-bar__search{position:relative;margin-left:auto;flex-shrink:0}
+    .filter-bar__input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#fff;font-family:var(--font-s);font-size:.72rem;font-weight:300;padding:.6rem 1rem .6rem 2rem;width:180px;outline:none;transition:all .2s}
+    .filter-bar__input::placeholder{color:rgba(255,255,255,.25)}
+    .filter-bar__input:focus{border-color:var(--gold);width:220px}
+    .filter-bar__icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);font-size:.7rem;color:rgba(255,255,255,.25);pointer-events:none}
+
+    /* RESULTS COUNT */
+    .results-bar{padding:.6rem 0;background:var(--ivory);border-bottom:1px solid var(--c10)}
+    .results-bar__inner{display:flex;justify-content:space-between;align-items:center}
+    .results-count{font-size:.68rem;color:var(--c30);letter-spacing:.04em}
+    .results-count strong{color:var(--charcoal);font-weight:500}
+
+    /* CARD GRID */
+    .catalog{padding:1.5rem 0 3rem}
+    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--c10)}
+    .card-grid:empty{background:transparent}
+
+    /* EMPTY STATE */
+    .empty-state{display:none;text-align:center;padding:5rem 2rem;color:var(--c30)}
+    .empty-state.show{display:block}
+    .empty-state__icon{font-size:2.5rem;margin-bottom:.75rem;opacity:.3}
+    .empty-state__text{font-size:.85rem;margin-bottom:.25rem}
+    .empty-state__hint{font-size:.72rem;color:var(--c30)}
+
+    /* TREATMENT CARD — compact */
+    .card{background:var(--ivory);padding:1.75rem 1.5rem;position:relative;transition:background .2s;display:flex;flex-direction:column}
+    .card:hover{background:#fff}
+    .card[data-hidden]{display:none}
+    .card__top{display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;margin-bottom:.6rem}
+    .card__cat{font-size:.54rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.18rem .5rem;background:var(--gold-p);color:var(--gold);white-space:nowrap}
+    .card__pillar{font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--c30);white-space:nowrap}
+    .card__title{font-family:var(--font-d);font-size:1.3rem;font-weight:400;line-height:1.2;margin-bottom:.2rem}
+    .card__sub{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.5rem}
+    .card__desc{font-size:.78rem;color:var(--c60);line-height:1.65;margin-bottom:.75rem;flex:1}
+    .card__tags{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:.85rem}
+    .card__tag{font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;padding:.15rem .45rem;background:var(--c05);color:var(--c60)}
+    .card__footer{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:.75rem;border-top:1px solid var(--c10)}
+    .card__link{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--charcoal);display:inline-flex;align-items:center;gap:.35rem;transition:gap .2s}
+    .card__link:hover{gap:.6rem}
+    .card__protocol{display:flex;gap:.3rem}
+    .card__step{font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;padding:.14rem .4rem;border:1px solid var(--c10);color:var(--c30)}
+    .card__step.active{border-color:var(--gold-p);color:var(--gold);background:var(--gold-p)}
+
+    /* HIGHLIGHT CARD — technology & program promo in grid */
+    .card--hl{background:var(--charcoal);color:#fff;padding:2rem 1.5rem;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all .3s var(--ease)}
+    .card--hl:hover{background:#232019}
+    .card--hl::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--gold);opacity:.6}
+    .card--hl__label{font-size:.54rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:.75rem}
+    .card--hl__icon{font-size:1.6rem;margin-bottom:.6rem;line-height:1;opacity:.7}
+    .card--hl__title{font-family:var(--font-d);font-size:1.2rem;font-weight:400;line-height:1.2;margin-bottom:.35rem;color:#fff}
+    .card--hl__sub{font-size:.72rem;color:var(--gold-l);font-weight:500;letter-spacing:.04em;margin-bottom:.65rem}
+    .card--hl__desc{font-size:.75rem;color:var(--w45);line-height:1.65;margin-bottom:.5rem;flex:1}
+    .card--hl__specs{display:flex;flex-wrap:wrap;gap:.25rem;margin-bottom:1rem}
+    .card--hl__spec{font-size:.52rem;letter-spacing:.06em;text-transform:uppercase;padding:.14rem .45rem;background:var(--w10);color:var(--w70);border:1px solid rgba(255,255,255,.06)}
+    .card--hl__cta{display:inline-flex;align-items:center;gap:.4rem;font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);margin-top:auto;padding-top:.75rem;border-top:1px solid var(--w10);transition:gap .2s}
+    .card--hl__cta:hover{gap:.7rem}
+    /* Light variant */
+    .card--hl.card--hl-light{background:var(--cream);color:var(--charcoal)}
+    .card--hl.card--hl-light::before{background:var(--gold);opacity:.4}
+    .card--hl.card--hl-light .card--hl__title{color:var(--charcoal)}
+    .card--hl.card--hl-light .card--hl__sub{color:var(--gold)}
+    .card--hl.card--hl-light .card--hl__desc{color:var(--c60)}
+    .card--hl.card--hl-light .card--hl__spec{background:var(--c05);color:var(--c60);border-color:var(--c10)}
+    .card--hl.card--hl-light .card--hl__cta{color:var(--gold);border-top-color:var(--c10)}
+
+    /* CATEGORY DIVIDER */
+    .cat-divider{grid-column:1/-1;background:var(--cream);padding:1rem 1.5rem;display:flex;align-items:center;gap:1rem}
+    .cat-divider[data-hidden]{display:none}
+    .cat-divider__num{font-family:var(--font-d);font-size:1.8rem;color:var(--c10);font-weight:300;line-height:1}
+    .cat-divider__title{font-family:var(--font-d);font-size:1.15rem;font-weight:400}
+    .cat-divider__count{font-size:.58rem;color:var(--c30);letter-spacing:.06em;margin-left:auto}
+
+    /* MINI CTA */
+    .mini-cta{padding:3.5rem 0;background:var(--cream);text-align:center}
+    .mini-cta__title{font-family:var(--font-d);font-size:clamp(1.6rem,3vw,2.5rem);font-weight:300;line-height:1.15;margin-bottom:.5rem}
+    .mini-cta__sub{font-size:.8rem;color:var(--c60);max-width:38ch;margin:0 auto 1.5rem;line-height:1.7}
+    .btn-dark{display:inline-flex;align-items:center;gap:.7rem;padding:.9rem 2rem;background:var(--charcoal);color:var(--ivory);font-size:.64rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:background .3s}
+    .btn-dark:hover{background:#2b2723}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-size:.64rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--c60);margin-left:1.5rem;transition:color .2s}
+    .btn-ghost:hover{color:var(--charcoal)}
+
+    /* FOOTER */
+    .footer{background:var(--charcoal);border-top:1px solid rgba(255,255,255,.05);padding:3.5rem 0 2rem;color:rgba(255,255,255,.4)}
+    .footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.05)}
+    .footer__logo{font-family:var(--font-d);font-size:1.2rem;color:#fff;margin-bottom:.6rem}
+    .footer__tag{font-size:.78rem;max-width:26ch;line-height:1.7}
+    .footer__col-title{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1.1rem}
+    .footer__link{display:block;font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:.55rem;transition:color .2s}
+    .footer__link:hover{color:rgba(255,255,255,.8)}
+    .footer__bottom{padding-top:2rem;display:flex;justify-content:space-between;font-size:.66rem}
+    .footer__legal{display:flex;gap:1.5rem}
+
+    @media(max-width:1024px){
+      .hero__inner{flex-direction:column;align-items:flex-start}
+      .card-grid{grid-template-columns:repeat(2,1fr)}
+      .footer__grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      .nav__links{display:none}
+      .card-grid{grid-template-columns:1fr}
+      .filter-bar__input{width:120px}
+      .filter-bar__input:focus{width:160px}
+      .mini-cta .btn-ghost{display:block;margin:1rem auto 0}
+      .footer__grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link">Klinika</a></li>
+      <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+      <li><a href="kezelesek.html" class="nav__link active">Kezelések</a></li>
+      <li><a href="technologia.html" class="nav__link">Technológia</a></li>
+      <li><a href="akademia.html" class="nav__link">Akadémia</a></li>
+      <li><a href="konzultacio.html" class="nav__link">Konzultáció</a></li>
+    </ul>
+    <a href="konzultacio.html" class="nav__cta">Konzultáció →</a>
+  </nav>
+
+  <!-- COMPACT HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero__inner">
+        <div>
+          <span class="label" style="color:var(--gold-l)">Kezelések</span>
+          <h1 class="hero__title">Kezelési katalógus</h1>
+          <p class="hero__sub">Minden kezelés a Prepare → Treat → Recover rendszerbe illeszkedik. Szűrjön kategória szerint, vagy keressen név alapján.</p>
+        </div>
+        <div style="display:flex;gap:2.5rem">
+          <div class="hero__count"><strong>15+</strong>Kezelés</div>
+          <div class="hero__count"><strong>6</strong>Kategória</div>
+          <div class="hero__count"><strong>3</strong>Pillér</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY FILTER BAR -->
+  <div class="filter-bar" id="filterBar">
+    <div class="wrap">
+      <div class="filter-bar__inner">
+        <div class="filter-bar__row">
+          <button class="fbtn active" data-filter="all">Összes</button>
+          <button class="fbtn" data-filter="orvosesztetika">Orvosesztétika</button>
+          <button class="fbtn" data-filter="ultima">ULTIMA</button>
+          <button class="fbtn" data-filter="biostimulator">Biostimulátorok</button>
+          <button class="fbtn" data-filter="test">Test & Rehab</button>
+          <button class="fbtn" data-filter="sebeszet">Sebészeti</button>
+          <button class="fbtn" data-filter="regeneracio">Regeneráció</button>
+        </div>
+        <div class="filter-bar__search">
+          <span class="filter-bar__icon">⌕</span>
+          <input type="text" class="filter-bar__input" id="searchInput" placeholder="Keresés...">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS COUNT -->
+  <div class="results-bar">
+    <div class="wrap">
+      <div class="results-bar__inner">
+        <span class="results-count" id="resultsCount"><strong>15</strong> kezelés</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATALOG -->
+  <section class="catalog">
+    <div class="wrap">
+      <div class="card-grid" id="cardGrid">
+
+        <!-- ══ ORVOSESZTÉTIKA ══ -->
+        <div class="cat-divider" data-cat="orvosesztetika">
+          <span class="cat-divider__num">01</span>
+          <span class="cat-divider__title">Orvosesztétikai kezelések</span>
+          <span class="cat-divider__count">3 kezelés</span>
+        </div>
+
+        <div class="card" data-cat="orvosesztetika" data-search="botox botulinum toxin mimikai ráncok homlok glabella szem">
+          <div class="card__top">
+            <span class="card__cat">Orvosesztétika</span>
+            <span class="card__pillar">II. Treat</span>
+          </div>
+          <h3 class="card__title">Botox kezelés</h3>
+          <div class="card__sub">Botulinum toxin · Mimikai ráncok</div>
+          <p class="card__desc">Mimikai ráncok célzott csökkentése. 10–15 perc, 0 nap kiesés, 4–6 hónap tartósság.</p>
+          <div class="card__tags">
+            <span class="card__tag">Homlok</span>
+            <span class="card__tag">Glabella</span>
+            <span class="card__tag">Szem körül</span>
+            <span class="card__tag">10–15 perc</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/botox.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="orvosesztetika" data-search="hialuronsav töltés filler volumenpótlás ajak járomív állvonal kontúr">
+          <div class="card__top">
+            <span class="card__cat">Orvosesztétika</span>
+            <span class="card__pillar">II. Treat</span>
+          </div>
+          <h3 class="card__title">Hialuronsavas töltés</h3>
+          <div class="card__sub">Hialuronsav · Volumenpótlás</div>
+          <p class="card__desc">Célzott volumenpótlás, kontúrformálás és arányharmonizálás. Ajak, járomív, áll, állvonal.</p>
+          <div class="card__tags">
+            <span class="card__tag">Ajak</span>
+            <span class="card__tag">Járomív</span>
+            <span class="card__tag">Állvonal</span>
+          </div>
+          <div class="card__footer">
+            <a href="protocol-hialuronsav-szinergia.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="orvosesztetika" data-search="vitaran szemkörnyék pdrn polinukleotid sötét karikák ráncok szem">
+          <div class="card__top">
+            <span class="card__cat">Orvosesztétika</span>
+            <span class="card__pillar">II. Treat</span>
+          </div>
+          <h3 class="card__title">Szemkörnyéki Vitaran</h3>
+          <div class="card__sub">PDRN · Periorbitális regeneráció</div>
+          <p class="card__desc">Polinukleotid alapú kollagénstimuláció a szemkörnyék legfinomabb szöveteire.</p>
+          <div class="card__tags">
+            <span class="card__tag">Sötét karikák</span>
+            <span class="card__tag">Finom ráncok</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/vitaran.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ ULTIMA TECHNOLÓGIA ══ -->
+        <div class="cat-divider" data-cat="ultima">
+          <span class="cat-divider__num">02</span>
+          <span class="cat-divider__title">ULTIMA Technológia</span>
+          <span class="cat-divider__count">3 kezelés</span>
+        </div>
+
+        <div class="card" data-cat="ultima" data-search="ultima face arc hileft neuromuszkuláris stimuláció fotobiomoduláció izomtónus">
+          <div class="card__top">
+            <span class="card__cat">ULTIMA</span>
+            <span class="card__pillar">I. Prepare</span>
+          </div>
+          <h3 class="card__title">ULTIMA Face</h3>
+          <div class="card__sub">HILEFT™ · Arckezelés</div>
+          <p class="card__desc">6 csatornás neuromuszkuláris stimuláció és 730/940 nm fotobiomoduláció. A rendszer fő arckezelése.</p>
+          <div class="card__tags">
+            <span class="card__tag">45–60 perc</span>
+            <span class="card__tag">4–6 alkalom</span>
+            <span class="card__tag">0 nap kiesés</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/ultima-face.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="ultima" data-search="ultima shape test hasfal comb felkar testkezelés body">
+          <div class="card__top">
+            <span class="card__cat">ULTIMA</span>
+            <span class="card__pillar">I. Prepare</span>
+          </div>
+          <h3 class="card__title">ULTIMA Shape</h3>
+          <div class="card__sub">HILEFT™ · Testkezelés</div>
+          <p class="card__desc">Neuromuszkuláris reaktiváció és szöveti előkészítés testindikációkhoz — hasfal, comb, felkar.</p>
+          <div class="card__tags">
+            <span class="card__tag">Hasfal</span>
+            <span class="card__tag">Comb</span>
+            <span class="card__tag">Felkar</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/ultima-shape.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="ultima" data-search="ultima hi-lift hileft sebészeti kiegészítő prehabilitáció facelift">
+          <div class="card__top">
+            <span class="card__cat">ULTIMA</span>
+            <span class="card__pillar">I. + III.</span>
+          </div>
+          <h3 class="card__title">ULTIMA HI-LIFT™</h3>
+          <div class="card__sub">Sebészeti kiegészítő protokoll</div>
+          <p class="card__desc">Mini facelift előtti prehabilitáció és utóoperatív regeneráció. A sebészet és technológia integrálva.</p>
+          <div class="card__tags">
+            <span class="card__tag">Mini facelift</span>
+            <span class="card__tag">Pre & post-op</span>
+          </div>
+          <div class="card__footer">
+            <a href="protocol-mini-facelift-integracio.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ BIOSTIMULÁTOROK ══ -->
+        <div class="cat-divider" data-cat="biostimulator">
+          <span class="cat-divider__num">03</span>
+          <span class="cat-divider__title">Biostimulátorok & Skin Quality</span>
+          <span class="cat-divider__count">3 kezelés</span>
+        </div>
+
+        <div class="card" data-cat="biostimulator" data-search="sculptra plla kollagén stimulálás volumenvesztés kollagénújraépítés">
+          <div class="card__top">
+            <span class="card__cat">Biostimulátor</span>
+            <span class="card__pillar">II. Treat</span>
+          </div>
+          <h3 class="card__title">Sculptra</h3>
+          <div class="card__sub">PLLA · Kollagénstimulálás</div>
+          <p class="card__desc">Fokozatos, természetes kollagénújraépítés. 40+ pácienseknek, volumenvesztés esetén ideális.</p>
+          <div class="card__tags">
+            <span class="card__tag">Kollagén</span>
+            <span class="card__tag">Volumenvesztés</span>
+            <span class="card__tag">40+</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/sculptra.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="biostimulator" data-search="radiesse caha kalcium hidroxi apatit bőrfeszesítés lifting strukturális">
+          <div class="card__top">
+            <span class="card__cat">Biostimulátor</span>
+            <span class="card__pillar">II. Treat</span>
+          </div>
+          <h3 class="card__title">Radiesse</h3>
+          <div class="card__sub">CaHA · Kollagénstimuláció</div>
+          <p class="card__desc">Kalcium-hidroxi-apatit alapú biostimulátor — bőrfeszesítés és kollagéntermelés, strukturális hatással.</p>
+          <div class="card__tags">
+            <span class="card__tag">Bőrfeszesítés</span>
+            <span class="card__tag">Strukturális</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/radiesse.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="biostimulator" data-search="profhilo bioremodeling bap hialuronsav hidratáció glow textúra skin quality">
+          <div class="card__top">
+            <span class="card__cat">Biostimulátor</span>
+            <span class="card__pillar">II. Treat</span>
+          </div>
+          <h3 class="card__title">Profhilo</h3>
+          <div class="card__sub">BAP technika · Bioremodeling</div>
+          <p class="card__desc">Nagy koncentrációjú hialuronsav bioremodeling — hidratáltabb bőr, feszesebb textúra, glow hatás.</p>
+          <div class="card__tags">
+            <span class="card__tag">Glow</span>
+            <span class="card__tag">Hidratáció</span>
+            <span class="card__tag">Textúra</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/profhilo.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══ TEST & REHAB ══ -->
+        <div class="cat-divider" data-cat="test">
+          <span class="cat-divider__num">04</span>
+          <span class="cat-divider__title">Test & Funkcionális rehabilitáció</span>
+          <span class="cat-divider__count">2 kezelés</span>
+        </div>
+
+        <div class="card" data-cat="test" data-search="szülés utáni hasfal regeneráció core rehab neuromuszkuláris postpartum mama">
+          <div class="card__top">
+            <span class="card__cat">Test & Rehab</span>
+            <span class="card__pillar">I. + III.</span>
+          </div>
+          <h3 class="card__title">Szülés utáni hasfali regeneráció</h3>
+          <div class="card__sub">ULTIMA Shape · Funkcionális rehab</div>
+          <p class="card__desc">Funkcionális neuromuszkuláris támogatás — core-kontroll és dinamikus stabilitás visszaépítése, 3–6 hónappal szülés után.</p>
+          <div class="card__tags">
+            <span class="card__tag">Neuromuszkuláris</span>
+            <span class="card__tag">Core rehab</span>
+            <span class="card__tag">Szülés utáni</span>
+          </div>
+          <div class="card__footer">
+            <a href="protocol-szules-utani-regeneracio.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="test" data-search="testfeszesítő tónusvesztés kontúr bőrminőség skinbooster body">
+          <div class="card__top">
+            <span class="card__cat">Test & Rehab</span>
+            <span class="card__pillar">I. Prepare</span>
+          </div>
+          <h3 class="card__title">Testfeszesítő Protocol</h3>
+          <div class="card__sub">ULTIMA Shape + Skinbooster</div>
+          <p class="card__desc">Tónusvesztés, bőrminőség javítás és kontúrformálás az ULTIMA Shape és skinbooster szinergiájával.</p>
+          <div class="card__tags">
+            <span class="card__tag">Tónusvesztés</span>
+            <span class="card__tag">Kontúr</span>
+            <span class="card__tag">Bőrminőség</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/testfeszesito.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="technologia-observ.html" class="card card--hl" data-cat="test">
+          <span class="card--hl__label">Diagnosztika</span>
+          <div class="card--hl__icon">◉</div>
+          <h3 class="card--hl__title">Observ 520x</h3>
+          <div class="card--hl__sub">Minden kezelés itt kezdődik</div>
+          <p class="card--hl__desc">8 módú bőrdiagnosztika — nem vakon kezelünk. Az Observ analízis megalapozza az Ön személyre szabott Protocol útvonalát.</p>
+          <div class="card--hl__specs">
+            <span class="card--hl__spec">8 analízis mód</span>
+            <span class="card--hl__spec">UV → pigment</span>
+            <span class="card--hl__spec">Polarizált</span>
+          </div>
+          <span class="card--hl__cta">Diagnosztika részletei →</span>
+        </a>
+
+        <!-- ══ SEBÉSZETI PROTOCOL ══ -->
+        <div class="cat-divider" data-cat="sebeszet">
+          <span class="cat-divider__num">05</span>
+          <span class="cat-divider__title">Sebészeti Protocol</span>
+          <span class="cat-divider__count">2 kezelés</span>
+        </div>
+
+        <div class="card" data-cat="sebeszet" data-search="mini facelift sebészeti prehabilitáció posztoperatív dermális lokális érzéstelenítés">
+          <div class="card__top">
+            <span class="card__cat">Sebészeti</span>
+            <span class="card__pillar">I. + III.</span>
+          </div>
+          <h3 class="card__title">Mini Facelift Protocol</h3>
+          <div class="card__sub">ULTIMA HILEFT™ · Sebészeti támogatás</div>
+          <p class="card__desc">Mini facelift előtti prehabilitáció (3–4 hét) és utóoperatív dermális regeneráció. Szöveti minőség és stabilitás támogatása.</p>
+          <div class="card__tags">
+            <span class="card__tag">Prehabilitáció</span>
+            <span class="card__tag">Posztoperatív</span>
+            <span class="card__tag">Dermális</span>
+          </div>
+          <div class="card__footer">
+            <a href="protocol-mini-facelift-integracio.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step" style="border-color:#8B4049;color:#8B4049">Sebészet</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="sebeszet" data-search="plasztikai regeneráció facelift blepharoplasty szemhéjplasztika downtime">
+          <div class="card__top">
+            <span class="card__cat">Sebészeti</span>
+            <span class="card__pillar">I. + III.</span>
+          </div>
+          <h3 class="card__title">Plasztikai Regenerációs Protocol</h3>
+          <div class="card__sub">ULTIMA · Általános sebészeti támogatás</div>
+          <p class="card__desc">Plasztikai beavatkozások előtti szöveti előkészítés és utóoperatív regeneráció. Facelift, szemhéjplasztika, egyéb.</p>
+          <div class="card__tags">
+            <span class="card__tag">Facelift</span>
+            <span class="card__tag">Blepharoplasty</span>
+            <span class="card__tag">Downtime ↓</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/plasztikai-regeneracio.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step" style="border-color:#8B4049;color:#8B4049">Sebészet</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="clinical-program.html" class="card card--hl card--hl-light" data-cat="sebeszet">
+          <span class="card--hl__label">Exkluzív</span>
+          <div class="card--hl__icon">⬡</div>
+          <h3 class="card--hl__title">Klinikai Program</h3>
+          <div class="card--hl__sub">Csatlakozzon a rendszerhez</div>
+          <p class="card--hl__desc">Nem egy kezelést kap, hanem egy tervet. Korlátozott létszámú, személyre szabott Protocol útvonal — folyamatos orvosi követéssel.</p>
+          <div class="card--hl__specs">
+            <span class="card--hl__spec">Boutique modell</span>
+            <span class="card--hl__spec">Korlátozott létszám</span>
+            <span class="card--hl__spec">Orvosi követés</span>
+          </div>
+          <span class="card--hl__cta">Program részletei →</span>
+        </a>
+
+        <!-- ══ REGENERÁCIÓ ══ -->
+        <div class="cat-divider" data-cat="regeneracio">
+          <span class="cat-divider__num">06</span>
+          <span class="cat-divider__title">Regeneráció & LED Mask</span>
+          <span class="cat-divider__count">2 kezelés</span>
+        </div>
+
+        <div class="card" data-cat="regeneracio" data-search="led mask fotobiomoduláció otthoni rituálé kollagén regeneráció recover">
+          <div class="card__top">
+            <span class="card__cat">Regeneráció</span>
+            <span class="card__pillar">III. Recover</span>
+          </div>
+          <h3 class="card__title">ULTIMA LED Mask</h3>
+          <div class="card__sub">Fotobiomoduláció · Otthoni rituálé</div>
+          <p class="card__desc">A Protocol záróeleme — otthoni fotobiomoduláció a regenerációhoz és a klinikai eredmény fenntartásához.</p>
+          <div class="card__tags">
+            <span class="card__tag">630 + 830 nm</span>
+            <span class="card__tag">Napi 10–20 perc</span>
+            <span class="card__tag">Otthoni</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/led-mask.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step">Prepare</span>
+              <span class="card__step">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="regeneracio" data-search="preventív anti-aging kúra megelőzés 30 40 bőrminőség skinbooster fiatal">
+          <div class="card__top">
+            <span class="card__cat">Regeneráció</span>
+            <span class="card__pillar">I. + III.</span>
+          </div>
+          <h3 class="card__title">Preventív Anti-Aging Kúra</h3>
+          <div class="card__sub">ULTIMA + Skinbooster + LED Mask</div>
+          <p class="card__desc">30–40 éves pácienseknek — öregedés megelőzése, bőrminőség fenntartása strukturált kúrában.</p>
+          <div class="card__tags">
+            <span class="card__tag">Megelőzés</span>
+            <span class="card__tag">Bőrminőség</span>
+            <span class="card__tag">30–40 év</span>
+          </div>
+          <div class="card__footer">
+            <a href="kezelesek/preventiv-kura.html" class="card__link">Részletek →</a>
+            <div class="card__protocol">
+              <span class="card__step active">Prepare</span>
+              <span class="card__step active">Treat</span>
+              <span class="card__step active">Recover</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="technologia-led-mask.html" class="card card--hl" data-cat="regeneracio">
+          <span class="card--hl__label">Recover · Otthoni</span>
+          <div class="card--hl__icon">◐</div>
+          <h3 class="card--hl__title">ULTIMA LED Mask</h3>
+          <div class="card--hl__sub">Vigye haza a Protocolt</div>
+          <p class="card--hl__desc">A klinikai kezelés nem ér véget a klinikán. 4 hullámhosszú fotobiomoduláció, 93 gramm, klinikai hatékonyság — otthon.</p>
+          <div class="card--hl__specs">
+            <span class="card--hl__spec">415–850 nm</span>
+            <span class="card--hl__spec">93 gramm</span>
+            <span class="card--hl__spec">IP67</span>
+            <span class="card--hl__spec">10–20 perc/nap</span>
+          </div>
+          <span class="card--hl__cta">LED Mask részletei →</span>
+        </a>
+
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div class="empty-state" id="emptyState">
+        <div class="empty-state__icon">⌕</div>
+        <div class="empty-state__text">Nincs találat</div>
+        <div class="empty-state__hint">Próbáljon más keresőszót vagy válasszon másik kategóriát</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MINI CTA -->
+  <section class="mini-cta">
+    <div class="wrap">
+      <h2 class="mini-cta__title">Személyre szabott<br><em>konzultáció</em></h2>
+      <p class="mini-cta__sub">Az Ön Protocol útvonala egyedi. Konzultáción személyesen értékeljük a célokat és megtervezzük a kezelési tervet.</p>
+      <a href="konzultacio.html" class="btn-dark">Időpontot kérek →</a>
+      <a href="protocol-hub.html" class="btn-ghost">A Protocol →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">The Ultimate Beauty.</div>
+          <p class="footer__tag">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Protocol</div>
+          <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
+          <a href="protocol-treatments.html" class="footer__link">Protocol Treatments</a>
+          <a href="clinical-program.html" class="footer__link">Clinical Programs</a>
+          <a href="kutatas.html" class="footer__link">Kutatás</a>
+          <a href="technologia.html" class="footer__link">Technológia</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Kezelések</div>
+          <a href="kezelesek.html" class="footer__link">Összes kezelés</a>
+          <a href="protocol-hialuronsav-szinergia.html" class="footer__link">Hialuronsav Szinergia</a>
+          <a href="protocol-mini-facelift-integracio.html" class="footer__link">Mini Facelift Protocol</a>
+          <a href="protocol-szules-utani-regeneracio.html" class="footer__link">Szülés utáni regeneráció</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Klinika</div>
+          <a href="index.html" class="footer__link">Főoldal</a>
+          <a href="konzultacio.html" class="footer__link">Konzultáció</a>
+          <a href="akademia.html" class="footer__link">Akadémia</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Ultimate Beauty. Minden jog fenntartva. · Budapest · Buda</span>
+        <div class="footer__legal">
+          <a href="adatvedelem.html" class="footer__link" style="margin:0">Adatvédelem</a>
+          <a href="aszf.html" class="footer__link" style="margin:0">ÁSZF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 60));
+
+    // Filter logic
+    const grid = document.getElementById('cardGrid');
+    const cards = grid.querySelectorAll('.card:not(.card--cta)');
+    const ctaCards = grid.querySelectorAll('.card--hl');
+    const dividers = grid.querySelectorAll('.cat-divider');
+    const filterBtns = document.querySelectorAll('.fbtn');
+    const searchInput = document.getElementById('searchInput');
+    const resultsCount = document.getElementById('resultsCount');
+    const emptyState = document.getElementById('emptyState');
+    let currentFilter = 'all';
+
+    function applyFilters() {
+      const q = searchInput.value.toLowerCase().trim();
+      let visible = 0;
+      const catCounts = {};
+
+      cards.forEach(card => {
+        const cat = card.dataset.cat;
+        const searchText = (card.dataset.search + ' ' + card.textContent).toLowerCase();
+        const catMatch = currentFilter === 'all' || cat === currentFilter;
+        const searchMatch = !q || searchText.includes(q);
+        const show = catMatch && searchMatch;
+
+        if (show) {
+          card.removeAttribute('data-hidden');
+          visible++;
+          catCounts[cat] = (catCounts[cat] || 0) + 1;
+        } else {
+          card.setAttribute('data-hidden', '');
+        }
+      });
+
+      // Show/hide category dividers
+      dividers.forEach(div => {
+        const cat = div.dataset.cat;
+        const catMatch = currentFilter === 'all' || cat === currentFilter;
+        const hasCards = catCounts[cat] > 0;
+        if (catMatch && hasCards) {
+          div.removeAttribute('data-hidden');
+        } else {
+          div.setAttribute('data-hidden', '');
+        }
+      });
+
+      // Show/hide CTA cards (follow their category)
+      ctaCards.forEach(cta => {
+        const cat = cta.dataset.cat;
+        const catMatch = currentFilter === 'all' || cat === currentFilter;
+        const hasCards = catCounts[cat] > 0;
+        if (catMatch && hasCards && !q) {
+          cta.removeAttribute('data-hidden');
+        } else {
+          cta.setAttribute('data-hidden', '');
+        }
+      });
+
+      // Results count
+      resultsCount.innerHTML = `<strong>${visible}</strong> kezelés` + (q ? ` „${q}" keresésre` : '');
+
+      // Empty state
+      emptyState.classList.toggle('show', visible === 0);
+    }
+
+    // Category filter buttons
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        applyFilters();
+      });
+    });
+
+    // Search
+    searchInput.addEventListener('input', applyFilters);
+
+    // Initial state
+    applyFilters();
+  </script>
+</body>
+</html>

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konzultáció — The Ultimate Beauty</title>
+  <meta name="description" content="Foglaljon személyes konzultációt a The Ultimate Beauty prémium esztétikai klinikán. 60 perces Observ 520x bőrdiagnosztika és személyre szabott Protocol útvonal tervezés.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --cream:        #F8F4EE;
+      --ivory:        #FDFAF6;
+      --charcoal:     #1A1816;
+      --charcoal-60:  rgba(26,24,22,0.6);
+      --charcoal-30:  rgba(26,24,22,0.3);
+      --charcoal-10:  rgba(26,24,22,0.08);
+      --gold:         #B8965A;
+      --gold-light:   #D4B077;
+      --gold-pale:    rgba(184,150,90,0.12);
+      --warm-white:   #FEFCF9;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-sans:    'Montserrat', sans-serif;
+
+      --space-xs:   0.5rem;
+      --space-sm:   1rem;
+      --space-md:   2rem;
+      --space-lg:   4rem;
+      --space-xl:   7rem;
+      --space-2xl:  11rem;
+
+      --radius-sm:  4px;
+      --radius-md:  12px;
+
+      --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ──────────────────────────────────────── */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .display-sm {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .body-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 52ch;
+    }
+    em { font-style: italic; font-family: var(--font-display); font-size: 1.08em; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: var(--space-xl) 0;
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.25rem 0;
+    }
+    .divider--center { margin: 1.25rem auto; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), backdrop-filter var(--transition), padding var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(253,250,246,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      box-shadow: 0 1px 0 var(--charcoal-10);
+    }
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .nav__logo span { color: var(--gold); }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav__link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      transition: color 0.2s;
+    }
+    .nav__link:hover { color: var(--charcoal); }
+    .nav__link.active { color: var(--charcoal); }
+    .nav__cta {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      transition: all 0.2s;
+    }
+    .nav__cta:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--charcoal);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: #2e2a26; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--charcoal-30);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--gold);
+      color: var(--ivory);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+    .btn-gold:hover { background: #a0803d; }
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--ivory);
+    }
+
+    /* ─── COMPACT HERO ───────────────────────────────────── */
+    .compact-hero {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 10rem 0 var(--space-xl);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .compact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,90,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .compact-hero__watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 14vw, 14rem);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .compact-hero .label { color: var(--gold-light); }
+    .compact-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin: 1.25rem 0 1rem;
+    }
+    .compact-hero__subtitle {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 52ch;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    /* ─── EXPECT SECTION (TIMELINE) ──────────────────────── */
+    .expect-section {
+      background: var(--ivory);
+      padding: var(--space-xl) 0;
+    }
+    .expect-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+    .expect-header .divider { margin: 1.25rem auto; }
+    .timeline {
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 23px;
+      bottom: 0;
+      width: 1px;
+      background: var(--charcoal-10);
+    }
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding-bottom: 2.75rem;
+      position: relative;
+    }
+    .timeline-step:last-child { padding-bottom: 0; }
+    .timeline-step__num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--gold);
+      background: var(--ivory);
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-step__content {
+      padding-top: 0.65rem;
+    }
+    .timeline-step__title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-step__desc {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+    }
+
+    /* ─── FORM SECTION ───────────────────────────────────── */
+    .form-section {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+    .form-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+    .form-header .divider { margin: 1.25rem auto; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      margin-bottom: 0.5rem;
+    }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--charcoal-10);
+      background: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: var(--charcoal-30);
+    }
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23B8965A' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Info box */
+    .info-box {
+      background: var(--ivory);
+      border: 1px solid var(--charcoal-10);
+      padding: 2.25rem 2rem;
+    }
+    .info-box__title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    .info-box__item {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 2.2;
+      color: var(--charcoal-60);
+    }
+    .info-box__item a {
+      transition: color 0.2s;
+    }
+    .info-box__item a:hover {
+      color: var(--gold);
+    }
+    .info-box__note {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--charcoal-10);
+      font-size: 0.72rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal-60);
+      font-style: italic;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+    }
+
+    /* ─── TRUST STRIP ────────────────────────────────────── */
+    .trust-strip {
+      background: var(--charcoal);
+      padding: 2.5rem 0;
+    }
+    .trust-strip__inner {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-strip__item {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.02em;
+    }
+    .trust-strip__sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-lg) 0 var(--space-md);
+      color: rgba(255,255,255,0.4);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+    }
+    .footer__tagline { font-size: 0.78rem; line-height: 1.7; max-width: 28ch; margin-bottom: 1.25rem; }
+    .footer__contact { margin-top: 0.5rem; }
+    .footer__contact-item { font-size: 0.72rem; line-height: 2; color: rgba(255,255,255,0.5); }
+    .footer__col-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.25rem;
+    }
+    .footer__link {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer__link:hover { color: rgba(255,255,255,0.8); }
+    .footer__link--inline { margin: 0; }
+    .footer__bottom {
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+    .footer__legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .form-grid { grid-template-columns: 1fr; gap: var(--space-md); }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav__links { display: none; }
+      .compact-hero { padding: 8rem 0 var(--space-lg); }
+      .footer__grid { grid-template-columns: 1fr; }
+      .trust-strip__inner { gap: 1.5rem; }
+      .trust-strip__sep { display: none; }
+      .timeline::before { left: 19px; }
+      .timeline-step { grid-template-columns: 40px 1fr; gap: 1rem; }
+      .timeline-step__num { width: 40px; height: 40px; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       NAV
+  ═══════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link">Klinika</a></li>
+      <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+      <li><a href="kezelesek.html" class="nav__link">Kezelések</a></li>
+      <li><a href="technologia.html" class="nav__link">Technológia</a></li>
+      <li><a href="akademia.html" class="nav__link">Akadémia</a></li>
+      <li><a href="konzultacio.html" class="nav__link active">Konzultáció</a></li>
+    </ul>
+    <a href="konzultacio.html" class="nav__cta">Konzultáció →</a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════
+       COMPACT HERO
+  ═══════════════════════════════════ -->
+  <section class="compact-hero">
+    <div class="compact-hero__watermark">KONZULTÁCIÓ</div>
+    <div class="container">
+      <span class="label reveal">Személyes Találkozó</span>
+      <h1 class="compact-hero__title reveal reveal-delay-1">Az első lépés<br><em>az Ön útján.</em></h1>
+      <p class="compact-hero__subtitle reveal reveal-delay-2">
+        Egy 60 perces személyes konzultáción az Observ 520x 8 klinikai módban feltérképezi a bőrét — és az eredmények alapján közösen megtervezzük a személyre szabott Protocol útvonalat. Az első 100 páciens számára az Observ diagnosztika ingyenes.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       WHAT TO EXPECT
+  ═══════════════════════════════════ -->
+  <section class="expect-section section">
+    <div class="container">
+      <div class="expect-header reveal">
+        <span class="label">Mire számíthat</span>
+        <div class="divider divider--center"></div>
+        <h2 class="display-lg">Nem eladni szeretnénk.<br><em>Megérteni.</em></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step reveal">
+          <div class="timeline-step__num">01</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Observ 520x Bőrdiagnosztika</div>
+            <p class="timeline-step__desc">Objektív bőrelemzés 8 klinikai megvilágítási módban — a felszíntől a mély dermiszig. A kezelési terv nem véleményen, hanem mérésen alapul. Az első 100 páciens számára ingyenes.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-1">
+          <div class="timeline-step__num">02</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Orvosi konzultáció</div>
+            <p class="timeline-step__desc">Személyes beszélgetés az elvárt eredményekről, az egészségügyi háttérről és az egyéni anatómiai adottságokról.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-2">
+          <div class="timeline-step__num">03</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Protocol útvonal tervezés</div>
+            <p class="timeline-step__desc">A Prepare–Treat–Recover rendszerre épülő, személyre szabott kezelési terv összeállítása.</p>
+          </div>
+        </div>
+
+        <div class="timeline-step reveal reveal-delay-3">
+          <div class="timeline-step__num">04</div>
+          <div class="timeline-step__content">
+            <div class="timeline-step__title">Időterv és költségbecslés</div>
+            <p class="timeline-step__desc">Átlátható ütemezés és árazás, meglepetések nélkül.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       CONSULTATION FORM
+  ═══════════════════════════════════ -->
+  <section class="form-section section" id="foglalas">
+    <div class="container">
+      <div class="form-header reveal">
+        <span class="label">Időpontfoglalás</span>
+        <div class="divider divider--center"></div>
+        <h2 class="display-lg">Foglaljon <em>konzultációt</em></h2>
+      </div>
+
+      <div class="form-grid">
+        <form class="reveal" action="https://formsubmit.co/info@theultimatebeauty.net" method="POST">
+          <div class="form-group">
+            <label class="form-label" for="name">Teljes név</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Vezetéknév Keresztnév" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email cím</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="pelda@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="phone">Telefonszám</label>
+            <input class="form-input" type="tel" id="phone" name="phone" placeholder="+36 30 123 4567" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="interest">Érdeklődési terület</label>
+            <select class="form-select" id="interest" name="interest" required>
+              <option value="" disabled selected>Kérem válasszon...</option>
+              <option value="Integrált arcfiatalítás">Integrált arcfiatalítás</option>
+              <option value="Bőrminőség javítás">Bőrminőség javítás</option>
+              <option value="Testkezelés">Testkezelés</option>
+              <option value="Mini Face Lift konzultáció">Mini Face Lift konzultáció</option>
+              <option value="Szülés utáni regeneráció">Szülés utáni regeneráció</option>
+              <option value="Általános konzultáció">Általános konzultáció</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Üzenet <span style="font-weight: 300; text-transform: none; letter-spacing: 0;">(opcionális)</span></label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Kérdés, megjegyzés vagy különleges kérés..."></textarea>
+          </div>
+          <button type="submit" class="btn-gold">
+            Konzultáció kérése
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+
+        <div class="reveal reveal-delay-2">
+          <div class="info-box">
+            <div class="info-box__title">Elérhetőségek</div>
+            <p class="info-box__item">📍 1026 Budapest, [Villa cím — Webflow-ban véglegesítendő]</p>
+            <p class="info-box__item">📞 <a href="tel:+3617903017">+36 1 790 3017</a></p>
+            <p class="info-box__item">✉️ <a href="mailto:info@theultimatebeauty.net">info@theultimatebeauty.net</a></p>
+            <p class="info-box__item">🕐 H–P: 9:00–18:00 · Szombat: előjegyzés alapján</p>
+            <p class="info-box__note">A konzultáció díja 15.000 Ft, amely a kezelés árából levonásra kerül.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       TRUST STRIP
+  ═══════════════════════════════════ -->
+  <div class="trust-strip">
+    <div class="container">
+      <div class="trust-strip__inner">
+        <span class="trust-strip__item">Boutique jellegű, személyes környezet</span>
+        <div class="trust-strip__sep"></div>
+        <span class="trust-strip__item">Egy páciens — egy orvos</span>
+        <div class="trust-strip__sep"></div>
+        <span class="trust-strip__item">Observ 520x diagnosztikával</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">The Ultimate Beauty.</div>
+          <p class="footer__tagline">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia, egyetlen összehangolt rendszerben.</p>
+          <div class="footer__contact">
+            <p class="footer__contact-item">📍 1026 Budapest, [Villa cím — Webflow-ban véglegesítendő]</p>
+            <p class="footer__contact-item">📞 +36 1 790 3017</p>
+            <p class="footer__contact-item">✉️ info@theultimatebeauty.net</p>
+            <p class="footer__contact-item">🕐 H–P: 9:00–18:00 · Szombat: előjegyzés alapján</p>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Protocol</div>
+          <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
+          <a href="protocol.html" class="footer__link">A filozófia</a>
+          <a href="protocol-treatments.html" class="footer__link">Protocol Treatments</a>
+          <a href="clinical-program.html" class="footer__link">Clinical Programs</a>
+          <a href="kutatas.html" class="footer__link">Kutatás</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Kezelések</div>
+          <a href="kezelesek.html" class="footer__link">Összes kezelés</a>
+          <a href="technologia.html" class="footer__link">Technológia</a>
+          <a href="konzultacio.html" class="footer__link">Konzultáció</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Klinika</div>
+          <a href="index.html" class="footer__link">A klinika</a>
+          <a href="akademia.html" class="footer__link">Akadémia</a>
+          <a href="adatvedelem.html" class="footer__link">Adatvédelem</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Ultimate Beauty. Minden jog fenntartva. · Budapest · Buda</span>
+        <div class="footer__legal">
+          <a href="adatvedelem.html" class="footer__link footer__link--inline">Adatvédelem</a>
+          <a href="aszf.html" class="footer__link footer__link--inline">ÁSZF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════ -->
+  <script>
+    // Nav scroll behaviour
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

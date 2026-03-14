@@ -490,7 +490,7 @@
       </section>
 
       <!-- BEFORE/AFTER — Eredmények -->
-      <section class="before-after-section reveal" aria-label="Előtte-utána eredmények">
+      <section class="before-after-section reveal" id="protocol-results" aria-label="Előtte-utána eredmények">
         <div class="section-header">
           <span class="section-label">Eredmények</span>
           <h2 class="section-title">Mérhető változás,<br><em>dokumentált eredmény</em></h2>
@@ -2135,7 +2135,7 @@
           </a>
 
           <!-- 03 — Eredmények -->
-          <a href="#protocol-results" class="protocol-hub-card" onclick="document.getElementById('protocol-results')?.scrollIntoView({behavior:'smooth', block:'start'}); return false;">
+          <a href="#protocol-results" class="protocol-hub-card" onclick="event.preventDefault(); switchTab('home'); setTimeout(function(){ document.getElementById('protocol-results')?.scrollIntoView({behavior:'smooth', block:'start'}); }, 350); return false;">
             <span class="protocol-hub-card__num">03</span>
             <svg class="protocol-hub-card__icon" viewBox="0 0 40 40" fill="none">
               <path d="M8 32L14 20l6 6 6-12 6 10" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>

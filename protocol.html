@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Beauty Protocol — A rendszer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --ivory:    #FDFAF6;
+      --cream:    #F5F0E8;
+      --charcoal: #1A1816;
+      --c60:      rgba(26,24,22,.6);
+      --c30:      rgba(26,24,22,.3);
+      --c10:      rgba(26,24,22,.08);
+      --c05:      rgba(26,24,22,.04);
+      --gold:     #B8965A;
+      --gold-l:   #D4B077;
+      --gold-p:   rgba(184,150,90,.12);
+      --w20:      rgba(255,255,255,.2);
+      --w10:      rgba(255,255,255,.1);
+      --w05:      rgba(255,255,255,.05);
+      --w45:      rgba(255,255,255,.45);
+      --w70:      rgba(255,255,255,.7);
+      --font-d:   'Cormorant Garamond', serif;
+      --font-s:   'Montserrat', sans-serif;
+      --ease:     cubic-bezier(.25,.46,.45,.94);
+    }
+
+    /* ── RESET ───────────────────────────────────────────── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    body{background:var(--ivory);color:var(--charcoal);font-family:var(--font-s);font-weight:300;font-size:15px;line-height:1.7;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button{border:none;background:none;cursor:pointer;font-family:inherit}
+    ul{list-style:none}
+
+    /* ── TYPE ────────────────────────────────────────────── */
+    .d-xl{font-family:var(--font-d);font-size:clamp(3rem,6.5vw,6rem);font-weight:300;line-height:1.02;letter-spacing:-.01em}
+    .d-lg{font-family:var(--font-d);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1}
+    .d-md{font-family:var(--font-d);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:400;line-height:1.2}
+    .d-sm{font-family:var(--font-d);font-size:clamp(1.2rem,2vw,1.7rem);font-weight:400;line-height:1.3}
+    .label{font-family:var(--font-s);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+    .body{font-size:.875rem;line-height:1.75;color:var(--c60);max-width:52ch}
+    em{font-style:italic;font-family:var(--font-d);font-size:1.06em}
+
+    /* ── LAYOUT ──────────────────────────────────────────── */
+    .wrap{max-width:1260px;margin:0 auto;padding:0 2rem}
+    .sec{padding:6rem 0}
+    .sec--sm{padding:4rem 0}
+    .divider{width:36px;height:1px;background:var(--gold);margin:1.1rem 0}
+    .divider--c{margin:1.1rem auto}
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:all .4s var(--ease)}
+    .nav.on{background:rgba(253,250,246,.95);backdrop-filter:blur(12px);padding:1rem 2rem;box-shadow:0 1px 0 var(--c10)}
+    .nav__logo{font-family:var(--font-d);font-size:1.2rem;font-weight:500;letter-spacing:.04em}
+    .nav__logo span{color:var(--gold)}
+    .nav__links{display:flex;gap:2.5rem;align-items:center}
+    .nav__link{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--c60);transition:color .2s}
+    .nav__link:hover,.nav__link.active{color:var(--charcoal)}
+    .nav__cta{font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.6rem;border:1px solid var(--charcoal);transition:all .2s}
+    .nav__cta:hover{background:var(--charcoal);color:var(--ivory)}
+
+    /* ── BUTTONS ─────────────────────────────────────────── */
+    .btn-dark{display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 2.1rem;background:var(--charcoal);color:var(--ivory);font-size:.66rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:background .3s}
+    .btn-dark:hover{background:#2b2723}
+    .btn-gold{display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 2.1rem;background:var(--gold);color:var(--ivory);font-size:.66rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:background .3s}
+    .btn-gold:hover{background:#9e7e3d}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.6rem;font-size:.66rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;color:var(--c60);border-bottom:1px solid var(--c30);padding-bottom:2px;transition:all .2s}
+    .btn-ghost:hover{color:var(--charcoal);border-color:var(--charcoal)}
+    .btn-outline-w{display:inline-flex;align-items:center;gap:.7rem;padding:.95rem 2.1rem;border:1px solid var(--w20);color:var(--w70);font-size:.66rem;font-weight:500;letter-spacing:.17em;text-transform:uppercase;transition:all .2s}
+    .btn-outline-w:hover{border-color:var(--w45);color:#fff}
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero{min-height:100svh;background:var(--charcoal);color:#fff;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding-bottom:6rem}
+    .hero::before{content:'PROTOCOL';position:absolute;right:-3rem;top:50%;transform:translateY(-50%);font-family:var(--font-d);font-size:22vw;font-weight:300;color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap;letter-spacing:-.02em}
+    .hero__bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 20% 60%,rgba(184,150,90,.07) 0%,transparent 60%);pointer-events:none}
+    .hero__inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end}
+    .hero__back{font-size:.62rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);display:inline-flex;align-items:center;gap:.5rem;margin-bottom:2.5rem;transition:color .2s}
+    .hero__back:hover{color:rgba(255,255,255,.6)}
+    .hero__label{color:var(--gold-l)}
+    .hero__title{font-family:var(--font-d);font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.02;margin:1rem 0 1.5rem}
+    .hero__sub{font-size:.875rem;line-height:1.8;color:var(--w45);max-width:46ch;margin-bottom:2.5rem}
+    .hero__actions{display:flex;gap:1.25rem;flex-wrap:wrap}
+    .hero__nav{display:flex;flex-direction:column;gap:1rem;justify-content:flex-end;padding-bottom:.5rem}
+    .hero__nav-item{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;border:1px solid var(--w10);color:var(--w45);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:all .25s;cursor:pointer}
+    .hero__nav-item:hover,.hero__nav-item.active{border-color:var(--gold);color:#fff;background:rgba(184,150,90,.06)}
+    .hero__nav-item .num{font-family:var(--font-d);font-size:1.2rem;color:var(--gold);margin-right:1rem}
+    .hero__nav-item .arrow{opacity:.4;transition:opacity .2s,transform .2s}
+    .hero__nav-item:hover .arrow{opacity:1;transform:translateX(4px)}
+
+    /* ── PHILOSOPHY ──────────────────────────────────────── */
+    .philosophy{padding:6rem 0;background:var(--ivory)}
+    .philosophy__grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+    .philosophy__quote{font-family:var(--font-d);font-size:clamp(1.4rem,2.5vw,2.1rem);font-weight:300;line-height:1.45;color:var(--charcoal);margin:1.5rem 0;position:relative;padding-left:2rem}
+    .philosophy__quote::before{content:'';position:absolute;left:0;top:.3rem;width:3px;height:calc(100% - .6rem);background:var(--gold)}
+    .philosophy__points{display:flex;flex-direction:column;gap:0}
+    .philosophy__point{display:flex;align-items:flex-start;gap:1.25rem;padding:1.5rem 0;border-bottom:1px solid var(--c10)}
+    .philosophy__point:first-child{border-top:1px solid var(--c10)}
+    .philosophy__point-num{font-family:var(--font-d);font-size:2rem;color:var(--gold);line-height:1;min-width:2.5rem}
+    .philosophy__point-title{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem}
+    .philosophy__point-desc{font-size:.825rem;color:var(--c60);line-height:1.7}
+
+    /* ── PILLARS ─────────────────────────────────────────── */
+    .pillars{background:var(--charcoal);padding:6rem 0;color:#fff}
+    .pillars__header{text-align:center;max-width:600px;margin:0 auto 4rem}
+    .pillars__header .label{color:var(--gold-l)}
+    .pillars__header p{font-size:.875rem;color:var(--w45);margin-top:1rem;line-height:1.75}
+    .pillars__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.06)}
+    .pillar{background:var(--charcoal);padding:3rem 2.5rem;position:relative;overflow:hidden;transition:background .3s}
+    .pillar:hover{background:#1f1c19}
+    .pillar__phase{font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .pillar__roman{font-family:var(--font-d);font-size:5rem;font-weight:300;color:rgba(255,255,255,.04);position:absolute;top:1.5rem;right:2rem;line-height:1}
+    .pillar__title{font-family:var(--font-d);font-size:1.9rem;font-weight:300;color:#fff;margin-bottom:.75rem;line-height:1.15}
+    .pillar__desc{font-size:.825rem;color:var(--w45);line-height:1.75;margin-bottom:1.75rem}
+    .pillar__tags{display:flex;flex-wrap:wrap;gap:.4rem}
+    .pillar__tag{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .65rem;border:1px solid rgba(255,255,255,.15);color:var(--w45)}
+    .pillars__timeline{margin-top:1.5px;background:rgba(255,255,255,.04);display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center}
+    .tl-step{padding:2rem 1.5rem;text-align:center}
+    .tl-label{font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem}
+    .tl-phase{font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:.2rem}
+    .tl-detail{font-size:.72rem;color:var(--w45)}
+    .tl-arrow{font-size:1.1rem;color:var(--gold);opacity:.6}
+
+    /* ── PROTOCOL TREATMENTS ─────────────────────────────── */
+    .treatments{padding:6rem 0;background:var(--cream)}
+    .treatments__header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
+    .treatments__filter{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}
+    .filter-btn{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.45rem 1rem;border:1px solid var(--c30);color:var(--c60);transition:all .2s;cursor:pointer;background:none}
+    .filter-btn:hover,.filter-btn.active{background:var(--charcoal);color:#fff;border-color:var(--charcoal)}
+    .protocols-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--c10)}
+    .protocol-card{background:var(--ivory);padding:2.25rem 2rem;position:relative;overflow:hidden;transition:background .3s;cursor:default}
+    .protocol-card:hover{background:#fff}
+    .protocol-card.featured{background:var(--charcoal);color:#fff;grid-column:span 2}
+    .protocol-card.featured:hover{background:#1f1c19}
+    .protocol-card__num{font-family:var(--font-d);font-size:4rem;font-weight:300;position:absolute;top:1rem;right:1.5rem;line-height:1;color:var(--c05);pointer-events:none}
+    .protocol-card.featured .protocol-card__num{color:rgba(255,255,255,.04)}
+    .protocol-card__cat{font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+    .protocol-card.featured .protocol-card__cat{color:var(--gold-l)}
+    .protocol-card__cat::before{content:'';display:inline-block;width:16px;height:1px;background:currentColor}
+    .protocol-card__name{font-family:var(--font-d);font-size:1.4rem;font-weight:400;margin-bottom:.4rem;line-height:1.2}
+    .protocol-card.featured .protocol-card__name{font-size:1.9rem;color:#fff}
+    .protocol-card__combo{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem}
+    .protocol-card.featured .protocol-card__combo{color:var(--gold-l)}
+    .protocol-card__targets{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem}
+    .protocol-card__target{font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;padding:.22rem .55rem;background:var(--gold-p);color:var(--gold)}
+    .protocol-card.featured .protocol-card__target{background:rgba(184,150,90,.18);color:var(--gold-l)}
+    .protocol-card__pillars{display:flex;gap:.4rem;margin-top:.75rem}
+    .protocol-card__pillar{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .55rem;border:1px solid var(--c10);color:var(--c60)}
+    .protocol-card.featured .protocol-card__pillar{border-color:var(--w10);color:var(--w45)}
+    .protocol-card__desc{font-size:.8rem;line-height:1.7;color:var(--c60);margin-bottom:1rem;max-width:46ch}
+    .protocol-card.featured .protocol-card__desc{color:var(--w45)}
+    .protocol-card__link{font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s}
+    .protocol-card:hover .protocol-card__link{gap:.7rem}
+    .protocol-card.featured .protocol-card__link{color:var(--gold-l)}
+
+    /* ── CLINICAL PROGRAMS ───────────────────────────────── */
+    .clinical{padding:6rem 0;background:var(--charcoal);color:#fff}
+    .clinical__grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .clinical .label{color:var(--gold-l)}
+    .clinical__title{font-family:var(--font-d);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;line-height:1.1;margin:1rem 0 1.25rem;color:#fff}
+    .clinical__sub{font-size:.875rem;color:var(--w45);line-height:1.75;max-width:46ch}
+    .clinical__perks{margin-top:2.5rem;display:flex;flex-direction:column;gap:.75rem}
+    .clinical__perk{display:flex;align-items:center;gap:1.25rem;padding:1rem 1.25rem;border:1px solid var(--w10)}
+    .clinical__perk-num{font-family:var(--font-d);font-size:1.3rem;color:var(--gold);min-width:2.2rem}
+    .clinical__perk-text{font-size:.8rem;color:var(--w70)}
+    .clinical__badge{display:inline-flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .clinical__badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 2s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .clinical__form{background:rgba(255,255,255,.04);border:1px solid var(--w10);padding:3rem}
+    .form-group{margin-bottom:1.1rem}
+    .form-group label{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w45);margin-bottom:.4rem}
+    .form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--w10);padding:.8rem 1rem;font-family:var(--font-s);font-size:.825rem;color:#fff;outline:none;transition:border .2s;appearance:none}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.2)}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+    .form-group select option{background:var(--charcoal);color:#fff}
+    .form-group textarea{resize:none;height:75px}
+    .form-note{font-size:.65rem;color:rgba(255,255,255,.25);margin-top:.85rem;text-align:center}
+
+    /* ── TECHNOLOGY TEASER ───────────────────────────────── */
+    .tech-teaser{padding:6rem 0;background:var(--ivory)}
+    .tech-teaser__grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .tech-visual{position:relative;height:420px;background:var(--charcoal);overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .tech-visual::before{content:'ULTIMA';font-family:var(--font-d);font-size:8rem;font-weight:300;color:rgba(255,255,255,.04);position:absolute;white-space:nowrap;letter-spacing:.05em}
+    .ring{position:absolute;border-radius:50%;border:1px solid rgba(184,150,90,.18);animation:pulse 4s ease-in-out infinite}
+    .ring:nth-child(1){width:120px;height:120px;animation-delay:0s}
+    .ring:nth-child(2){width:200px;height:200px;animation-delay:.8s}
+    .ring:nth-child(3){width:280px;height:280px;animation-delay:1.6s}
+    .ring:nth-child(4){width:360px;height:360px;animation-delay:2.4s;border-color:rgba(184,150,90,.07)}
+    @keyframes pulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:1;transform:scale(1.02)}}
+    .ring-core{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,rgba(184,150,90,.4) 0%,rgba(184,150,90,.08) 60%,transparent 100%);display:flex;align-items:center;justify-content:center;font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-l);text-align:center;line-height:1.5;z-index:1}
+    .tech-teaser__features{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:2.5rem}
+    .tech-feature{padding:1.25rem 1.5rem;border:1px solid var(--c10)}
+    .tech-feature__title{font-family:var(--font-d);font-size:1rem;font-weight:400;margin-bottom:.3rem}
+    .tech-feature__desc{font-size:.775rem;color:var(--c60);line-height:1.65}
+
+    /* ── CTA ─────────────────────────────────────────────── */
+    .cta{padding:6rem 0;background:var(--cream);text-align:center}
+    .cta .label{margin-bottom:1rem;display:block}
+    .cta__title{font-family:var(--font-d);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:300;line-height:1.08;margin-bottom:1rem}
+    .cta__sub{font-size:.875rem;color:var(--c60);max-width:44ch;margin:0 auto 2.5rem;line-height:1.75}
+    .cta__actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    .footer{background:var(--charcoal);border-top:1px solid var(--w05);padding:3.5rem 0 2rem;color:var(--w45)}
+    .footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid var(--w05)}
+    .footer__logo{font-family:var(--font-d);font-size:1.2rem;color:#fff;margin-bottom:.6rem}
+    .footer__tag{font-size:.78rem;max-width:26ch;line-height:1.7}
+    .footer__col-title{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-l);margin-bottom:1.1rem}
+    .footer__link{display:block;font-size:.78rem;color:var(--w45);margin-bottom:.55rem;transition:color .2s}
+    .footer__link:hover{color:rgba(255,255,255,.8)}
+    .footer__bottom{padding-top:2rem;display:flex;justify-content:space-between;font-size:.66rem}
+    .footer__legal{display:flex;gap:1.5rem}
+
+    /* ── SCROLL REVEAL ───────────────────────────────────── */
+    .r{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+    .r.v{opacity:1;transform:none}
+    .r1{transition-delay:.1s}.r2{transition-delay:.2s}.r3{transition-delay:.3s}.r4{transition-delay:.4s}
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media(max-width:1024px){
+      .hero__inner{grid-template-columns:1fr}
+      .hero__nav{display:none}
+      .philosophy__grid,.tech-teaser__grid,.clinical__grid{grid-template-columns:1fr}
+      .tech-visual{display:none}
+      .pillars__grid{grid-template-columns:1fr}
+      .protocols-grid{grid-template-columns:1fr}
+      .protocol-card.featured{grid-column:span 1}
+      .treatments__header{flex-direction:column;align-items:flex-start;gap:1rem}
+      .footer__grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:680px){
+      .nav__links{display:none}
+      .footer__grid{grid-template-columns:1fr}
+      .cta__actions{flex-direction:column;align-items:center}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+    <ul class="nav__links">
+      <li><a href="index.html" class="nav__link">Klinika</a></li>
+      <li><a href="protocol.html" class="nav__link active">Protocol</a></li>
+      <li><a href="kezelesek.html" class="nav__link">Kezelések</a></li>
+      <li><a href="technologia.html" class="nav__link">Technológia</a></li>
+      <li><a href="akademia.html" class="nav__link">Akadémia</a></li>
+      <li><a href="konzultacio.html" class="nav__link">Konzultáció</a></li>
+    </ul>
+    <a href="konzultacio.html" class="nav__cta">Konzultáció →</a>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="wrap" style="width:100%">
+      <div class="hero__inner">
+        <div>
+          <a href="index.html" class="hero__back">← The Ultimate Beauty</a>
+          <div class="label hero__label">A rendszer</div>
+          <h1 class="hero__title">The Ultimate<br>Beauty<br><em>Protocol</em></h1>
+          <p class="hero__sub">Egy háromlépcsős, orvos által felépített esztétikai rendszer — ahol minden kezelés a következőt erősíti, és az egész összetettebb eredményt ad, mint a részek összege.</p>
+          <div class="hero__actions">
+            <a href="#treatments" class="btn-gold">Protocol Treatments →</a>
+            <a href="#clinical" class="btn-outline-w">Clinical Programs</a>
+          </div>
+        </div>
+        <div class="hero__nav">
+          <a href="#filozofia" class="hero__nav-item">
+            <span><span class="num">01</span>A Protocol filozófiája</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#pillerek" class="hero__nav-item active">
+            <span><span class="num">02</span>A három pillér</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#treatments" class="hero__nav-item">
+            <span><span class="num">03</span>Protocol Treatments</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="#clinical" class="hero__nav-item">
+            <span><span class="num">04</span>Clinical Programs</span>
+            <span class="arrow">→</span>
+          </a>
+          <a href="technologia.html" class="hero__nav-item">
+            <span><span class="num">05</span>Technológia</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INTRO STRIP (from Protocol Hub) ═══════════════════ -->
+  <div class="intro-strip" style="background:var(--gold);padding:20px 0;overflow:hidden">
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:2rem">
+      <span style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;font-weight:300;color:var(--charcoal);white-space:nowrap">Prepare — Treat — Recover</span>
+      <span style="width:1px;height:24px;background:rgba(26,24,22,.25);flex-shrink:0"></span>
+      <span style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;font-weight:300;color:var(--charcoal);white-space:nowrap">Egy folyamat. Három pillér. Egy eredmény.</span>
+      <span style="width:1px;height:24px;background:rgba(26,24,22,.25);flex-shrink:0"></span>
+      <span style="font-family:var(--font-d);font-size:1.1rem;font-style:italic;font-weight:300;color:var(--charcoal);white-space:nowrap">Minden kezelésnek kontextusa van.</span>
+    </div>
+  </div>
+
+  <!-- ══ PHILOSOPHY ════════════════════════════════════════ -->
+  <section class="philosophy" id="filozofia">
+    <div class="wrap">
+      <div class="philosophy__grid">
+        <div class="r">
+          <span class="label">A szemlélet</span>
+          <div class="divider"></div>
+          <h2 class="d-lg">Nem kezelésekben<br>gondolkodunk.<br><em>Rendszerben.</em></h2>
+          <blockquote class="philosophy__quote">
+            „A valódi megkülönböztető erő nem abban áll, hogy prémium kezeléseket kínálunk — hanem abban, hogy ezeket egy saját, többlépcsős, egymásra épülő rendszerben alkalmazzuk."
+          </blockquote>
+          <p class="body">A The Ultimate Beauty Protocol azért különleges, mert a szöveti előkészítést, a célzott orvosi korrekciót és a regenerációs támogatást egyetlen összehangolt folyamatban egyesíti. Ez nem kampányötlet — hanem márkásítható, védjegyezhető kezelési filozófia.</p>
+        </div>
+        <div class="philosophy__points r r1">
+          <div class="philosophy__point">
+            <div class="philosophy__point-num">1</div>
+            <div>
+              <div class="philosophy__point-title">Szöveti pre-aktiváció</div>
+              <div class="philosophy__point-desc">Az ULTIMA technológia „biológiai vásznat" hoz létre — javítja a mikrokeringést és fokozza a kollagénszintézist, hogy az orvosesztétikai beavatkozások látványosabbak és tartósabbak legyenek.</div>
+            </div>
+          </div>
+          <div class="philosophy__point">
+            <div class="philosophy__point-num">2</div>
+            <div>
+              <div class="philosophy__point-title">Precíziós orvosi korrekció</div>
+              <div class="philosophy__point-desc">A megfelelően előkészített szöveti alapra érkezik a célzott beavatkozás — nem izoláltan, hanem a rendszer részeként, ahol az előkészítés maximalizálja a korrekció hatását.</div>
+            </div>
+          </div>
+          <div class="philosophy__point">
+            <div class="philosophy__point-num">3</div>
+            <div>
+              <div class="philosophy__point-title">Otthoni regeneráció</div>
+              <div class="philosophy__point-desc">A Protocol hazamegy a pácienssel. A LED Mask a rendszer záróeleme — nem retail termék, hanem a kezelési filozófia otthoni, fenntartó pillére.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PILLARS ════════════════════════════════════════════ -->
+  <section class="pillars" id="pillerek">
+    <div class="wrap">
+      <div class="pillars__header r">
+        <span class="label">A három pillér</span>
+        <div class="divider divider--c"></div>
+        <h2 class="d-lg" style="color:#fff">Prepare · Treat · <em>Recover</em></h2>
+        <p>A természetesebb, tartósabb eredményhez nem egyetlen lépésen, hanem egymásra épülő kezelési szinteken keresztül jutunk el.</p>
+      </div>
+      <div class="pillars__grid">
+        <div class="pillar r r1">
+          <div class="pillar__roman">I</div>
+          <div class="pillar__phase">I. Fázis · Prepare</div>
+          <h3 class="pillar__title">ULTIMA<br>Activation</h3>
+          <p class="pillar__desc">Neuromuszkuláris stimuláció és mélyszöveti fotobiomoduláció — aktiválja a mikrokeringést, fokozza az izomtónust és kedvezőbb biológiai alapállapotot teremt a korrekció számára.</p>
+          <div class="pillar__tags">
+            <span class="pillar__tag">730 nm + 940 nm</span>
+            <span class="pillar__tag">EMS stimuláció</span>
+            <span class="pillar__tag">Mikrokeringés</span>
+            <span class="pillar__tag">Kollagén támogatás</span>
+          </div>
+        </div>
+        <div class="pillar r r2">
+          <div class="pillar__roman">II</div>
+          <div class="pillar__phase">II. Fázis · Treat</div>
+          <h3 class="pillar__title">Medical<br>Precision</h3>
+          <p class="pillar__desc">A megfelelően előkészített szöveti alapra érkezik a célzott orvosesztétikai korrekció — botox, hialuronsav, biostimulátorok — anatómiai logika mentén, személyre szabva.</p>
+          <div class="pillar__tags">
+            <span class="pillar__tag">Botox</span>
+            <span class="pillar__tag">Hialuronsav</span>
+            <span class="pillar__tag">Biostimulátor</span>
+            <span class="pillar__tag">Skinbooster</span>
+          </div>
+        </div>
+        <div class="pillar r r3">
+          <div class="pillar__roman">III</div>
+          <div class="pillar__phase">III. Fázis · Recover</div>
+          <h3 class="pillar__title">Regenerative<br>Support</h3>
+          <p class="pillar__desc">A kezelés nem ér véget a klinikán. Az ULTIMA LED Mask a rendszer záróeleme — otthoni fotobiomodulációval támogatja a regenerációt és biztosítja a tartós eredményt.</p>
+          <div class="pillar__tags">
+            <span class="pillar__tag">LED Mask</span>
+            <span class="pillar__tag">Otthoni rituálé</span>
+            <span class="pillar__tag">Fenntartás</span>
+            <span class="pillar__tag">Utókövetés</span>
+          </div>
+        </div>
+      </div>
+      <div class="pillars__timeline r" style="transition-delay:.2s">
+        <div class="tl-step"><div class="tl-label">Szakasz I</div><div class="tl-phase">Prepare</div><div class="tl-detail">4–6 ULTIMA alkalom</div></div>
+        <div class="tl-arrow">→</div>
+        <div class="tl-step"><div class="tl-label">Szakasz II</div><div class="tl-phase">Treat</div><div class="tl-detail">Személyre szabott beavatkozás</div></div>
+        <div class="tl-arrow">→</div>
+        <div class="tl-step"><div class="tl-label">Szakasz III</div><div class="tl-phase">Recover</div><div class="tl-detail">ULTIMA + LED Mask otthon</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROTOCOL TREATMENTS — 15 SIGNATURE PROTOCOLS ═════ -->
+  <section class="treatments" id="treatments">
+    <div class="wrap">
+      <div class="treatments__header r">
+        <div>
+          <span class="label">Protocol Treatments</span>
+          <div class="divider"></div>
+          <h2 class="d-lg">15 Signature<br><em>Protocol</em></h2>
+          <p class="body" style="margin-top:.75rem">Minden útvonal személyre szabott. Minden kezelés a rendszer része. A kombinált protokollok az ULTIMA technológia és az orvosesztétikai precízió szinergiájára épülnek.</p>
+          <div class="treatments__filter">
+            <button class="filter-btn active" data-filter="all">Összes</button>
+            <button class="filter-btn" data-filter="arc">Arc</button>
+            <button class="filter-btn" data-filter="test">Test</button>
+            <button class="filter-btn" data-filter="ferfi">Férfi</button>
+            <button class="filter-btn" data-filter="anti-aging">Anti-aging</button>
+            <button class="filter-btn" data-filter="sebeszet">Sebészeti</button>
+          </div>
+        </div>
+        <a href="kezelesek.html" class="btn-ghost" style="align-self:flex-end">Összes kezelés →</a>
+      </div>
+
+      <div class="protocols-grid">
+
+        <!-- 01 FLAGSHIP -->
+        <div class="protocol-card featured r" data-cat="arc anti-aging">
+          <div class="protocol-card__num">01</div>
+          <div class="protocol-card__cat">Flagship · Legajánlottabb</div>
+          <h3 class="protocol-card__name">Ultimate Lift Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Botox</div>
+          <p class="protocol-card__desc">Teljes arcfiatalító hatás: a Botox a ráncokra hat, míg az ULTIMA az izmokra és a bőrminőségre. Együtt olyan eredményt adnak, amelyet egyik elem önmagában nem tud nyújtani.</p>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Mimikai ráncok</span>
+            <span class="protocol-card__target">Arclifting</span>
+            <span class="protocol-card__target">Bőrminőség</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+          <div style="margin-top:1.5rem"><a href="kezelesek/botox.html" class="protocol-card__link">Részletek →</a></div>
+        </div>
+
+        <!-- 02 -->
+        <div class="protocol-card r r1" data-cat="arc anti-aging">
+          <div class="protocol-card__num">02</div>
+          <div class="protocol-card__cat">Kollagén</div>
+          <h3 class="protocol-card__name">Collagen Rebuild Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Sculptra</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Kollagén újraépítés</span>
+            <span class="protocol-card__target">Volumenvesztés</span>
+            <span class="protocol-card__target">40+</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="protocol-card r r2" data-cat="arc">
+          <div class="protocol-card__num">03</div>
+          <div class="protocol-card__cat">Bőrminőség</div>
+          <h3 class="protocol-card__name">Skin Remodeling Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Profhilo</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Hidratáltság</span>
+            <span class="protocol-card__target">Glow hatás</span>
+            <span class="protocol-card__target">Textúra</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="protocol-card r r1" data-cat="arc">
+          <div class="protocol-card__num">04</div>
+          <div class="protocol-card__cat">Szemkörnyék</div>
+          <h3 class="protocol-card__name">Regenerative Eye Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Vitaran (PDRN)</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Sötét karikák</span>
+            <span class="protocol-card__target">Szemkörnyék</span>
+            <span class="protocol-card__target">Regeneráció</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="protocol-card r r2" data-cat="arc ferfi">
+          <div class="protocol-card__num">05</div>
+          <div class="protocol-card__cat">Kontúr · Férfi</div>
+          <h3 class="protocol-card__name">Jawline Definition Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Jawline Filler</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Markáns állvonal</span>
+            <span class="protocol-card__target">Férfias kontúr</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+          <div style="margin-top:1rem"><a href="protocol-hialuronsav-szinergia.html" class="protocol-card__link">Hialuronsav szinergia →</a></div>
+        </div>
+
+        <!-- 06 -->
+        <div class="protocol-card r r1" data-cat="arc">
+          <div class="protocol-card__num">06</div>
+          <div class="protocol-card__cat">Arcközép</div>
+          <h3 class="protocol-card__name">Midface Rejuvenation Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Cheek Filler</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Járomív</span>
+            <span class="protocol-card__target">Arclifting</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+          <div style="margin-top:1rem"><a href="protocol-hialuronsav-szinergia.html" class="protocol-card__link">Hialuronsav szinergia →</a></div>
+        </div>
+
+        <!-- 07 -->
+        <div class="protocol-card r r2" data-cat="arc anti-aging">
+          <div class="protocol-card__num">07</div>
+          <div class="protocol-card__cat">Strukturális lifting</div>
+          <h3 class="protocol-card__name">Structural Lift Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Radiesse</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Bőrfeszesítés</span>
+            <span class="protocol-card__target">Kollagéntermelés</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="protocol-card r r1" data-cat="arc">
+          <div class="protocol-card__num">08</div>
+          <div class="protocol-card__cat">Harmónia</div>
+          <h3 class="protocol-card__name">Harmony Lift Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + HarmonyCa</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Alsó archi lifting</span>
+            <span class="protocol-card__target">Kontúr</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="protocol-card r r2" data-cat="test">
+          <div class="protocol-card__num">09</div>
+          <div class="protocol-card__cat">Test</div>
+          <h3 class="protocol-card__name">Non-Surgical Lift Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Sculptra (test)</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Fenékemelés</span>
+            <span class="protocol-card__target">Bőrfeszesítés</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="protocol-card r r1" data-cat="test">
+          <div class="protocol-card__num">10</div>
+          <div class="protocol-card__cat">Testfeszesítés</div>
+          <h3 class="protocol-card__name">Body Tightening Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Rádiófrekvencia</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Has · Comb · Felkar</span>
+            <span class="protocol-card__target">Bőrminőség</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="protocol-card r r2" data-cat="sebeszet">
+          <div class="protocol-card__num">11</div>
+          <div class="protocol-card__cat">Sebészeti támogatás</div>
+          <h3 class="protocol-card__name">Post-Surgery Recovery Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Plasztikai műtét</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Facelift után</span>
+            <span class="protocol-card__target">Regeneráció</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+          <div style="margin-top:1rem"><a href="protocol-mini-facelift-integracio.html" class="protocol-card__link">Mini Facelift integráció →</a></div>
+        </div>
+
+        <!-- 12 -->
+        <div class="protocol-card r r1" data-cat="arc anti-aging">
+          <div class="protocol-card__num">12</div>
+          <div class="protocol-card__cat">Megelőzés · 30+</div>
+          <h3 class="protocol-card__name">Preventive Anti-Aging Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Skinbooster + LED</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Öregedés megelőzés</span>
+            <span class="protocol-card__target">30–40 évesek</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+        </div>
+
+        <!-- 13 FEATURED MALE -->
+        <div class="protocol-card featured r r2" data-cat="ferfi">
+          <div class="protocol-card__num">13</div>
+          <div class="protocol-card__cat">Prémium · Férfi</div>
+          <h3 class="protocol-card__name">Male Executive Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Botox + Jawline Filler</div>
+          <p class="protocol-card__desc">Energikus megjelenés, markáns kontúr, minimális downtime. A Protocol férfi páciensek számára kialakított útvonala — ahol a technológia bio-hacking eszközként működik.</p>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Energikus megjelenés</span>
+            <span class="protocol-card__target">Markáns kontúr</span>
+            <span class="protocol-card__target">Minimális downtime</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="protocol-card r r1" data-cat="arc">
+          <div class="protocol-card__num">14</div>
+          <div class="protocol-card__cat">Bőrminőség</div>
+          <h3 class="protocol-card__name">Ultimate Skin Quality Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + PRX-T33 / Biorevitalizáció</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Textúra javítás</span>
+            <span class="protocol-card__target">Póruscsökkentés</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="protocol-card r r2" data-cat="arc anti-aging">
+          <div class="protocol-card__num">15</div>
+          <div class="protocol-card__cat">Teljes arcfiatalítás</div>
+          <h3 class="protocol-card__name">Luxury Anti-Aging Protocol</h3>
+          <div class="protocol-card__combo">ULTIMA + Sculptra + Botox</div>
+          <div class="protocol-card__targets">
+            <span class="protocol-card__target">Teljes arcfiatalítás</span>
+            <span class="protocol-card__target">Komplex eredmény</span>
+          </div>
+          <div class="protocol-card__pillars">
+            <span class="protocol-card__pillar">I. Prepare</span>
+            <span class="protocol-card__pillar">II. Treat</span>
+            <span class="protocol-card__pillar">III. Recover</span>
+          </div>
+        </div>
+
+      </div><!-- /protocols-grid -->
+    </div>
+  </section>
+
+  <!-- ══ CLINICAL PROGRAMS ══════════════════════════════════ -->
+  <section class="clinical" id="clinical">
+    <div class="wrap">
+      <div class="clinical__grid">
+        <div class="r">
+          <div class="clinical__badge">Korlátozott férőhely · Aktív program</div>
+          <h2 class="clinical__title">Clinical<br><em>Programs</em></h2>
+          <p class="clinical__sub">Strukturált, személyre szabott kezelési útvonalak fokozott szakmai figyelemmel, előzetes orvosi kiválasztással. Nem egy kezelés — egy teljes esztétikai folyamat.</p>
+          <div class="clinical__perks">
+            <div class="clinical__perk">
+              <span class="clinical__perk-num">01</span>
+              <span class="clinical__perk-text">Részletes orvosi konzultáció és személyes állapotfelmérés</span>
+            </div>
+            <div class="clinical__perk">
+              <span class="clinical__perk-num">02</span>
+              <span class="clinical__perk-text">Személyre szabott kezelési útvonal, protokoll szerint</span>
+            </div>
+            <div class="clinical__perk">
+              <span class="clinical__perk-num">03</span>
+              <span class="clinical__perk-text">Kiemelt szakmai kontroll és strukturált utókövetés</span>
+            </div>
+            <div class="clinical__perk">
+              <span class="clinical__perk-num">04</span>
+              <span class="clinical__perk-text">Korlátozott férőhelyes részvétel — exkluzív hozzáférés</span>
+            </div>
+            <div class="clinical__perk">
+              <span class="clinical__perk-num">05</span>
+              <span class="clinical__perk-text">Dokumentált eredmények, professzionális fotódokumentáció</span>
+            </div>
+          </div>
+        </div>
+        <div class="clinical__form r r2">
+          <span class="label" style="color:var(--gold-l);display:block;margin-bottom:1.5rem">Jelentkezés a Clinical Programba</span>
+          <div class="form-group">
+            <label>Teljes név</label>
+            <input type="text" placeholder="Kovács Anna">
+          </div>
+          <div class="form-group">
+            <label>Email cím</label>
+            <input type="email" placeholder="anna@email.com">
+          </div>
+          <div class="form-group">
+            <label>Telefonszám</label>
+            <input type="tel" placeholder="+36 30 000 0000">
+          </div>
+          <div class="form-group">
+            <label>Melyik területre fókuszálna?</label>
+            <select>
+              <option value="">Kérem válasszon...</option>
+              <option>Integrált arcfiatalítás (Ultimate Lift)</option>
+              <option>Kollagén újraépítés (40+)</option>
+              <option>Szemkörnyéki regeneráció</option>
+              <option>Férfi esztétika (Executive Protocol)</option>
+              <option>Testfeszesítés / hasfali rehabilitáció</option>
+              <option>Sebészeti előkészítés és regeneráció</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Rövid megjegyzés (opcionális)</label>
+            <textarea placeholder="Mit szeretne elérni?"></textarea>
+          </div>
+          <button class="btn-gold" style="width:100%;justify-content:center">Jelentkezés elküldése →</button>
+          <p class="form-note">A programba kerülés orvosi konzultáció és szakmai kiválasztás alapján történik.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TECHNOLOGY TEASER ══════════════════════════════════ -->
+  <section class="tech-teaser">
+    <div class="wrap">
+      <div class="tech-teaser__grid">
+        <div class="tech-visual r">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring-core">ULTIMA<br>HILEFT™</div>
+          <span style="position:absolute;bottom:1.25rem;left:1.5rem;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.2)">A rendszer technológiai alapja</span>
+        </div>
+        <div class="r r2">
+          <span class="label">Technológia</span>
+          <div class="divider"></div>
+          <h2 class="d-lg">ULTIMA HILEFT™<br><em>— a Protocol alapja</em></h2>
+          <p class="body" style="margin-top:1.1rem">Az ULTIMA nem csupán egy esztétikai eszköz — a rendszer biológiai fundamentuma. Neuromuszkuláris stimuláció és mélyszöveti fotobiomoduláció (730 nm + 940 nm) kombinációja olyan szöveti alapállapotot hoz létre, amelyen az orvosesztétikai beavatkozások látványosabbak és tartósabbak.</p>
+          <div class="tech-teaser__features">
+            <div class="tech-feature">
+              <div class="tech-feature__title">Szinergia</div>
+              <div class="tech-feature__desc">Az ULTIMA kollagénhálót hoz létre a filler körül — az eredmény stabilabb, tartósabb és természetesebb.</div>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-feature__title">Non-invazív</div>
+              <div class="tech-feature__desc">Fájdalommentes, nincs downtime, fogyóeszköz-mentes.</div>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-feature__title">730 + 940 nm</div>
+              <div class="tech-feature__desc">Far-red és NIR spektrum. Kollagénstimuláció és mikrokeringés.</div>
+            </div>
+            <div class="tech-feature">
+              <div class="tech-feature__title">EMS stimuláció</div>
+              <div class="tech-feature__desc">Paraméterezett neuromuszkuláris aktiváció, izomtónus harmonizálás.</div>
+            </div>
+          </div>
+          <div style="margin-top:2rem">
+            <a href="technologia.html" class="btn-dark">Technológia részletesen →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA ════════════════════════════════════════════════ -->
+  <section class="cta">
+    <div class="wrap">
+      <span class="label">Következő lépés</span>
+      <h2 class="cta__title">Kérjen személyre szabott<br><em>Protocol konzultációt</em></h2>
+      <p class="cta__sub">A kezelési terv minden esetben az Ön arcszerkezetéhez, bőrállapotához és céljaihoz igazodik. Minden Protocol útvonal egyedi.</p>
+      <div class="cta__actions">
+        <a href="konzultacio.html" class="btn-gold">Konzultációt kérek →</a>
+        <a href="kezelesek.html" class="btn-ghost">Kezelések megtekintése</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">The Ultimate Beauty.</div>
+          <p class="footer__tag">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Protocol</div>
+          <a href="#filozofia" class="footer__link">A filozófia</a>
+          <a href="#pillerek" class="footer__link">A három pillér</a>
+          <a href="#treatments" class="footer__link">Protocol Treatments</a>
+          <a href="#clinical" class="footer__link">Clinical Programs</a>
+          <a href="technologia.html" class="footer__link">Technológia</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Kezelések</div>
+          <a href="kezelesek/botox.html" class="footer__link">Botox</a>
+          <a href="kezelesek/hialuronsav.html" class="footer__link">Hialuronsav</a>
+          <a href="kezelesek/biostimulátor.html" class="footer__link">Biostimulátor</a>
+          <a href="kezelesek/ultima-face.html" class="footer__link">ULTIMA Face</a>
+          <a href="kezelesek/led-mask.html" class="footer__link">LED Mask</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Klinika</div>
+          <a href="konzultacio.html" class="footer__link">Konzultáció</a>
+          <a href="akademia.html" class="footer__link">Akadémia</a>
+          <a href="gyik.html" class="footer__link">GYIK</a>
+          <a href="adatvedelem.html" class="footer__link">Adatvédelem</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Ultimate Beauty. Minden jog fenntartva. · Budapest · Buda</span>
+        <div class="footer__legal">
+          <a href="adatvedelem.html" class="footer__link" style="margin:0">Adatvédelem</a>
+          <a href="aszf.html" class="footer__link" style="margin:0">ÁSZF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 60));
+
+    // Reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('v'); obs.unobserve(e.target); }});
+    }, {threshold:.08, rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.protocol-card[data-cat]');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards.forEach(c => {
+          const cats = c.dataset.cat || '';
+          c.style.display = (f === 'all' || cats.includes(f)) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

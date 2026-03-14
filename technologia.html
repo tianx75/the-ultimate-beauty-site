@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technológia — The Ultimate Beauty</title>
+  <meta name="description" content="Az ULTIMA technológiai ökoszisztéma — HILEFT neuromuszkuláris stimuláció, LED Mask otthoni protokoll, Observ 520x diagnosztika és Venus Legacy testkezelés. Egy rendszer, négy pillér.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --cream:        #F8F4EE;
+      --ivory:        #FDFAF6;
+      --charcoal:     #1A1816;
+      --charcoal-60:  rgba(26,24,22,0.6);
+      --charcoal-30:  rgba(26,24,22,0.3);
+      --charcoal-10:  rgba(26,24,22,0.08);
+      --gold:         #B8965A;
+      --gold-light:   #D4B077;
+      --gold-pale:    rgba(184,150,90,0.12);
+      --warm-white:   #FEFCF9;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-sans:    'Montserrat', sans-serif;
+
+      --space-xs:   0.5rem;
+      --space-sm:   1rem;
+      --space-md:   2rem;
+      --space-lg:   4rem;
+      --space-xl:   7rem;
+      --space-2xl:  11rem;
+
+      --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ──────────────────────────────────────── */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .body-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 52ch;
+    }
+    em { font-style: italic; font-family: var(--font-display); font-size: 1.08em; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container { max-width: 1260px; margin: 0 auto; padding: 0 2rem; }
+    .divider { width: 40px; height: 1px; background: var(--gold); margin: 1.25rem 0; }
+    .divider--center { margin: 1.25rem auto; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), padding var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(253,250,246,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      box-shadow: 0 1px 0 var(--charcoal-10);
+    }
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .nav__logo span { color: var(--gold); }
+    .nav__links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav__link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      transition: color 0.2s;
+    }
+    .nav__link:hover, .nav__link.active { color: var(--charcoal); }
+    .nav__cta {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--charcoal);
+      transition: all 0.2s;
+    }
+    .nav__cta:hover { background: var(--charcoal); color: var(--ivory); }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--charcoal);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: #2e2a26; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--charcoal-30);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--gold);
+      color: var(--ivory);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-gold:hover { background: #a0803d; }
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover { border-color: rgba(255,255,255,0.5); color: var(--ivory); }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 90svh;
+    }
+    .hero__content {
+      padding: var(--space-2xl) var(--space-lg) var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero__eyebrow-line { width: 40px; height: 1px; background: var(--charcoal-30); }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.75rem;
+    }
+    .hero__title strong { font-weight: 400; }
+    .hero__subtitle {
+      font-size: 0.875rem;
+      line-height: 1.85;
+      color: var(--charcoal-60);
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+    }
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero__meta {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--charcoal-30);
+      margin-top: 3rem;
+      letter-spacing: 0.04em;
+    }
+    .hero__image {
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__image-inner {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(170deg, var(--cream) 0%, rgba(184,150,90,0.08) 40%, rgba(26,24,22,0.15) 100%);
+    }
+    .hero__image-label {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal-30);
+    }
+
+    /* ─── INTRO STRIP ─────────────────────────────────────── */
+    .intro-strip {
+      background: var(--charcoal);
+      padding: 1.5rem 0;
+    }
+    .intro-strip__inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+    }
+    .intro-strip__item {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+    .intro-strip__sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ─── HUB SECTION ─────────────────────────────────────── */
+    .hub-section {
+      padding: var(--space-xl) 0 var(--space-2xl);
+      background: var(--ivory);
+    }
+    .hub-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: end;
+      margin-bottom: var(--space-xl);
+    }
+    .hub-header__right {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 440px;
+      margin-left: auto;
+    }
+
+    /* ─── HUB CARDS ───────────────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+    }
+    .hub-card {
+      position: relative;
+      background: var(--cream);
+      padding: 2.75rem 2.5rem 2.5rem;
+      color: var(--charcoal);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      transition: background var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .hub-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hub-card:hover {
+      background: var(--ivory);
+      box-shadow: 0 12px 40px rgba(26,24,22,0.06);
+    }
+    .hub-card:hover::before { transform: scaleX(1); }
+
+    .hub-card--dark {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+    .hub-card--dark:hover {
+      background: #1e1c1a;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+    .hub-card--dark .hub-card__desc { color: rgba(255,255,255,0.45); }
+    .hub-card--dark .hub-card__badge { color: var(--gold-light); border-color: rgba(184,150,90,0.25); }
+
+    .hub-card__badge {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--gold-pale);
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 2rem;
+    }
+
+    .hub-card__num {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hub-card__title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      transition: color 0.3s;
+    }
+    .hub-card:hover .hub-card__title { color: var(--gold); }
+    .hub-card--dark:hover .hub-card__title { color: var(--gold-light); }
+
+    .hub-card__subtitle {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .hub-card--dark .hub-card__subtitle { color: var(--gold-light); }
+
+    .hub-card__desc {
+      font-size: 0.8rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      flex: 1;
+    }
+
+    .hub-card__tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .hub-card__tag {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--charcoal-10);
+      color: var(--charcoal-60);
+    }
+    .hub-card--dark .hub-card__tag {
+      border-color: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.4);
+    }
+
+    .hub-card__arrow {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all 0.3s;
+    }
+    .hub-card:hover .hub-card__arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ─── DIFFERENTIATOR ──────────────────────────────────── */
+    .diff-section {
+      background: var(--cream);
+      padding: var(--space-xl) 0;
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .diff-left p {
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: var(--charcoal-60);
+      margin-bottom: 1.25rem;
+    }
+    .diff-item {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--charcoal-10);
+      display: grid;
+      grid-template-columns: 40px 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+    .diff-item:first-child { border-top: 1px solid var(--charcoal-10); }
+    .diff-item__num {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      color: var(--gold);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      padding-top: 3px;
+    }
+    .diff-item__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .diff-item__desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--charcoal-60);
+    }
+
+    /* ─── CTA BANNER ─────────────────────────────────────── */
+    .cta-banner {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      text-align: center;
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,90,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-banner .label { color: var(--gold-light); }
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin: 1.25rem 0 1rem;
+    }
+    .cta-banner__subtitle {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 45ch;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-banner__actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── TECH MODAL ──────────────────────────────────────── */
+    .tech-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(26,24,22,0.6);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s var(--transition), visibility 0.4s;
+      padding: 2rem;
+    }
+    .tech-modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .tech-modal {
+      background: var(--ivory);
+      max-width: 720px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 3.5rem;
+      position: relative;
+      transform: translateY(30px) scale(0.97);
+      transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .tech-modal-overlay.active .tech-modal {
+      transform: translateY(0) scale(1);
+    }
+    .tech-modal__close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--charcoal-30);
+      cursor: pointer;
+      border: 1px solid var(--charcoal-10);
+      background: none;
+      transition: all 0.2s;
+    }
+    .tech-modal__close:hover {
+      color: var(--charcoal);
+      border-color: var(--charcoal-30);
+    }
+    .tech-modal__label {
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .tech-modal__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .tech-modal__divider {
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .tech-modal__text {
+      font-size: 0.875rem;
+      line-height: 1.85;
+      color: var(--charcoal-60);
+      margin-bottom: 1.25rem;
+    }
+    .tech-modal__features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .tech-modal__feature {
+      padding: 1.25rem;
+      background: var(--cream);
+    }
+    .tech-modal__feature-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+    }
+    .tech-modal__feature-label {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .tech-modal__feature-desc {
+      font-size: 0.75rem;
+      color: var(--charcoal-60);
+      line-height: 1.6;
+    }
+    .tech-modal__actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    @media (max-width: 680px) {
+      .tech-modal { padding: 2rem 1.5rem; }
+      .tech-modal__features { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-lg) 0 var(--space-md);
+      color: rgba(255,255,255,0.4);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__logo { font-family: var(--font-display); font-size: 1.25rem; color: var(--ivory); margin-bottom: 0.75rem; }
+    .footer__tagline { font-size: 0.78rem; line-height: 1.7; max-width: 28ch; }
+    .footer__col-title { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+    .footer__link { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.4); margin-bottom: 0.6rem; transition: color 0.2s; }
+    .footer__link:hover { color: rgba(255,255,255,0.8); }
+    .footer__bottom { padding-top: var(--space-md); display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem; }
+    .footer__legal { display: flex; gap: 1.5rem; }
+
+    /* ─── ANIMATIONS ──────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: 85svh; }
+      .hero__image { display: none; }
+      .hero__content { padding-top: 8rem; }
+      .hub-header { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .diff-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 680px) {
+      .nav__links { display: none; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .cta-banner__actions { flex-direction: column; align-items: center; }
+      .hero__actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     NAV
+═══════════════════════════════════ -->
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+  <ul class="nav__links">
+    <li><a href="index.html" class="nav__link">Klinika</a></li>
+    <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+    <li><a href="kezelesek.html" class="nav__link">Kezelések</a></li>
+    <li><a href="technologia.html" class="nav__link active">Technológia</a></li>
+    <li><a href="akademia.html" class="nav__link">Akadémia</a></li>
+    <li><a href="konzultacio.html" class="nav__link">Konzultáció</a></li>
+  </ul>
+  <a href="konzultacio.html" class="nav__cta">Konzultáció →</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero__content">
+    <div class="hero__eyebrow">
+      <div class="hero__eyebrow-line"></div>
+      <span class="label">Technológiai ökoszisztéma</span>
+    </div>
+
+    <h1 class="hero__title">
+      A technológia,<br>
+      <strong><em>ami mögötte áll.</em></strong>
+    </h1>
+
+    <p class="hero__subtitle">
+      Négy technológia, egyetlen rendszerben. A diagnosztikától a klinikai kezelésen át az otthoni protokollig — minden lépés tudományos alapon, összehangoltan.
+    </p>
+
+    <div class="hero__actions">
+      <a href="konzultacio.html" class="btn-primary">
+        Konzultáció foglalása
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="protocol-hub.html" class="btn-ghost">A Protocol megismerése</a>
+    </div>
+
+    <span class="hero__meta">HILEFT · LED Mask · Observ 520x · Venus Legacy</span>
+  </div>
+
+  <div class="hero__image">
+    <div class="hero__image-inner"></div>
+    <span class="hero__image-label">Fotó — Webflow-ban véglegesítendő</span>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     INTRO STRIP
+═══════════════════════════════════ -->
+<div class="intro-strip">
+  <div class="intro-strip__inner">
+    <span class="intro-strip__item">Klinikai kezelés</span>
+    <div class="intro-strip__sep"></div>
+    <span class="intro-strip__item">Otthoni protokoll</span>
+    <div class="intro-strip__sep"></div>
+    <span class="intro-strip__item">Diagnosztika</span>
+    <div class="intro-strip__sep"></div>
+    <span class="intro-strip__item">Testkezelés</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     HUB: 4 TECHNOLOGY CARDS
+═══════════════════════════════════ -->
+<section class="hub-section" id="hub">
+  <div class="container">
+    <div class="hub-header">
+      <div class="reveal">
+        <span class="label">Technológiai portfólió</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">Négy pillér.<br><em>Egy rendszer.</em></h2>
+      </div>
+      <p class="hub-header__right reveal reveal-delay-1">
+        Minden technológia a rendszer más pontján lép be — a diagnosztikától a klinikai kezelésen át az otthoni regenerációig. Együtt alkotják az ULTIMA ökoszisztémát.
+      </p>
+    </div>
+
+    <div class="cards-grid">
+
+      <!-- 01 — ULTIMA HILEFT (dark, featured) -->
+      <div class="hub-card hub-card--dark reveal" onclick="openModal('hileftModal')">
+        <div class="hub-card__badge">Klinikai technológia</div>
+        <span class="hub-card__num">01</span>
+        <h3 class="hub-card__title">ULTIMA<br>HILEFT™</h3>
+        <span class="hub-card__subtitle">High Intensity Light and Electro Facial Therapy</span>
+        <p class="hub-card__desc">Neuromuszkuláris stimuláció és fotobiomoduláció egyetlen kezelésben — 730nm + 940nm duális hullámhossz, 5 spektrum, EMS aktiváció. Az izomzat és a bőr mély rétegeinek célzott aktiválása.</p>
+        <div class="hub-card__tags">
+          <span class="hub-card__tag">EMS</span>
+          <span class="hub-card__tag">730 + 940 nm</span>
+          <span class="hub-card__tag">30–40 perc</span>
+        </div>
+        <span class="hub-card__arrow">→</span>
+      </div>
+
+      <!-- 02 — ULTIMA LED Mask -->
+      <div class="hub-card reveal reveal-delay-1" onclick="openModal('maskModal')">
+        <div class="hub-card__badge">Otthoni protokoll</div>
+        <span class="hub-card__num">02</span>
+        <h3 class="hub-card__title">ULTIMA<br>Beauty Mask</h3>
+        <span class="hub-card__subtitle">4 hullámhossz · 93g · IP67</span>
+        <p class="hub-card__desc">A klinikai kezelés folytatása otthon — napi 10–20 perces LED fotobiomoduláció, amely konzerválja az eredményeket és gyorsítja a regenerációt. A Protocol kilép a klinikáról.</p>
+        <div class="hub-card__tags">
+          <span class="hub-card__tag">415–850 nm</span>
+          <span class="hub-card__tag">Otthoni</span>
+          <span class="hub-card__tag">10–20 perc/nap</span>
+        </div>
+        <span class="hub-card__arrow">→</span>
+      </div>
+
+      <!-- 03 — Observ 520x (dark) -->
+      <div class="hub-card hub-card--dark reveal reveal-delay-2" onclick="openModal('observModal')">
+        <div class="hub-card__badge">Diagnosztika</div>
+        <span class="hub-card__num">03</span>
+        <h3 class="hub-card__title">Observ<br>520x</h3>
+        <span class="hub-card__subtitle">8 klinikai mód · Objektív bőrelemzés</span>
+        <p class="hub-card__desc">Mielőtt bármit ajánlanánk, az Observ 520x 8 klinikai módban feltérképezi a bőrt — a felszíntől a mély dermiszig. Minden Protocol itt kezdődik.</p>
+        <div class="hub-card__tags">
+          <span class="hub-card__tag">8 mód</span>
+          <span class="hub-card__tag">Első 100 ingyenes</span>
+        </div>
+        <span class="hub-card__arrow">→</span>
+      </div>
+
+      <!-- 04 — Venus Legacy -->
+      <div class="hub-card reveal reveal-delay-3" onclick="openModal('venusModal')">
+        <div class="hub-card__badge">Testkezelés</div>
+        <span class="hub-card__num">04</span>
+        <h3 class="hub-card__title">Venus<br>Legacy™</h3>
+        <span class="hub-card__subtitle">(MP)² · RF + PEMF · VariPulse™</span>
+        <p class="hub-card__desc">Mélyszöveti megújítás rádiófrekvenciával és pulzáló elektromágneses mezővel — testfeszesítés, cellulit kezelés és kontúrformálás. A HILEFT testkezelési partnere.</p>
+        <div class="hub-card__tags">
+          <span class="hub-card__tag">1 MHz RF</span>
+          <span class="hub-card__tag">PEMF</span>
+          <span class="hub-card__tag">Non-invazív</span>
+        </div>
+        <span class="hub-card__arrow">→</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     DIFFERENTIATOR
+═══════════════════════════════════ -->
+<section class="diff-section">
+  <div class="container">
+    <div class="diff-grid">
+      <div class="diff-left reveal">
+        <span class="label">Miért rendszer?</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">Nem eszközöket<br>használunk.<br><em>Rendszert építünk.</em></h2>
+        <p>A legtöbb klinika különálló eszközökkel dolgozik, egymástól függetlenül. Az ULTIMA technológiai ökoszisztéma ezzel szemben úgy lett tervezve, hogy minden elem a másikat erősítse.</p>
+        <p>Az Observ megmutatja a kiindulópontot. A HILEFT aktiválja a szöveteket. Az orvosi beavatkozás precízen céloz. A LED Mask pedig otthon konzerválja az eredményt.</p>
+      </div>
+
+      <div class="diff-right reveal reveal-delay-2">
+        <div class="diff-item">
+          <span class="diff-item__num">01</span>
+          <div>
+            <div class="diff-item__title">Observ 520x — Diagnosztika</div>
+            <div class="diff-item__desc">8 klinikai módban objektíven feltérképezi a bőrt. Nem szubjektív vélemény — hanem tudományos kiindulópont.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <span class="diff-item__num">02</span>
+          <div>
+            <div class="diff-item__title">ULTIMA HILEFT — Prepare</div>
+            <div class="diff-item__desc">Neuromuszkuláris stimuláció és fotobiomoduláció aktiválja a szöveteket — megteremtve az optimális alapot a beavatkozásokhoz.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <span class="diff-item__num">03</span>
+          <div>
+            <div class="diff-item__title">Medical Precision — Treat</div>
+            <div class="diff-item__desc">Botox, hialuronsav, biostimulátoros kezelések az aktivált szövetben — magasabb hatékonysággal, pontosabban.</div>
+          </div>
+        </div>
+        <div class="diff-item">
+          <span class="diff-item__num">04</span>
+          <div>
+            <div class="diff-item__title">LED Mask + Venus Legacy — Recover</div>
+            <div class="diff-item__desc">Otthoni fotobiomoduláció és mélyszöveti testkezelés — az eredmény konzerválása és a regeneráció biológiai támogatása.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     CTA BANNER
+═══════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="label reveal">Observ 520x + Személyes konzultáció</span>
+    <h2 class="cta-banner__title reveal">Az Observ megmutatja.<br>Mi <em>megoldjuk.</em></h2>
+    <p class="cta-banner__subtitle reveal reveal-delay-1">
+      Egy 60 perces konzultáción az Observ 520x 8 módban feltérképezi a bőrét — és az eredmények alapján összerakjuk a személyre szabott Protocol útvonalat.
+    </p>
+    <div class="cta-banner__actions reveal reveal-delay-2">
+      <a href="konzultacio.html" class="btn-gold">Konzultáció foglalása →</a>
+      <a href="protocol-hub.html" class="btn-outline-light">A Protocol megismerése →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════
+     MODALS
+═══════════════════════════════════ -->
+
+<!-- HILEFT Modal -->
+<div class="tech-modal-overlay" id="hileftModal">
+  <div class="tech-modal">
+    <button class="tech-modal__close" onclick="closeModal('hileftModal')">&times;</button>
+    <div class="tech-modal__label">Klinikai technológia</div>
+    <h2 class="tech-modal__title">ULTIMA HILEFT™<br><em>— fény és izom szinergiája.</em></h2>
+    <div class="tech-modal__divider"></div>
+    <p class="tech-modal__text">Az ULTIMA HILEFT egy új generációs esztétikai rendszer, amely egyetlen kezelésben kombinálja a neuromuszkuláris stimulációt és a fotobiomodulációt — a teljes izomaktiváció eléréséhez.</p>
+    <p class="tech-modal__text">A rendszer duális hullámhosszon (730nm + 940nm) dolgozik: az infravörös fény a szöveti regenerációt támogatja, míg az EMS közvetlenül az izomrostokat aktiválja — még Botox jelenlétében is.</p>
+    <div class="tech-modal__features">
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Fotobiomoduláció</div>
+        <div class="tech-modal__feature-title">730 + 940 nm</div>
+        <p class="tech-modal__feature-desc">Kettős hullámhossz — kollagénszintézis és mély szöveti penetráció.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">EMS</div>
+        <div class="tech-modal__feature-title">Neuromuszkuláris stimuláció</div>
+        <p class="tech-modal__feature-desc">Izomrost-toborzás és proprioceptív visszacsatolás aktiválása.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Kezelési idő</div>
+        <div class="tech-modal__feature-title">30–40 perc</div>
+        <p class="tech-modal__feature-desc">Fájdalommentes, 0 downtime, azonnal visszatérhet a mindennapokhoz.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Pozíció</div>
+        <div class="tech-modal__feature-title">Prepare pillér</div>
+        <p class="tech-modal__feature-desc">A Protocol első lépése — a szövetek aktiválása a beavatkozások előtt.</p>
+      </div>
+    </div>
+    <div class="tech-modal__actions">
+      <a href="technologia-hileft.html" class="btn-primary">A teljes részletek <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="konzultacio.html" class="btn-ghost">Konzultáció foglalása</a>
+    </div>
+  </div>
+</div>
+
+<!-- LED Mask Modal -->
+<div class="tech-modal-overlay" id="maskModal">
+  <div class="tech-modal">
+    <button class="tech-modal__close" onclick="closeModal('maskModal')">&times;</button>
+    <div class="tech-modal__label">Otthoni protokoll</div>
+    <h2 class="tech-modal__title">ULTIMA Beauty Mask<br><em>— a Protocol kilép a klinikáról.</em></h2>
+    <div class="tech-modal__divider"></div>
+    <p class="tech-modal__text">Az ULTIMA LED maszk nem kiegészítő — hanem „biológiai kapcsoló". A klinikai kezelések hatását hivatott konzerválni és meghosszabbítani otthoni környezetben.</p>
+    <p class="tech-modal__text">Napi 10–20 perces használat „bekapcsolva tartja" a kollagén aktivációt és felgyorsítja a beavatkozások utáni regenerációt.</p>
+    <div class="tech-modal__features">
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">415nm Kék</div>
+        <div class="tech-modal__feature-title">Anti-bakteriális</div>
+        <p class="tech-modal__feature-desc">Gyulladáscsökkentő hatás, akne kezelés támogatása.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">590nm Sárga</div>
+        <div class="tech-modal__feature-title">Nyugtató</div>
+        <p class="tech-modal__feature-desc">Bőrpír csökkentés, érzékeny bőr regenerációja.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">630nm Vörös</div>
+        <div class="tech-modal__feature-title">Kollagén aktiváció</div>
+        <p class="tech-modal__feature-desc">Sejtmegújulás serkentése, anti-aging hatás.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">850nm NIR</div>
+        <div class="tech-modal__feature-title">Mély regeneráció</div>
+        <p class="tech-modal__feature-desc">Szöveti penetráció, posztoperatív gyógyulás.</p>
+      </div>
+    </div>
+    <div class="tech-modal__actions">
+      <a href="technologia-led-mask.html" class="btn-primary">A teljes részletek <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="konzultacio.html" class="btn-ghost">Konzultáció foglalása</a>
+    </div>
+  </div>
+</div>
+
+<!-- Observ 520x Modal -->
+<div class="tech-modal-overlay" id="observModal">
+  <div class="tech-modal">
+    <button class="tech-modal__close" onclick="closeModal('observModal')">&times;</button>
+    <div class="tech-modal__label">Diagnosztika</div>
+    <h2 class="tech-modal__title">Observ 520x<br><em>— minden Protocol itt kezdődik.</em></h2>
+    <div class="tech-modal__divider"></div>
+    <p class="tech-modal__text">Mielőtt bármit ajánlanánk, az Observ 520x 8 klinikai módban feltérképezi a bőrt — a felszíntől a mély dermiszig. Ez nem szubjektív vélemény. Ez objektív, klinikai diagnosztika.</p>
+    <p class="tech-modal__text">Az Observ által feltárt kép alapján építjük fel a személyre szabott Protocol útvonalat. Az első 100 páciens számára ez a diagnosztika ingyenes a konzultáció részeként.</p>
+    <div class="tech-modal__features">
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Skin Analysis</div>
+        <div class="tech-modal__feature-title">5 bőrelemzési mód</div>
+        <p class="tech-modal__feature-desc">Daylight, Parallel Polarised, Cross Polarised, True UV, Wood's Light.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Appearance</div>
+        <div class="tech-modal__feature-title">3 megjelenési mód</div>
+        <p class="tech-modal__feature-desc">Surface Texture, Pigmentation, Vascularity.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Konverzió</div>
+        <div class="tech-modal__feature-title">35%+</div>
+        <p class="tech-modal__feature-desc">Kezelési konverzió növekedés klinikáknál.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Promóció</div>
+        <div class="tech-modal__feature-title">Első 100 ingyenes</div>
+        <p class="tech-modal__feature-desc">Az első 100 páciens ingyen kapja a konzultációval.</p>
+      </div>
+    </div>
+    <div class="tech-modal__actions">
+      <a href="technologia-observ.html" class="btn-primary">A teljes részletek <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="konzultacio.html" class="btn-ghost">Ingyenes diagnosztika foglalása</a>
+    </div>
+  </div>
+</div>
+
+<!-- Venus Legacy Modal -->
+<div class="tech-modal-overlay" id="venusModal">
+  <div class="tech-modal">
+    <button class="tech-modal__close" onclick="closeModal('venusModal')">&times;</button>
+    <div class="tech-modal__label">Testkezelés</div>
+    <h2 class="tech-modal__title">Venus Legacy™<br><em>— mélyszöveti megújítás.</em></h2>
+    <div class="tech-modal__divider"></div>
+    <p class="tech-modal__text">A Venus Legacy™ az (MP)² technológia — Multi-Polar rádiófrekvencia és pulzáló elektromágneses mező — szinergiáját használja a szövetek mélységi megújítására, feszesítésére és kontúrformálásra.</p>
+    <p class="tech-modal__text">A PEMF komponens nem-termális úton stimulálja a fibroblaszt proliferációt — ez a duális mechanizmus különbözteti meg a hagyományos RF-eszközöktől.</p>
+    <div class="tech-modal__features">
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Multi-Polar RF</div>
+        <div class="tech-modal__feature-title">1 MHz rádiófrekvencia</div>
+        <p class="tech-modal__feature-desc">Homogén szöveti melegítés 40–43°C-ra — kollagén kontrakció és neogenezis.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">PEMF</div>
+        <div class="tech-modal__feature-title">15 Hz pulzáló mező</div>
+        <p class="tech-modal__feature-desc">Nem-termális fibroblaszt stimuláció — FGF-2 felszabadítás.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">VariPulse™</div>
+        <div class="tech-modal__feature-title">Pulzáló szívás</div>
+        <p class="tech-modal__feature-desc">Nyirokdrenázs és fokozott lipolízis hatás.</p>
+      </div>
+      <div class="tech-modal__feature">
+        <div class="tech-modal__feature-label">Biztonság</div>
+        <div class="tech-modal__feature-title">Valós idejű hőmonitorozás</div>
+        <p class="tech-modal__feature-desc">Optimális terápiás ablakban tartott szövethőmérséklet.</p>
+      </div>
+    </div>
+    <div class="tech-modal__actions">
+      <a href="technologia-venus-legacy.html" class="btn-primary">A teljes részletek <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="konzultacio.html" class="btn-ghost">Konzultáció foglalása</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">The Ultimate <span style="color:var(--gold)">Beauty</span></div>
+        <p class="footer__tagline">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia, egyetlen összehangolt rendszerben.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Technológia</div>
+        <a href="technologia-hileft.html" class="footer__link">ULTIMA HILEFT™</a>
+        <a href="technologia-led-mask.html" class="footer__link">LED Beauty Mask</a>
+        <a href="technologia-observ.html" class="footer__link">Observ 520x</a>
+        <a href="technologia-venus-legacy.html" class="footer__link">Venus Legacy™</a>
+      </div>
+      <div>
+        <div class="footer__col-title">Protocol</div>
+        <a href="protocol.html" class="footer__link">A filozófia</a>
+        <a href="protocol-treatments.html" class="footer__link">Signature Protocols</a>
+        <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
+      </div>
+      <div>
+        <div class="footer__col-title">Klinika</div>
+        <a href="kezelesek.html" class="footer__link">Kezelések</a>
+        <a href="akademia.html" class="footer__link">Akadémia</a>
+        <a href="konzultacio.html" class="footer__link">Konzultáció</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 The Ultimate Beauty. Minden jog fenntartva.</span>
+      <div class="footer__legal">
+        <a href="#">Adatvédelem</a>
+        <a href="#">ÁSZF</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════ -->
+<script>
+  // Nav scroll
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Modal open/close
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click or Escape
+  document.querySelectorAll('.tech-modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal(overlay.id);
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.tech-modal-overlay.active').forEach(m => closeModal(m.id));
+    }
+  });
+</script>
+
+</body>
+</html>

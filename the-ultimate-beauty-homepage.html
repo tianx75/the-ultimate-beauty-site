@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ultimate Beauty — Prémium Esztétikai Klinika · Buda</title>
+  <meta name="description" content="Boutique esztétikai klinika Budán. A The Ultimate Beauty Protocol — orvosi precizitás, ULTIMA technológia és regeneráció, egyetlen összehangolt rendszerben.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────── */
+    :root {
+      --cream:        #F8F4EE;
+      --ivory:        #FDFAF6;
+      --charcoal:     #1A1816;
+      --charcoal-60:  rgba(26,24,22,0.6);
+      --charcoal-30:  rgba(26,24,22,0.3);
+      --charcoal-10:  rgba(26,24,22,0.08);
+      --gold:         #B8965A;
+      --gold-light:   #D4B077;
+      --gold-pale:    rgba(184,150,90,0.12);
+      --warm-white:   #FEFCF9;
+
+      --font-display: 'Cormorant Garamond', serif;
+      --font-sans:    'Montserrat', sans-serif;
+
+      --space-xs:   0.5rem;
+      --space-sm:   1rem;
+      --space-md:   2rem;
+      --space-lg:   4rem;
+      --space-xl:   7rem;
+      --space-2xl:  11rem;
+
+      --radius-sm:  4px;
+      --radius-md:  12px;
+
+      --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ─── RESET ───────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ─── TYPOGRAPHY ──────────────────────────────────────── */
+    .display-xl {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .display-lg {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .display-md {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    .display-sm {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+    .label {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .body-text {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 52ch;
+    }
+    em { font-style: italic; font-family: var(--font-display); font-size: 1.08em; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: var(--space-xl) 0;
+    }
+    .section--sm {
+      padding: var(--space-lg) 0;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    /* ─── DIVIDER ─────────────────────────────────────────── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.25rem 0;
+    }
+    .divider--center { margin: 1.25rem auto; }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background var(--transition), backdrop-filter var(--transition), padding var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(253,250,246,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 1rem 2rem;
+      box-shadow: 0 1px 0 var(--charcoal-10);
+    }
+    .nav__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+    }
+    .nav__logo span { color: var(--gold); }
+    .nav__links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .nav__link {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      transition: color 0.2s;
+    }
+    .nav__link:hover { color: var(--charcoal); }
+    .nav__cta {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      transition: all 0.2s;
+    }
+    .nav__cta:hover {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2rem var(--space-xl) 2rem;
+      padding-left: max(2rem, calc((100vw - 1260px)/2 + 2rem));
+      position: relative;
+      z-index: 2;
+    }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .hero__eyebrow-line {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+    .hero__title strong {
+      font-weight: 500;
+      display: block;
+    }
+    .hero__subtitle {
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: var(--charcoal-60);
+      max-width: 44ch;
+      margin-bottom: 3rem;
+    }
+    .hero__actions {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero__meta {
+      position: absolute;
+      right: 2.5rem;
+      bottom: var(--space-xl);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal-30);
+    }
+    .hero__image {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero__image-inner {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #E8DFD0 0%, #D4C9B6 40%, #C4B9A4 100%);
+    }
+    .hero__image-label {
+      position: absolute;
+      bottom: var(--space-xl);
+      left: 2.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    /* grain overlay on hero image */
+    .hero__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* floating pill */
+    .hero__pill {
+      position: absolute;
+      top: 30%;
+      left: -1.5rem;
+      z-index: 3;
+      background: var(--ivory);
+      border: 1px solid var(--charcoal-10);
+      padding: 1.25rem 1.5rem;
+      max-width: 220px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .hero__pill-label { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .hero__pill-text { font-family: var(--font-display); font-size: 1rem; line-height: 1.3; }
+
+    /* ─── BUTTONS ─────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--charcoal);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-primary:hover { background: #2e2a26; }
+    .btn-primary svg { flex-shrink: 0; }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--charcoal-30);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--charcoal); border-color: var(--charcoal); }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      background: var(--gold);
+      color: var(--ivory);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: background var(--transition);
+    }
+    .btn-gold:hover { background: #a0803d; }
+
+    /* ─── INTRO STRIP ─────────────────────────────────────── */
+    .intro-strip {
+      background: var(--charcoal);
+      padding: 2.5rem 0;
+      overflow: hidden;
+    }
+    .intro-strip__inner {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .intro-strip__item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .intro-strip__num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .intro-strip__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+    }
+    .intro-strip__sep {
+      width: 1px;
+      height: 2.5rem;
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ─── ABOUT / DIFFERENTIATOR ──────────────────────────── */
+    .differentiator {
+      padding: var(--space-xl) 0;
+      background: var(--ivory);
+    }
+    .diff-table {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0;
+      margin-top: var(--space-lg);
+      border: 1px solid var(--charcoal-10);
+    }
+    .diff-col {
+      padding: 2.5rem;
+    }
+    .diff-col--center {
+      padding: 2.5rem 3rem;
+      background: var(--charcoal);
+      color: var(--ivory);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-left: none;
+      border-right: none;
+    }
+    .diff-col--center .label { color: var(--gold-light); }
+    .diff-col-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal-60);
+      margin-bottom: 1.5rem;
+    }
+    .diff-col--center .diff-col-title {
+      color: rgba(255,255,255,0.5);
+    }
+    .diff-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--charcoal-10);
+      font-size: 0.8rem;
+      color: var(--charcoal-60);
+    }
+    .diff-item:last-child { border-bottom: none; }
+    .diff-item--positive {
+      color: var(--charcoal);
+    }
+    .diff-item .icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .diff-col--center .diff-item {
+      color: rgba(255,255,255,0.85);
+      border-bottom-color: rgba(255,255,255,0.1);
+    }
+    .diff-col--center .diff-item:last-child { border-bottom: none; }
+
+    /* Középső doboz interaktivitás */
+    .diff-col--center { cursor: pointer; transition: all var(--transition); }
+    .diff-col--center:hover { background: #222018; }
+    .diff-center-cta { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-top: 1.2rem; opacity: 0.6; transition: opacity 0.3s, gap 0.2s; display: inline-flex; align-items: center; gap: 0.35rem; }
+    .diff-col--center:hover .diff-center-cta { opacity: 1; gap: 0.6rem; }
+
+    /* ─── PROTOCOL MODAL ─── */
+    .pm-overlay { position: fixed; inset: 0; z-index: 2000; background: rgba(10,8,6,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
+    .pm-overlay.open { opacity: 1; pointer-events: auto; }
+    .pm-box { background: var(--charcoal); color: #fff; max-width: 760px; width: calc(100% - 3rem); max-height: 90vh; overflow-y: auto; padding: 3rem 3.5rem; position: relative; transform: scale(0.96) translateY(8px); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .pm-overlay.open .pm-box { transform: scale(1) translateY(0); }
+    .pm-close { position: absolute; top: 1.2rem; right: 1.2rem; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.35); font-size: 1.1rem; cursor: pointer; transition: color 0.2s; border: 1px solid rgba(255,255,255,0.08); background: none; }
+    .pm-close:hover { color: #fff; border-color: rgba(255,255,255,0.2); }
+    .pm-label { font-family: var(--font-sans); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .pm-divider { width: 2.5rem; height: 1px; background: var(--gold); opacity: 0.4; margin-bottom: 1.2rem; }
+    .pm-title { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300; line-height: 1.15; margin-bottom: 0.5rem; }
+    .pm-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.7; margin-bottom: 2rem; max-width: 48ch; }
+    .pm-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); margin-bottom: 2rem; }
+    .pm-phase { background: var(--charcoal); padding: 1.5rem; }
+    .pm-phase__num { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold); opacity: 0.5; margin-bottom: 0.15rem; line-height: 1; }
+    .pm-phase__name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 400; margin-bottom: 0.6rem; letter-spacing: 0.02em; }
+    .pm-phase__tech { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; color: var(--gold-light); margin-bottom: 0.5rem; }
+    .pm-phase__desc { font-size: 0.75rem; color: rgba(255,255,255,0.4); line-height: 1.6; }
+    .pm-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .pm-footer__text { font-size: 0.78rem; color: rgba(255,255,255,0.35); font-style: italic; font-family: var(--font-display); }
+    .pm-footer__btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.6rem; border: 1px solid var(--gold); color: var(--gold-light); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.2s; background: none; font-family: var(--font-sans); }
+    .pm-footer__btn:hover { background: var(--gold); color: var(--charcoal); }
+
+    /* ─── PROTOCOL STRIP ─────────────────────────────────── */
+    .protocol-strip {
+      background: var(--cream);
+      padding: 1.8rem 0;
+      border-top: 1px solid var(--charcoal-10);
+    }
+    .protocol-strip__inner {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .protocol-strip__title {
+      white-space: nowrap;
+      font-size: 1.3rem;
+    }
+    .protocol-strip__sep {
+      color: var(--charcoal-30);
+      font-size: 0.9rem;
+    }
+    .protocol-strip__desc {
+      font-size: 0.8rem;
+      color: var(--charcoal-60);
+      line-height: 1.5;
+    }
+    .protocol-strip__btn {
+      margin-left: auto;
+      white-space: nowrap;
+      font-family: var(--font-sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--gold);
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .protocol-strip__btn:hover {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    /* ─── INDICATIONS ─────────────────────────────────────── */
+    .indications {
+      padding: var(--space-xl) 0;
+    }
+    .indications-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--charcoal-10);
+      margin-top: var(--space-lg);
+    }
+    a.indication-card { text-decoration: none; color: inherit; display: block; }
+    .indication-card {
+      background: var(--ivory);
+      padding: 2rem 1.75rem;
+      transition: background var(--transition);
+      cursor: pointer;
+    }
+    .indication-card:hover { background: var(--cream); }
+    .indication-card__area {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .indication-card__combo {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─── TECHNOLOGY ──────────────────────────────────────── */
+    .technology {
+      background: var(--charcoal);
+      padding: var(--space-xl) 0;
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .technology::before {
+      content: 'ULTIMA';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 20vw;
+      font-weight: 300;
+      color: rgba(255,255,255,0.03);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .tech-content .label { color: var(--gold-light); }
+    .tech-features {
+      margin-top: var(--space-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .tech-feature {
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.2s;
+    }
+    .tech-feature:hover { border-color: rgba(255,255,255,0.18); }
+    .tech-feature__title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 0.4rem;
+    }
+    .tech-feature__desc {
+      font-size: 0.775rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+    .tech-visual {
+      position: relative;
+      height: 520px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .tech-visual__label {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+    }
+    /* animated rings */
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(184,150,90,0.2);
+      animation: pulse-ring 4s ease-in-out infinite;
+    }
+    .ring:nth-child(1) { width: 160px; height: 160px; animation-delay: 0s; }
+    .ring:nth-child(2) { width: 260px; height: 260px; animation-delay: 0.8s; }
+    .ring:nth-child(3) { width: 360px; height: 360px; animation-delay: 1.6s; }
+    .ring:nth-child(4) { width: 460px; height: 460px; animation-delay: 2.4s; border-color: rgba(184,150,90,0.06); }
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .ring-core {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,150,90,0.4) 0%, rgba(184,150,90,0.1) 60%, transparent 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* ─── PROTOCOL TREATMENTS ─────────────────────────────── */
+    .treatments {
+      padding: var(--space-xl) 0;
+      background: var(--cream);
+    }
+    .treatments-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: var(--space-lg);
+    }
+    .treatments-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--charcoal-10);
+    }
+    a.treatment-card { text-decoration: none; color: inherit; display: block; }
+    .treatment-card {
+      background: var(--ivory);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background var(--transition);
+      cursor: default;
+    }
+    .treatment-card:hover { background: var(--warm-white); }
+    .treatment-card:first-child {
+      background: var(--charcoal);
+      color: var(--ivory);
+    }
+    .treatment-card:first-child:hover { background: #1f1c19; }
+    .treatment-card__badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid var(--charcoal-30);
+      color: var(--charcoal-60);
+      margin-bottom: 1.25rem;
+    }
+    .treatment-card:first-child .treatment-card__badge {
+      border-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+    }
+    .treatment-card__title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .treatment-card:first-child .treatment-card__title {
+      font-size: 2rem;
+    }
+    .treatment-card__desc {
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--charcoal-60);
+      margin-bottom: 1.5rem;
+    }
+    .treatment-card:first-child .treatment-card__desc {
+      color: rgba(255,255,255,0.5);
+    }
+    .treatment-card__targets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .treatment-card__target {
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      background: var(--gold-pale);
+      color: var(--gold);
+    }
+    .treatment-card:first-child .treatment-card__target {
+      background: rgba(184,150,90,0.15);
+    }
+
+    /* ─── OBSERV PROMO ──────────────────────────────────────── */
+    .observ-promo-section {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .observ-promo-section::before {
+      content: 'OBSERV';
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 14vw;
+      font-weight: 300;
+      color: rgba(255,255,255,0.015);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .observ-promo__grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .observ-promo__label { color: var(--gold-light); }
+    .observ-promo__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .observ-promo__title em { color: var(--gold-light); }
+    .observ-promo__desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+      max-width: 48ch;
+      margin-bottom: 2rem;
+    }
+    .observ-promo__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.25rem;
+      background: rgba(184,150,90,0.08);
+      border: 1px solid rgba(184,150,90,0.2);
+      margin-bottom: 2rem;
+    }
+    .observ-promo__badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: blink 2s ease-in-out infinite;
+    }
+    .observ-promo__badge-text {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+    .observ-modes-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.06);
+    }
+    .observ-mode-mini {
+      background: var(--charcoal);
+      padding: 1.25rem 1.5rem;
+      transition: background 0.3s;
+    }
+    .observ-mode-mini:hover { background: rgba(255,255,255,0.03); }
+    .observ-mode-mini__title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ivory);
+      margin-bottom: 0.2rem;
+    }
+    .observ-mode-mini__desc {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+    }
+    @media (max-width: 1024px) {
+      .observ-promo__grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* ─── CLINICAL PROGRAMS ───────────────────────────────── */
+    .clinical {
+      padding: var(--space-xl) 0;
+      background: var(--ivory);
+    }
+    .clinical-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+    .clinical-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .clinical-badge::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .clinical-perks {
+      margin-top: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .clinical-perk {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--charcoal-10);
+      font-size: 0.8rem;
+    }
+    .clinical-perk__num {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--gold);
+      min-width: 2rem;
+    }
+    .clinical-form {
+      background: var(--cream);
+      padding: 3rem;
+      border: 1px solid var(--charcoal-10);
+    }
+    .clinical-form .label { margin-bottom: 1.5rem; display: block; }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--ivory);
+      border: 1px solid var(--charcoal-10);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.825rem;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: none; height: 80px; }
+    .form-note {
+      font-size: 0.68rem;
+      color: var(--charcoal-30);
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    /* ─── TESTIMONIALS ────────────────────────────────────── */
+    .testimonials {
+      padding: var(--space-xl) 0;
+      background: var(--cream);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .testimonial-card {
+      padding: 2.5rem;
+      background: var(--ivory);
+      border: 1px solid var(--charcoal-10);
+      position: relative;
+    }
+    .testimonial-card__stars {
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.25rem;
+    }
+    .testimonial-card__quote {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    .testimonial-card__author {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal-30);
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 6rem;
+      line-height: 1;
+      color: var(--gold-pale);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      pointer-events: none;
+    }
+
+    /* ─── CTA BANNER ──────────────────────────────────────── */
+    .cta-banner {
+      padding: var(--space-xl) 0;
+      background: var(--charcoal);
+      text-align: center;
+      color: var(--ivory);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,150,90,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-banner .label { color: var(--gold-light); }
+    .cta-banner__title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      margin: 1.25rem 0 1rem;
+    }
+    .cta-banner__subtitle {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 45ch;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-banner__actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-outline-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2.25rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+    .btn-outline-light:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--ivory);
+    }
+
+    /* ─── UTILITY CLASSES (inline style replacements) ──── */
+    .max-w-18ch { max-width: 18ch; }
+    .max-w-60ch { max-width: 60ch; }
+    .max-w-48ch { max-width: 48ch; }
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .mt-sm { margin-top: 1.25rem; }
+    .mt-md { margin-top: var(--space-md); }
+    .color-ivory { color: var(--ivory); }
+    .color-muted-light { color: rgba(255,255,255,0.5); }
+    .color-muted-lighter { color: rgba(255,255,255,0.4); }
+    .divider--gold-light { background: var(--gold-light); }
+    .diff-center-title { color: var(--ivory); margin-bottom: 0.5rem; }
+    .diff-center-desc { font-size: 0.75rem; color: rgba(255,255,255,0.4); max-width: 18ch; text-align: center; line-height: 1.7; }
+    /* (protocol-timeline-box removed — replaced by protocol-strip) */
+    .cta-center { text-align: center; margin-top: 2.5rem; }
+    .body-text--spaced { margin-top: 1rem; }
+    .tech-desc { font-size: 0.875rem; line-height: 1.75; color: rgba(255,255,255,0.5); max-width: 48ch; margin-top: 1.25rem; }
+    .tech-cta { margin-top: 2rem; }
+    .divider--center-extra { margin: 1.25rem auto; }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: var(--space-lg) 0 var(--space-md);
+      color: rgba(255,255,255,0.4);
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--ivory);
+      margin-bottom: 0.75rem;
+    }
+    .footer__tagline { font-size: 0.78rem; line-height: 1.7; max-width: 28ch; margin-bottom: 1.25rem; }
+    .footer__contact { margin-top: 0.5rem; }
+    .footer__contact-item { font-size: 0.72rem; line-height: 2; color: rgba(255,255,255,0.5); }
+    .footer__col-title {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.25rem;
+    }
+    .footer__link {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .footer__link:hover { color: rgba(255,255,255,0.8); }
+    .footer__link--inline { margin: 0; }
+    .footer__bottom {
+      padding-top: var(--space-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+    }
+    .footer__legal {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    /* ─── SCROLL ANIMATIONS ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),
+                  transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── TRUST STRIP ────────────────────────────────────── */
+    .trust-strip {
+      background: var(--cream);
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(26,24,22,0.06);
+    }
+    .trust-strip__inner {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-strip__item {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--charcoal-60);
+    }
+    .trust-strip__sep {
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: 85svh; }
+      .hero__image { display: none; }
+      .hero__content { padding-top: 8rem; justify-content: flex-start; }
+      .hero__pill { display: none; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .protocol-pillars { grid-template-columns: 1fr; }
+      .indications-grid { grid-template-columns: repeat(2,1fr); }
+      .tech-grid { grid-template-columns: 1fr; }
+      .tech-visual { display: none; }
+      .treatments-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .treatments-grid { grid-template-columns: 1fr; }
+      .treatment-card:first-child { grid-column: span 1; }
+      .clinical-inner { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+      .diff-table { grid-template-columns: 1fr; }
+      .diff-col--center { border: none; }
+      .pm-box { padding: 2.5rem 2rem; }
+    }
+    @media (max-width: 680px) {
+      .nav__links { display: none; }
+      .hero { min-height: 80svh; }
+      .indications-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .cta-banner__actions { flex-direction: column; align-items: center; }
+      .intro-strip__inner { gap: 2rem; }
+      .intro-strip__sep { display: none; }
+      .hero__actions { flex-direction: column; align-items: flex-start; }
+      .pm-phases { grid-template-columns: 1fr; }
+      .pm-box { padding: 2rem 1.5rem; }
+      .pm-footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .protocol-strip__inner { flex-wrap: wrap; justify-content: center; text-align: center; }
+      .protocol-strip__sep { display: none; }
+      .protocol-strip__btn { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════
+       NAV
+  ═══════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <a href="the-ultimate-beauty-homepage.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
+    <ul class="nav__links">
+      <li><a href="the-ultimate-beauty-homepage.html" class="nav__link active">Klinika</a></li>
+      <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+      <li><a href="kezelesek.html" class="nav__link">Kezelések</a></li>
+      <li><a href="technologia.html" class="nav__link">Technológia</a></li>
+      <li><a href="akademia.html" class="nav__link">Akadémia</a></li>
+      <li><a href="konzultacio.html" class="nav__link">Konzultáció</a></li>
+    </ul>
+    <a href="konzultacio.html" class="nav__cta">Konzultáció →</a>
+  </nav>
+
+  <!-- ═══════════════════════════════════
+       HERO
+  ═══════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        <div class="hero__eyebrow-line"></div>
+        <span class="label">Prémium Esztétikai Klinika · Buda</span>
+      </div>
+
+      <h1 class="hero__title">
+        Ahol a tudomány<br>
+        <strong><em>személyessé válik.</em></strong>
+      </h1>
+
+      <p class="hero__subtitle">
+        A The Ultimate Beauty egy boutique esztétikai klinika Budán — ahol orvosi precízió, saját fejlesztésű ULTIMA technológia és személyre szabott kezelési terv találkozik, egyetlen prémium rendszerben.
+      </p>
+      <p class="hero__subtitle" style="margin-top: 0.75rem; color: var(--gold); font-weight: 400; font-size: 0.82rem;">
+        Az első 100 páciens számára ingyenes Observ 520x bőrdiagnosztika — 8 klinikai módban.
+      </p>
+
+      <div class="hero__actions">
+        <a href="konzultacio.html" class="btn-primary">
+          Ingyenes Observ diagnosztika
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="protocol-hub.html" class="btn-ghost">A Protocol megismerése</a>
+      </div>
+
+      <span class="hero__meta">Boutique · Buda · Időpont alapú</span>
+    </div>
+
+    <div class="hero__image">
+      <div class="hero__image-inner"></div>
+      <!-- Webflow-ban: ide kerül a hero kép -->
+      <div class="hero__pill">
+        <div class="hero__pill-label">A rendszer</div>
+        <div class="hero__pill-text">Prepare · Treat · Recover</div>
+      </div>
+      <span class="hero__image-label">klinikai portré · természetes eredmény</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       INTRO STRIP
+  ═══════════════════════════════════ -->
+  <div class="intro-strip">
+    <div class="intro-strip__inner">
+      <div class="intro-strip__item">
+        <div class="intro-strip__num">01</div>
+        <div class="intro-strip__label">Időpont alapú<br>fogadás</div>
+      </div>
+      <div class="intro-strip__sep"></div>
+      <div class="intro-strip__item">
+        <div class="intro-strip__num">02</div>
+        <div class="intro-strip__label">Egy páciens<br>egy orvos</div>
+      </div>
+      <div class="intro-strip__sep"></div>
+      <div class="intro-strip__item">
+        <div class="intro-strip__num">03</div>
+        <div class="intro-strip__label">Budai villa<br>diszkréció</div>
+      </div>
+      <div class="intro-strip__sep"></div>
+      <div class="intro-strip__item">
+        <div class="intro-strip__num">04</div>
+        <div class="intro-strip__label">Orvosi precízió<br>luxuskörnyezetben</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       CLINICAL COOPERATION STRIP
+  ═══════════════════════════════════ -->
+  <section class="trust-strip">
+    <div class="container">
+      <div class="trust-strip__inner">
+        <span class="trust-strip__item">Klinikai kooperáció a János Kórházzal</span>
+        <span class="trust-strip__sep">·</span>
+        <span class="trust-strip__item">Observ 520x diagnosztika</span>
+        <span class="trust-strip__sep">·</span>
+        <span class="trust-strip__item">Tudományosan validált protokollok</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       DIFFERENTIATOR
+  ═══════════════════════════════════ -->
+  <section class="differentiator">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Miért más</span>
+        <div class="divider"></div>
+        <h2 class="display-lg max-w-18ch">
+          A legtöbb klinikán<br>kezeléseket kap.<br><em>Nálunk rendszert.</em>
+        </h2>
+      </div>
+
+      <div class="diff-table reveal reveal-delay-2">
+        <div class="diff-col">
+          <div class="diff-col-title label">Hagyományos klinika</div>
+          <div class="diff-item">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+              <path d="M5 8h6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </svg>
+            Izolált, különálló kezelések
+          </div>
+          <div class="diff-item">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+              <path d="M5 8h6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </svg>
+            Nincs szöveti előkészítés
+          </div>
+          <div class="diff-item">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+              <path d="M5 8h6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </svg>
+            Kezelés után a páciens egyedül marad
+          </div>
+          <div class="diff-item">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+              <path d="M5 8h6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </svg>
+            Egy alkalom = egy kezelés
+          </div>
+          <div class="diff-item">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="0.8" opacity="0.3"/>
+              <path d="M5 8h6" stroke="currentColor" stroke-width="1" opacity="0.3"/>
+            </svg>
+            Nincs regenerációs támogatás
+          </div>
+        </div>
+
+        <div class="diff-col diff-col--center" onclick="document.getElementById('protocolModal').classList.add('open');document.body.style.overflow='hidden'">
+          <span class="label">The Ultimate Beauty Protocol</span>
+          <div class="divider divider--center divider--center-extra"></div>
+          <h3 class="display-sm diff-center-title">The Ultimate<br>Beauty Protocol</h3>
+          <p class="diff-center-desc">Egy összehangolt rendszer, ahol minden lépés a következőt erősíti.</p>
+          <span class="diff-center-cta">A rendszer részletei →</span>
+        </div>
+
+        <div class="diff-col">
+          <div class="diff-col-title label">The Ultimate Beauty</div>
+          <div class="diff-item diff-item--positive">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#B8965A" stroke-width="0.8"/>
+              <path d="M5 8l2 2 4-4" stroke="#B8965A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            Összehangolt, egymást erősítő útvonal
+          </div>
+          <div class="diff-item diff-item--positive">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#B8965A" stroke-width="0.8"/>
+              <path d="M5 8l2 2 4-4" stroke="#B8965A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            ULTIMA szöveti előkészítés
+          </div>
+          <div class="diff-item diff-item--positive">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#B8965A" stroke-width="0.8"/>
+              <path d="M5 8l2 2 4-4" stroke="#B8965A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            LED Mask otthoni regeneráció
+          </div>
+          <div class="diff-item diff-item--positive">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#B8965A" stroke-width="0.8"/>
+              <path d="M5 8l2 2 4-4" stroke="#B8965A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            Orvosi kezelési terv és folyamat
+          </div>
+          <div class="diff-item diff-item--positive">
+            <svg class="icon" viewBox="0 0 16 16" fill="none">
+              <circle cx="8" cy="8" r="7" stroke="#B8965A" stroke-width="0.8"/>
+              <path d="M5 8l2 2 4-4" stroke="#B8965A" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            Strukturált utókövetés, tartós eredmény
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROTOCOL MODAL -->
+  <div class="pm-overlay" id="protocolModal">
+    <div class="pm-box">
+      <button class="pm-close" onclick="document.getElementById('protocolModal').classList.remove('open');document.body.style.overflow=''">✕</button>
+
+      <div class="pm-label">The Ultimate Beauty Protocol</div>
+      <div class="pm-divider"></div>
+      <h2 class="pm-title">Prepare · Treat · <em>Recover</em></h2>
+      <p class="pm-desc">Nem kezeléseket kínálunk, hanem rendszert. Három egymásra épülő fázis — ahol minden lépés a következőt erősíti, és az eredmény több, mint a részek összege.</p>
+
+      <div class="pm-phases">
+        <div class="pm-phase">
+          <div class="pm-phase__num">I.</div>
+          <div class="pm-phase__name">Prepare</div>
+          <div class="pm-phase__tech">ULTIMA HILEFT™</div>
+          <p class="pm-phase__desc">Szöveti előkészítés neuromuszkuláris stimulációval és fotobiomodulációval (730 + 940 nm). Az alap, ami nélkül az eredmény nem tartós.</p>
+        </div>
+        <div class="pm-phase">
+          <div class="pm-phase__num">II.</div>
+          <div class="pm-phase__name">Treat</div>
+          <div class="pm-phase__tech">Orvosesztétika</div>
+          <p class="pm-phase__desc">Célzott beavatkozás előkészített szövetbe — Botox, hialuronsav, biostimulátorok, sebészet. Maximális hatékonyság, minimális korrekcióval.</p>
+        </div>
+        <div class="pm-phase">
+          <div class="pm-phase__num">III.</div>
+          <div class="pm-phase__name">Recover</div>
+          <div class="pm-phase__tech">ULTIMA LED Mask</div>
+          <p class="pm-phase__desc">Otthoni fotobiomoduláció 4 hullámhosszon. A klinikai eredmény stabilizálása és a regeneráció támogatása — naponta 10–20 perc.</p>
+        </div>
+      </div>
+
+      <div class="pm-footer">
+        <span class="pm-footer__text">Három fázis, egy cél: tartós, természetes eredmény.</span>
+        <a href="protocol-hub.html" class="pm-footer__btn">A Protocol Hub →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       PROTOCOL STRIP — KOMPAKT
+  ═══════════════════════════════════ -->
+  <section class="protocol-strip" id="protocol">
+    <div class="container protocol-strip__inner">
+      <span class="display-sm protocol-strip__title">Prepare · Treat · <em>Recover</em></span>
+      <span class="protocol-strip__sep">—</span>
+      <span class="protocol-strip__desc">A rendszer, amire minden kezelésünk épül.</span>
+      <a href="protocol-hub.html" class="protocol-strip__btn">A Protocol megismerése →</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       INDICATIONS
+  ═══════════════════════════════════ -->
+  <section class="indications">
+    <div class="container">
+      <div class="reveal">
+        <span class="label">Indikációk</span>
+        <div class="divider"></div>
+        <h2 class="display-lg">Mi zavar, amikor<br>tükörbe néz?</h2>
+        <p class="body-text body-text--spaced">Nem egyetlen tünetet kezelünk — az egész képet nézzük. Minden indikáció mögött személyre szabott Protocol útvonal áll.</p>
+      </div>
+
+      <div class="indications-grid reveal reveal-delay-2">
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Arc megereszkedése</div>
+          <div class="indication-card__combo">ULTIMA + Botox / Filler</div>
+        </a>
+        <a href="protocol-hialuronsav-szinergia.html" class="indication-card">
+          <div class="indication-card__area">Volumenvesztés</div>
+          <div class="indication-card__combo">ULTIMA + Hialuronsav</div>
+        </a>
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Fáradt tekintet</div>
+          <div class="indication-card__combo">ULTIMA + Vitaran + Mask</div>
+        </a>
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Finom ráncok</div>
+          <div class="indication-card__combo">ULTIMA + Botox + Mask</div>
+        </a>
+        <a href="protocol-hialuronsav-szinergia.html" class="indication-card">
+          <div class="indication-card__area">Kontúrvesztés</div>
+          <div class="indication-card__combo">ULTIMA + Biostimulátor</div>
+        </a>
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Bőrminőség romlása</div>
+          <div class="indication-card__combo">ULTIMA + Skinbooster + Mask</div>
+        </a>
+        <a href="protocol-mini-facelift-integracio.html" class="indication-card">
+          <div class="indication-card__area">Műtét támogatása</div>
+          <div class="indication-card__combo">ULTIMA + Sebészet + Mask</div>
+        </a>
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Megelőzés 30+</div>
+          <div class="indication-card__combo">ULTIMA + LED Mask kúra</div>
+        </a>
+        <a href="protocol-hialuronsav-szinergia.html" class="indication-card">
+          <div class="indication-card__area">Ozempic-arc rehabilitáció</div>
+          <div class="indication-card__combo">ULTIMA + Biostimulátor + Filler</div>
+        </a>
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Fáradt Arc Szindróma</div>
+          <div class="indication-card__combo">ULTIMA + Vitaran + Skinbooster</div>
+        </a>
+        <a href="protocol-treatments.html" class="indication-card">
+          <div class="indication-card__area">Férfi esztétika</div>
+          <div class="indication-card__combo">ULTIMA + Jawline kontúr</div>
+        </a>
+        <a href="protocol-szules-utani-regeneracio.html" class="indication-card">
+          <div class="indication-card__area">Szülés utáni regeneráció</div>
+          <div class="indication-card__combo">ULTIMA Shape + Core rehab</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       ULTIMA TECHNOLOGY — COMPACT TEASER
+  ═══════════════════════════════════ -->
+  <section class="technology" id="technologia">
+    <div class="container">
+      <div class="tech-grid">
+        <div class="tech-content reveal">
+          <span class="label">Technológia</span>
+          <div class="divider divider--gold-light"></div>
+          <h2 class="display-lg color-ivory">ULTIMA HILEFT™<br><em>— a Protocol alapja</em></h2>
+          <p class="tech-desc">
+            Neuromuszkuláris stimuláció és mélyszöveti fotobiomoduláció (730 nm + 940 nm) egyetlen kezelésben. Az ULTIMA az a biológiai alap, amelyre az egész Protocol épül.
+          </p>
+          <div class="tech-cta reveal">
+            <a href="technologia.html" class="btn-outline-light">Tudományos háttér →</a>
+          </div>
+        </div>
+
+        <div class="tech-visual reveal reveal-delay-2">
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring"></div>
+          <div class="ring-core">ULTIMA<br>HILEFT™</div>
+          <span class="tech-visual__label">ULTIMA készülék · technológiai vizualizáció</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       PROTOCOL TREATMENTS
+  ═══════════════════════════════════ -->
+  <section class="treatments" id="kezelesek">
+    <div class="container">
+      <div class="treatments-header reveal">
+        <div>
+          <span class="label">Protocol Treatments</span>
+          <div class="divider"></div>
+          <h2 class="display-lg">Strukturált kezelési<br><em>útvonalak</em></h2>
+        </div>
+        <a href="protocol-treatments.html" class="btn-ghost">Mind a 15 Protocol →</a>
+      </div>
+
+      <div class="treatments-grid">
+        <!-- Flagship -->
+        <a href="protocol-treatments.html" class="treatment-card reveal">
+          <div class="treatment-card__badge">Flagship · Ajánlott</div>
+          <h3 class="treatment-card__title">Integrált Arcfiatalító Protokoll</h3>
+          <p class="treatment-card__desc">Többlépcsős arcfiatalító útvonal — ULTIMA szöveti aktiváció, precíz orvosesztétikai korrekció és regenerációs támogatás egyetlen prémium rendszerben.</p>
+          <div class="treatment-card__targets">
+            <span class="treatment-card__target">Megereszkedett kontúrok</span>
+            <span class="treatment-card__target">Mimikai ráncok</span>
+            <span class="treatment-card__target">Volumenvesztés</span>
+          </div>
+        </a>
+
+        <!-- Szemkörnyék -->
+        <a href="protocol-treatments.html" class="treatment-card reveal reveal-delay-1">
+          <div class="treatment-card__badge">Szemkörnyék</div>
+          <h3 class="treatment-card__title">Szemkörnyéki Regenerációs Protokoll</h3>
+          <p class="treatment-card__desc">A szemkörnyék finom szöveteire kialakított kombinált protokoll, mikrokeringés és bőrminőség javítására.</p>
+          <div class="treatment-card__targets">
+            <span class="treatment-card__target">Sötét karikák</span>
+            <span class="treatment-card__target">Fáradt tekintet</span>
+          </div>
+        </a>
+
+        <!-- Jawline -->
+        <a href="protocol-treatments.html" class="treatment-card reveal reveal-delay-2">
+          <div class="treatment-card__badge">Strukturális harmónia</div>
+          <h3 class="treatment-card__title">Jawline & Kontúr Protokoll</h3>
+          <p class="treatment-card__desc">Célzott kombináció az állív, állvonal és az alsó arckontúr harmonizálására — férfi és női páciensek számára.</p>
+          <div class="treatment-card__targets">
+            <span class="treatment-card__target">Lágyabb kontúrok</span>
+            <span class="treatment-card__target">Férfi esztétika</span>
+          </div>
+        </a>
+
+        <!-- Preventive -->
+        <a href="protocol-treatments.html" class="treatment-card reveal reveal-delay-3">
+          <div class="treatment-card__badge">Megelőzés</div>
+          <h3 class="treatment-card__title">Preventive 30+ Protocol</h3>
+          <p class="treatment-card__desc">Korai megelőzés az öregedés első jelei ellen — mielőtt korrekció kellene. ULTIMA stimuláció és bőrminőség-fenntartás.</p>
+          <div class="treatment-card__targets">
+            <span class="treatment-card__target">Anti-aging</span>
+            <span class="treatment-card__target">Bőrminőség</span>
+          </div>
+        </a>
+
+        <!-- Szülés Utáni Regeneráció -->
+        <a href="protocol-szules-utani-regeneracio.html" class="treatment-card reveal reveal-delay-4">
+          <div class="treatment-card__badge">Klinikai Kooperáció · János Kórház</div>
+          <h3 class="treatment-card__title">Szülés Utáni Hasfali Regeneráció</h3>
+          <p class="treatment-card__desc">ULTIMA Shape Core + gyógytornász-kollaboráció — az első klinikai kooperációs program a hasfali rehabilitáció területén, aktív adatgyűjtéssel.</p>
+          <div class="treatment-card__targets">
+            <span class="treatment-card__target">Rectus diastasis</span>
+            <span class="treatment-card__target">Hasfali tónus</span>
+            <span class="treatment-card__target">Postpartum</span>
+          </div>
+        </a>
+
+        <!-- Mini Facelift Integráció -->
+        <a href="protocol-mini-facelift-integracio.html" class="treatment-card reveal reveal-delay-5">
+          <div class="treatment-card__badge">Sebészeti Integráció · London</div>
+          <h3 class="treatment-card__title">Mini Facelift Integráció</h3>
+          <p class="treatment-card__desc">Integrált ULTIMA HILEFT protokoll mini facelift eljárásokhoz — prehabilitáció, posztoperatív regeneráció és kontúrstabilitás, sebészi kontroll mellett.</p>
+          <div class="treatment-card__targets">
+            <span class="treatment-card__target">Sebészeti támogatás</span>
+            <span class="treatment-card__target">Kontúrstabilitás</span>
+            <span class="treatment-card__target">Prehabilitáció</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       OBSERV 520x PROMO
+  ═══════════════════════════════════ -->
+  <section class="observ-promo-section">
+    <div class="container">
+      <div class="observ-promo__grid">
+        <div class="reveal">
+          <div class="observ-promo__badge">
+            <span class="observ-promo__badge-dot"></span>
+            <span class="observ-promo__badge-text">Limitált · Első 100 páciens</span>
+          </div>
+          <span class="label observ-promo__label">Observ 520x Diagnosztika</span>
+          <h2 class="observ-promo__title">Lássa, amit a bőre<br><em>valóban mond.</em></h2>
+          <p class="observ-promo__desc">Mielőtt bármit ajánlanánk, az Observ 520x 8 klinikai módban feltérképezi a bőrét — a felszíntől a mély dermiszig. Az első 100 páciens számára ez a diagnosztika ingyenes a konzultáció részeként.</p>
+          <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+            <a href="konzultacio.html" class="btn-gold">Ingyenes diagnosztika foglalása →</a>
+            <a href="technologia-observ.html" class="btn-outline-light">A technológia részletei →</a>
+          </div>
+        </div>
+
+        <div class="observ-modes-mini reveal reveal-delay-2">
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Daylight</div>
+            <p class="observ-mode-mini__desc">Természetes fényviszonyok</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">True UV</div>
+            <p class="observ-mode-mini__desc">Rejtett UV-károsodás</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Cross Polarised</div>
+            <p class="observ-mode-mini__desc">Mélyrétegi struktúrák</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Pigmentation</div>
+            <p class="observ-mode-mini__desc">Napkárosodás, melasma</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Vascularity</div>
+            <p class="observ-mode-mini__desc">Mikroér-hálózat, bőrpír</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Surface Texture</div>
+            <p class="observ-mode-mini__desc">Pórusok, textúra, hegek</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Wood's Light</div>
+            <p class="observ-mode-mini__desc">Dehidratáció, faggyú</p>
+          </div>
+          <div class="observ-mode-mini">
+            <div class="observ-mode-mini__title">Parallel Polarised</div>
+            <p class="observ-mode-mini__desc">Finomvonalak, ráncok</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="reveal text-center">
+        <span class="label">Páciensek</span>
+        <div class="divider divider--center"></div>
+        <h2 class="display-lg">A páciens elégedettsége<br><em>a mi mércénk</em></h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">„Végre nem úgy érzem, hogy csak egy kezelést kaptam — itt valóban végigkísérték az egész folyamatot."</p>
+          <div class="testimonial-card__author">Páciens visszajelzés</div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">„A villa hangulata, a személyes figyelem — ez egy teljesen más szint. Két kezelés után látható a különbség."</p>
+          <div class="testimonial-card__author">Páciens visszajelzés</div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">„Az ULTIMA utáni filler sokkal természetesebb lett, mint korábban máshol. Éreztem, hogy a bőröm máshogy fogadta."</p>
+          <div class="testimonial-card__author">Páciens visszajelzés</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       CTA BANNER
+  ═══════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container">
+      <span class="label">Következő lépés</span>
+      <h2 class="cta-banner__title">Kérjen személyre szabott<br><em>konzultációt</em></h2>
+      <p class="cta-banner__subtitle">A kezelési terv minden esetben az Ön arcszerkezetéhez, bőrállapotához és céljaihoz igazodik.</p>
+      <div class="cta-banner__actions">
+        <a href="konzultacio.html" class="btn-gold">
+          Időpontfoglalás
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="protocol-hub.html" class="btn-outline-light">Még csak érdeklődöm</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">The Ultimate Beauty.</div>
+          <p class="footer__tagline">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia, egyetlen összehangolt rendszerben.</p>
+          <div class="footer__contact">
+            <p class="footer__contact-item">📍 1026 Budapest, [Villa cím — Webflow-ban véglegesítendő]</p>
+            <p class="footer__contact-item">📞 +36 1 XXX XXXX</p>
+            <p class="footer__contact-item">✉️ info@theultimatebeauty.net</p>
+            <p class="footer__contact-item">🕐 H–P: 9:00–18:00 · Szombat: előjegyzés alapján</p>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Protocol</div>
+          <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
+          <a href="the-ultimate-beauty-protocol.html" class="footer__link">A filozófia</a>
+          <a href="protocol-treatments.html" class="footer__link">Protocol Treatments</a>
+          <a href="clinical-program.html" class="footer__link">Clinical Programs</a>
+          <a href="kutatas.html" class="footer__link">Kutatás</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Kezelések</div>
+          <a href="kezelesek.html" class="footer__link">Összes kezelés</a>
+          <a href="technologia.html" class="footer__link">Technológia</a>
+          <a href="konzultacio.html" class="footer__link">Konzultáció</a>
+        </div>
+        <div>
+          <div class="footer__col-title">Klinika</div>
+          <a href="the-ultimate-beauty-homepage.html" class="footer__link">A klinika</a>
+          <a href="akademia.html" class="footer__link">Akadémia</a>
+          <a href="adatvedelem.html" class="footer__link">Adatvédelem</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 The Ultimate Beauty. Minden jog fenntartva. · Budapest · Buda</span>
+        <div class="footer__legal">
+          <a href="adatvedelem.html" class="footer__link footer__link--inline">Adatvédelem</a>
+          <a href="aszf.html" class="footer__link footer__link--inline">ÁSZF</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════ -->
+  <script>
+    // Nav scroll behaviour
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Protocol modal — overlay click & Escape
+    const pmOverlay = document.getElementById('protocolModal');
+    pmOverlay.addEventListener('click', e => {
+      if (e.target === pmOverlay) {
+        pmOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && pmOverlay.classList.contains('open')) {
+        pmOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
