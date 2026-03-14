@@ -8,7 +8,7 @@
       --gold-glow: rgba(184, 150, 90, 0.12);
       --white: #FFFFFF;
       --text-muted: #6B6560;
-      --text-light: #8A847E;
+      --text-light: #706A64;
       --border: rgba(26, 24, 22, 0.08);
       --border-strong: rgba(26, 24, 22, 0.14);
       --observ-blue: #0077B6;
@@ -234,7 +234,7 @@
     /* Benefit szöveg (bal vonallal) */
     .benefit-text {
       font-size: 0.72rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.6);
       line-height: 1.6;
       padding-left: 10px;
       border-left: 2px solid rgba(184,150,90,0.2);
@@ -301,7 +301,7 @@
     .ethics-note {
       text-align: center;
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.58);
       max-width: 60ch;
       margin: 0 auto;
       line-height: 1.8;
