@@ -23,29 +23,21 @@
 ## FÁZIS 1 — AZONNALI JAVÍTÁSOK (technikai)
 > Becsült idő: 15 perc
 
-- [ ] **1.1** SEO: minden `theultimatebeauty.hu` → `theultimatebeauty.net` (canonical, OG, structured data)
-- [ ] **1.2** Structured Data telefonszám: `+36-XX-XXX-XXXX` → `+36-1-790-3017`
-- [ ] **1.3** Structured Data email: `info@theultimatebeauty.hu` → `info@theultimatebeauty.net` (ha van ilyen email)
-- [ ] **1.4** HTTPS enforce bekapcsolás (amint a GitHub cert kész)
-- [ ] **1.5** Push → GitHub → élő
+- [x] **1.1** SEO: minden `theultimatebeauty.hu` → `theultimatebeauty.net` ✅ 2026-03-14
+- [x] **1.2** Structured Data telefonszám: `+36-XX-XXX-XXXX` → `+36-1-790-3017` ✅ 2026-03-14
+- [x] **1.3** Structured Data email: automatikusan javítva a .hu→.net cserével ✅ 2026-03-14
+- [x] **1.4** HTTPS enforce bekapcsolás ✅ 2026-03-14 — Let's Encrypt cert kész, enforce ON
+- [x] **1.5** Push → GitHub → élő ✅ 2026-03-14
 
 ---
 
 ## FÁZIS 2 — HOME TAB ÁTDOLGOZÁS
 > Becsült idő: 45 perc
 
-### 2.1 Hero szövegcsere
-**Jelenlegi:**
-> Diagnosztika. Stimuláció. Regeneráció.
-> *Egy rendszer, ami láthatóan hat.*
+### 2.1 Hero szövegcsere ✅ KÉSZ 2026-03-14
+**Új hero:** „Ahol a tudomány *személyessé válik.*" + „A megközelítés, ami megkülönböztet."
 
-**Új:**
-> Ahol a tudomány
-> *személyessé válik.*
->
-> A megközelítés, ami megkülönböztet. Observ diagnosztika, ULTIMA HILEFT szövetelőkészítés, LED Mask otthoni regeneráció — személyre szabott Protocol, maximum napi 3 vendéggel.
-
-### 2.2 Probléma blokk (ÚJ szekció — Hero után, Trust badges előtt)
+### 2.2 Probléma blokk ✅ KÉSZ 2026-03-14 (ÚJ szekció — Trust badges után, Protocol rendszer előtt)
 **Cím:** „Miért nem elég egyetlen kezelés?"
 **Tartalom:** Az öregedés 3 szinten zajlik:
 1. Izomrendszer — tónuscsökkenés
@@ -69,7 +61,7 @@
 ## FÁZIS 3 — PROTOCOL TAB ÁTDOLGOZÁS (a stratégiai oldal)
 > Becsült idő: 60 perc
 
-### 3.1 Új struktúra
+### 3.1 Új struktúra ✅ KÉSZ 2026-03-14 — Probléma blokk, Kinek ajánlott, Záró manifesztó hozzáadva
 
 ```
 ┌─────────────────────────────────────────┐
