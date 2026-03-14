@@ -585,7 +585,7 @@
             <iframe
               id="JotFormIFrame-home"
               title="Kapcsolat"
-              src="https://form.jotform.com/260426493778065?source=home"
+              data-src="https://form.jotform.com/260426493778065?source=home"
               style="width:100%; min-height:480px; border:none; border-radius:12px; background:var(--cream);"
               loading="lazy"
             ></iframe>
@@ -1092,7 +1092,7 @@
                 title="Gyors jelentkezés"
                 allowtransparency="true"
                 allow="fullscreen"
-                src="https://form.jotform.com/260426493778065?source=mask"
+                data-src="https://form.jotform.com/260426493778065?source=mask"
   
                 style="min-width:100%;max-width:100%;height:539px;border:none;"
                 scrolling="no"
@@ -1567,10 +1567,11 @@
             </div>
 
             <iframe
+              id="JotFormIFrame-observ"
               title="Gyors jelentkezés Observ vizsgálatra"
               allowtransparency="true"
               allow="fullscreen"
-              src="https://form.jotform.com/260426493778065?source=observ"
+              data-src="https://form.jotform.com/260426493778065?source=observ"
 
               style="min-width:100%;max-width:100%;height:539px;border:none;"
               scrolling="no"
@@ -2009,7 +2010,7 @@
             <iframe
               id="JotFormIFrame-hileft"
               title="HILEFT konzultáció"
-              src="https://form.jotform.com/260426493778065?source=hileft"
+              data-src="https://form.jotform.com/260426493778065?source=hileft"
               allow="fullscreen"
               allowfullscreen
               style="min-width:100%;max-width:100%;height:539px;border:none;"
@@ -2781,7 +2782,7 @@
           <iframe
             id="JotFormIFrame-program"
             title="Program jelentkezés"
-            src="https://form.jotform.com/260426493778065?source=program"
+            data-src="https://form.jotform.com/260426493778065?source=program"
             style="width:100%; min-height:480px; border:none; border-radius:12px; background:var(--cream);"
             loading="lazy"
           ></iframe>
@@ -2917,9 +2918,10 @@
       <!-- GOOGLE MAPS -->
       <div style="margin-top: 24px; border-radius: 12px; overflow: hidden; border: 1px solid var(--border);">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.5!2d18.9856!3d47.4926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1124+Budapest+Gy%C3%B6ngyir%C3%A1g+%C3%BAt+68!5e0!3m2!1shu!2shu!4v1"
+          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.5!2d18.9856!3d47.4926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s1124+Budapest+Gy%C3%B6ngyir%C3%A1g+%C3%BAt+68!5e0!3m2!1shu!2shu!4v1"
           width="100%" height="180" style="border:0; display:block;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="The Ultimate Beauty Clinic térkép">
+          referrerpolicy="no-referrer-when-downgrade" title="The Ultimate Beauty Clinic térkép"
+          id="mapIframe">
         </iframe>
       </div>
       <div class="footer-bottom">
@@ -2932,30 +2934,51 @@
     </footer>
   </div>
 
-  <!-- JotForm fallback (all tabs) -->
+  <!-- JotForm lazy loading + fallback -->
   <script>
     (function () {
+      /* Lazy load iframes on Home tab when user scrolls near them */
+      if ('IntersectionObserver' in window) {
+        var lazyIframeObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var iframe = entry.target;
+              if (iframe.dataset.src && !iframe.src) {
+                iframe.src = iframe.dataset.src;
+              }
+              lazyIframeObserver.unobserve(iframe);
+            }
+          });
+        }, { rootMargin: '400px' });
+
+        var homeIframe = document.getElementById('JotFormIFrame-home');
+        var mapIframe = document.getElementById('mapIframe');
+        if (homeIframe) lazyIframeObserver.observe(homeIframe);
+        if (mapIframe) lazyIframeObserver.observe(mapIframe);
+      }
+
       // Mask tab specific fallback div
       var fallback = document.getElementById('jfFallback');
       var maskIframe = document.getElementById('JotFormIFrame-mask');
       if (fallback && maskIframe) {
-        var t = setTimeout(function() {
-          if (!document.documentElement.classList.contains('jf-loaded')) {
-            fallback.style.display = 'flex';
-          }
-        }, 2500);
-        maskIframe.addEventListener('load', function() { clearTimeout(t); });
+        maskIframe.addEventListener('load', function() {
+          document.documentElement.classList.add('jf-loaded');
+          if (fallback) fallback.style.display = 'none';
+        });
       }
 
-      // Generic fallback for all other JotForm iframes
-      document.querySelectorAll('iframe[src*="jotform.com"]').forEach(function(iframe) {
-        if (iframe.id === 'JotFormIFrame-mask') return; // already handled above
+      // Generic fallback for JotForm iframes (after they load)
+      document.querySelectorAll('iframe[data-src*="jotform.com"]').forEach(function(iframe) {
+        if (iframe.id === 'JotFormIFrame-mask') return;
+        iframe.addEventListener('load', function() {
+          // iframe loaded successfully
+        });
         var timer = setTimeout(function() {
-          if (iframe.offsetHeight < 50 || !iframe.contentWindow) {
+          if (iframe.src && iframe.offsetHeight < 50) {
             var link = document.createElement('div');
             link.style.cssText = 'text-align:center; padding:24px; background:rgba(26,24,22,0.05); border-radius:8px; margin-top:8px;';
             link.innerHTML = '<p style="margin-bottom:12px; color:var(--text-muted); font-size:0.85rem;">Ha az űrlap nem töltődik be:</p>' +
-              '<a class="btn btn-gold" href="' + iframe.src + '" target="_blank" rel="noopener">Űrlap megnyitása új ablakban</a>';
+              '<a class="btn btn-gold" href="' + (iframe.dataset.src || iframe.src) + '" target="_blank" rel="noopener">Űrlap megnyitása új ablakban</a>';
             iframe.parentNode.insertBefore(link, iframe.nextSibling);
           }
         }, 4000);
@@ -2988,6 +3011,15 @@
       if (tabId === 'hileft' || tabId === 'mask' || tabId === 'observ') {
         document.querySelectorAll('#' + tabId + '-page .doc-carousel').forEach(function(el) {
           if (!el.dataset.init) initDocCarousel(el);
+        });
+      }
+
+      /* Lazy load JotForm iframes — only when tab is visited */
+      if (activePage) {
+        activePage.querySelectorAll('iframe[data-src]').forEach(function(iframe) {
+          if (!iframe.src || iframe.src === 'about:blank' || iframe.src === '') {
+            iframe.src = iframe.getAttribute('data-src');
+          }
         });
       }
     }
