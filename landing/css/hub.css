@@ -5311,6 +5311,168 @@
   .protocol-manifesto { padding: 56px 20px; }
 }
 
+/* ═══ 3 PILLÉR CIKLIKUS DIAGRAM ═══ */
+.protocol-cycle-diagram {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 2rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(184,150,90,0.1);
+}
+.cycle-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cycle-svg {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+}
+.cycle-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.cycle-legend-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cycle-legend-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.cycle-legend-item strong {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.cycle-legend-item p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+}
+.cycle-legend-footer {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--gold);
+  margin-top: 8px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .protocol-cycle-diagram {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px 1.25rem;
+  }
+  .cycle-svg { max-width: 280px; }
+}
+
+/* ═══ PROGRAM FILOZÓFIA ÖSSZEHASONLÍTÁS ═══ */
+.program-philosophy {
+  padding: 72px 2rem;
+  text-align: center;
+  background: var(--ivory);
+}
+.program-philosophy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  max-width: 900px;
+  margin: 40px auto 0;
+}
+.program-phil-card {
+  background: var(--cream);
+  border: 1px solid rgba(26,24,22,0.08);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: left;
+}
+.program-phil-card--gold {
+  background: var(--charcoal);
+  border-color: rgba(184,150,90,0.3);
+  color: #fff;
+}
+.program-phil-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: rgba(26,24,22,0.3);
+}
+.program-phil-card--gold .program-phil-icon {
+  color: var(--gold);
+}
+.program-phil-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--charcoal);
+}
+.program-phil-card--gold h4 {
+  color: var(--gold);
+}
+.program-phil-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.program-phil-card li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: rgba(26,24,22,0.65);
+  padding-left: 16px;
+  position: relative;
+}
+.program-phil-card li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(26,24,22,0.25);
+}
+.program-phil-card--gold li {
+  color: rgba(255,255,255,0.65);
+}
+.program-phil-card--gold li::before {
+  color: var(--gold);
+  content: '✓';
+}
+
+@media (max-width: 680px) {
+  .program-philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .program-phil-card { padding: 28px 20px; }
+}
+
 /* ═══ PULSE DOT ANIMATION ═══ */
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
