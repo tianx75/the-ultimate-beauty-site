@@ -3142,57 +3142,25 @@
     }
     .plb__content {
       flex: 1;
-      overflow: hidden;
-      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
     }
     .plb__page {
-      position: absolute;
-      inset: 0;
-      overflow-y: auto;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s ease;
-    }
-    .plb__page.active {
-      opacity: 1;
-      pointer-events: auto;
+      /* scrollable mode: all pages visible, stacked */
     }
     .plb__page-inner {
       /* scoped container for protocol content */
     }
     .plb__nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      border-top: 1px solid rgba(26,24,22,0.06);
-      background: var(--ivory);
-      flex-shrink: 0;
+      display: none; /* pagination hidden — scroll mode */
     }
     .plb__arrow {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid rgba(26,24,22,0.08);
-      background: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.1rem;
-      color: var(--charcoal);
-      transition: all 0.2s;
-      font-family: inherit;
+      display: none;
     }
-    .plb__arrow:hover { background: var(--cream); }
-    .plb__arrow:disabled { opacity: 0.25; cursor: default; pointer-events: none; }
     .plb__indicator {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(26,24,22,0.4);
+      display: none;
     }
 
     @media (max-width: 680px) {
