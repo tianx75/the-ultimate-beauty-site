@@ -5123,3 +5123,184 @@
 @media (max-width: 680px) {
   .insta-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ═══ PROBLÉMA SZEKCIÓ ═══ */
+.problem-section {
+  padding: 80px 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 48px 0 40px;
+  text-align: left;
+}
+.problem-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: transform 0.3s ease;
+}
+.problem-card:hover {
+  transform: translateY(-4px);
+}
+.problem-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold-glow);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+.problem-card__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 10px;
+}
+.problem-card__desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+.problem-conclusion {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--charcoal);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.problem-conclusion strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .problem-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .problem-section {
+    padding: 56px 20px;
+  }
+}
+
+/* ═══ PROTOCOL: ÖREGEDÉS GRID ═══ */
+.protocol-aging-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  text-align: left;
+}
+.protocol-aging-card {
+  background: var(--cream);
+  border-radius: 14px;
+  padding: 28px 24px;
+  position: relative;
+}
+.protocol-aging-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  opacity: 0.5;
+  line-height: 1;
+  display: block;
+  margin-bottom: 12px;
+}
+.protocol-aging-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+.protocol-aging-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+@media (max-width: 768px) {
+  .protocol-aging-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ═══ PROTOCOL: KINEK AJÁNLOTT ═══ */
+.protocol-audience {
+  padding: 80px 24px;
+  text-align: center;
+}
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  text-align: left;
+}
+.audience-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--cream);
+  border-radius: 12px;
+}
+.audience-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.audience-item p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--charcoal);
+}
+.audience-item strong {
+  color: var(--gold);
+}
+@media (max-width: 680px) {
+  .audience-grid { grid-template-columns: 1fr; gap: 16px; }
+  .protocol-audience { padding: 56px 20px; }
+}
+
+/* ═══ PROTOCOL: ZÁRÓ MANIFESZTÓ ═══ */
+.protocol-manifesto {
+  padding: 80px 24px;
+  background: var(--cream);
+}
+.manifesto-divider {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 32px;
+  letter-spacing: 0.3em;
+}
+.manifesto-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--charcoal);
+  border: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.manifesto-quote em {
+  color: var(--gold);
+}
+.manifesto-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+@media (max-width: 680px) {
+  .manifesto-quote { font-size: 1.5rem; }
+  .protocol-manifesto { padding: 56px 20px; }
+}
