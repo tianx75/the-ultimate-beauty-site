@@ -19,13 +19,13 @@
   <nav class="nav" id="mainNav">
     <a href="index.html" class="nav__logo">The Ultimate <span>Beauty</span></a>
     <ul class="nav__links">
-      <li><a href="index.html" class="nav__link">Főoldal</a></li>
-      <li><a href="technologia-led-mask.html" class="nav__link">LED Mask</a></li>
-      <li><a href="technologia-observ.html" class="nav__link active">Observ 520x</a></li>
-      <li><a href="technologia-hileft.html" class="nav__link">HILEFT</a></li>
-      <li><a href="protocol-szules-utani-regeneracio.html" class="nav__link">Regeneráció</a></li>
+      <li><a href="index.html" class="nav__link">Klinika</a></li>
+      <li><a href="protocol-hub.html" class="nav__link">Protocol</a></li>
+      <li><a href="technologia-hileft.html" class="nav__link active">Technol&oacute;gia</a></li>
+      <li><a href="program.html" class="nav__link">Program</a></li>
+      <li><a href="akademia.html" class="nav__link">Akad&eacute;mia</a></li>
     </ul>
-    <a href="index.html" class="nav__cta">Konzultáció &rarr;</a>
+    <a href="index.html#home-contact" class="nav__cta">Konzult&aacute;ci&oacute; &rarr;</a>
   </nav>
 
 
@@ -213,6 +213,97 @@
 
 
   <!-- ═══════════════════════════════════
+       GALÉRIA — Kompakt thumbnail grid
+  ═══════════════════════════════════ -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="gallery-section__header reveal">
+        <span class="label">Az Observ 520x a mindennapokban</span>
+        <div class="divider"></div>
+        <h2 class="display-md">Marketing anyagok &eacute;s <em>esettanulm&aacute;nyok</em></h2>
+        <p>Lapozzon a marketing anyagok k&ouml;z&ouml;tt &mdash; b&#337;rdiagnosztikai esettanulm&aacute;nyok &eacute;s klinikai felhaszn&aacute;l&aacute;s.</p>
+      </div>
+
+      <div class="gallery-thumbs reveal reveal-delay-1" id="galleryGrid">
+        <div class="gallery-thumb" data-index="0">
+          <img src="assets/images/slides/observ-spec-01.jpg" alt="Observ 520x 1" loading="lazy">
+          <span class="gallery-thumb__num">01</span>
+        </div>
+        <div class="gallery-thumb" data-index="1">
+          <img src="assets/images/slides/observ-spec-02.jpg" alt="Observ 520x 2" loading="lazy">
+          <span class="gallery-thumb__num">02</span>
+        </div>
+        <div class="gallery-thumb" data-index="2">
+          <img src="assets/images/slides/observ-spec-03.jpg" alt="Observ 520x 3" loading="lazy">
+          <span class="gallery-thumb__num">03</span>
+        </div>
+        <div class="gallery-thumb" data-index="3">
+          <img src="assets/images/slides/observ-spec-04.jpg" alt="Observ 520x 4" loading="lazy">
+          <span class="gallery-thumb__num">04</span>
+        </div>
+        <div class="gallery-thumb" data-index="4">
+          <img src="assets/images/slides/observ-spec-05.jpg" alt="Observ 520x 5" loading="lazy">
+          <span class="gallery-thumb__num">05</span>
+        </div>
+        <div class="gallery-thumb" data-index="5">
+          <img src="assets/images/slides/observ-spec-06.jpg" alt="Observ 520x 6" loading="lazy">
+          <span class="gallery-thumb__num">06</span>
+        </div>
+        <div class="gallery-thumb" data-index="6">
+          <img src="assets/images/slides/observ-spec-07.jpg" alt="Observ 520x 7" loading="lazy">
+          <span class="gallery-thumb__num">07</span>
+        </div>
+        <div class="gallery-thumb" data-index="7">
+          <img src="assets/images/slides/observ-spec-08.jpg" alt="Observ 520x 8" loading="lazy">
+          <span class="gallery-thumb__num">08</span>
+        </div>
+        <div class="gallery-thumb" data-index="8">
+          <img src="assets/images/slides/observ-spec-09.jpg" alt="Observ 520x 9" loading="lazy">
+          <span class="gallery-thumb__num">09</span>
+        </div>
+        <div class="gallery-thumb" data-index="9">
+          <img src="assets/images/slides/observ-spec-10.jpg" alt="Observ 520x 10" loading="lazy">
+          <span class="gallery-thumb__num">10</span>
+        </div>
+        <div class="gallery-thumb" data-index="10">
+          <img src="assets/images/slides/observ-spec-11.jpg" alt="Observ 520x 11" loading="lazy">
+          <span class="gallery-thumb__num">11</span>
+        </div>
+        <div class="gallery-thumb" data-index="11">
+          <img src="assets/images/slides/observ-spec-12.jpg" alt="Observ 520x 12" loading="lazy">
+          <span class="gallery-thumb__num">12</span>
+        </div>
+        <div class="gallery-thumb" data-index="12">
+          <img src="assets/images/slides/observ-spec-13.jpg" alt="Observ 520x 13" loading="lazy">
+          <span class="gallery-thumb__num">13</span>
+        </div>
+        <div class="gallery-thumb" data-index="13">
+          <img src="assets/images/slides/observ-spec-14.jpg" alt="Observ 520x 14" loading="lazy">
+          <span class="gallery-thumb__num">14</span>
+        </div>
+        <div class="gallery-thumb" data-index="14">
+          <img src="assets/images/slides/observ-spec-15.jpg" alt="Observ 520x 15" loading="lazy">
+          <span class="gallery-thumb__num">15</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="gallery-lightbox" id="galleryLightbox">
+    <button class="gallery-lightbox__close" id="lbClose">&times;</button>
+    <button class="gallery-lightbox__nav gallery-lightbox__nav--prev" id="lbPrev">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <img class="gallery-lightbox__img" id="lbImg" src="" alt="Observ 520x">
+    <button class="gallery-lightbox__nav gallery-lightbox__nav--next" id="lbNext">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="gallery-lightbox__counter"><span id="lbCurrent">1</span> / 15</div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
        CTA BANNER
   ═══════════════════════════════════ -->
   <section class="cta-banner">
@@ -246,7 +337,7 @@
           <p class="footer__tagline">Beauty technol&oacute;gia st&uacute;di&oacute; Bud&aacute;n. Szem&eacute;lyre szabott ULTIMA technol&oacute;gia &eacute;s professzion&aacute;lis b&#337;relemz&eacute;s, egyetlen &ouml;sszehangolt rendszerben.</p>
           <div class="footer__contact">
             <p class="footer__contact-item">1124 Budapest, Gy&ouml;ngyvirág &uacute;t 68.</p>
-            <p class="footer__contact-item">+36 1 XXX XXXX</p>
+            <p class="footer__contact-item">+36 1 790 3017</p>
             <p class="footer__contact-item">info@theultimatebeauty.net</p>
             <p class="footer__contact-item">H&ndash;P: 9:00&ndash;18:00 &middot; Szombat: el&#337;jegyz&eacute;s alapj&aacute;n</p>
           </div>
@@ -305,6 +396,45 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     reveals.forEach(el => observer.observe(el));
+
+    // Gallery Lightbox
+    (() => {
+      const thumbs = document.querySelectorAll('.gallery-thumb');
+      const lb = document.getElementById('galleryLightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbCounter = document.getElementById('lbCurrent');
+      let idx = 0;
+      const total = thumbs.length;
+
+      function open(i) {
+        idx = i;
+        lbImg.src = thumbs[idx].querySelector('img').src;
+        lbCounter.textContent = idx + 1;
+        lb.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      function go(dir) {
+        idx = (idx + dir + total) % total;
+        lbImg.src = thumbs[idx].querySelector('img').src;
+        lbCounter.textContent = idx + 1;
+      }
+
+      thumbs.forEach((t, i) => t.addEventListener('click', () => open(i)));
+      document.getElementById('lbClose').addEventListener('click', close);
+      document.getElementById('lbPrev').addEventListener('click', () => go(-1));
+      document.getElementById('lbNext').addEventListener('click', () => go(1));
+      lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+      document.addEventListener('keydown', (e) => {
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') go(-1);
+        if (e.key === 'ArrowRight') go(1);
+      });
+    })();
   </script>
 
   <script src="js/main.js" defer></script>
