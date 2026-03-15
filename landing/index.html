@@ -121,6 +121,10 @@
 
   <!-- TERMÉKVÁLASZTÓ -->
   <div class="product-switcher" role="tablist" aria-label="Termékválasztó">
+    <a href="#" class="switcher-brand" onclick="switchTab('home'); return false;">
+      <span class="switcher-brand__name">The Ultimate Beauty</span>
+      <span class="switcher-brand__sub">Boutique Clinic</span>
+    </a>
     <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="home-page" id="tab-home" onclick="switchTab('home')">Home</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="protocol-page" id="tab-protocol" onclick="switchTab('protocol')">Protocol</button>
     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="observ-page" id="tab-observ" onclick="switchTab('observ')">Observ 520x</button>
@@ -148,7 +152,7 @@
   <div id="home-page" class="page-content active" role="tabpanel" aria-labelledby="tab-home">
     <nav class="nav" id="mainNavHome" aria-label="Home navigáció">
       <div class="nav-container">
-        <a href="#" class="nav-logo" onclick="switchTab('home'); return false;">The Ultimate Beauty Clinic</a>
+        <a href="#" class="nav-logo" onclick="switchTab('home'); return false;">The Ultimate <span class="nav-logo__gold">Beauty</span> <span class="nav-logo__sub">Boutique Clinic</span></a>
         <ul class="nav-links">
           <li><a href="#home-protocol">Protocol</a></li>
           <li><a href="#home-tech">Technológia</a></li>
@@ -608,7 +612,7 @@
   <div id="mask-page" class="page-content" role="tabpanel" aria-labelledby="tab-mask">
     <nav class="nav" id="mainNavMask" aria-label="Mask navigáció">
       <div class="nav-container">
-        <a href="#" class="nav-logo">The Ultimate Beauty Clinic</a>
+        <a href="#" class="nav-logo">The Ultimate <span class="nav-logo__gold">Beauty</span> <span class="nav-logo__sub">Boutique Clinic</span></a>
         <ul class="nav-links">
           <li><a href="#about">A Maszk</a></li>
           <li><a href="#technology">Technológia</a></li>
@@ -1141,7 +1145,7 @@
   <div id="observ-page" class="page-content" role="tabpanel" aria-labelledby="tab-observ">
     <nav class="nav" id="mainNavObserv" aria-label="Observ navigáció">
       <div class="nav-container">
-        <a href="#" class="nav-logo">The Ultimate Beauty Clinic</a>
+        <a href="#" class="nav-logo">The Ultimate <span class="nav-logo__gold">Beauty</span> <span class="nav-logo__sub">Boutique Clinic</span></a>
         <ul class="nav-links">
           <li><a href="#observ-intro">A Rendszer</a></li>
           <li><a href="#observ-modes">Fénymódok</a></li>
@@ -1603,7 +1607,7 @@
   <div id="hileft-page" class="page-content" role="tabpanel" aria-labelledby="tab-hileft">
     <nav class="nav" id="mainNavHileft" aria-label="HILEFT navigáció">
       <div class="nav-container">
-        <a href="#" class="nav-logo">The Ultimate Beauty Clinic</a>
+        <a href="#" class="nav-logo">The Ultimate <span class="nav-logo__gold">Beauty</span> <span class="nav-logo__sub">Boutique Clinic</span></a>
         <ul class="nav-links">
           <li><a href="#hileft-intro">A Technológia</a></li>
           <li><a href="#hileft-mechanism">Hatásmechanizmus</a></li>
@@ -2043,7 +2047,7 @@
   <div id="protocol-page" class="page-content" role="tabpanel" aria-labelledby="tab-protocol">
     <nav class="nav" id="mainNavProtocol" aria-label="Protocol navigáció">
       <div class="nav-container">
-        <a href="#" class="nav-logo" onclick="switchTab('home'); return false;">The Ultimate Beauty <span style="color: var(--gold);">Protocol</span></a>
+        <a href="#" class="nav-logo" onclick="switchTab('home'); return false;">The Ultimate <span class="nav-logo__gold">Beauty</span> <span class="nav-logo__sub">Boutique Clinic</span></a>
         <ul class="nav-links">
           <li><a href="#protocol-problem">A kihívás</a></li>
           <li><a href="#protocol-deep">Filozófia</a></li>
@@ -2477,7 +2481,7 @@
   <div id="program-page" class="page-content" role="tabpanel" aria-labelledby="tab-program">
     <nav class="nav" id="mainNavProgram" aria-label="Program navigáció">
       <div class="nav-container">
-        <a href="#" class="nav-logo" onclick="switchTab('home'); return false;">The Ultimate Beauty Clinic</a>
+        <a href="#" class="nav-logo" onclick="switchTab('home'); return false;">The Ultimate <span class="nav-logo__gold">Beauty</span> <span class="nav-logo__sub">Boutique Clinic</span></a>
         <ul class="nav-links">
           <li><a href="#program-tiers">Hozzáférés</a></li>
           <li><a href="#program-why">Miért most</a></li>
@@ -2751,7 +2755,7 @@
 
       <div class="footer-grid">
         <div>
-          <div class="footer-logo">The Ultimate Beauty Clinic</div>
+          <div class="footer-logo">The Ultimate <span style="color:var(--gold);">Beauty</span><br><span style="font-size:0.55em; letter-spacing:4px; opacity:0.6;">BOUTIQUE CLINIC</span></div>
           <p class="footer-desc">A klinika Buda szívében — ahol a tudomány személyessé válik.</p>
           <!-- SOCIAL ICONS -->
           <div class="footer-social">
