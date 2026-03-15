@@ -2107,10 +2107,17 @@
           <!-- 01 — A Protocol Filozófiája (FEATURED — span 2) -->
           <a href="#protocol-deep" class="protocol-hub-card protocol-hub-card--featured">
             <span class="protocol-hub-card__num">01</span>
-            <svg class="protocol-hub-card__icon" viewBox="0 0 40 40" fill="none">
-              <circle cx="20" cy="20" r="14" stroke="var(--gold)" stroke-width="1.2"/>
-              <path d="M20 8v24M8 20h24" stroke="var(--gold)" stroke-width="1.2"/>
-              <circle cx="20" cy="20" r="4" fill="var(--gold)" fill-opacity="0.25"/>
+            <svg class="protocol-hub-card__icon" viewBox="0 0 56 56" fill="none">
+              <!-- Háromszög: Prepare-Treat-Recover -->
+              <circle cx="28" cy="28" r="24" stroke="var(--gold)" stroke-width="0.8" stroke-dasharray="4 4"/>
+              <polygon points="28,8 8,42 48,42" stroke="var(--gold)" stroke-width="1.2" fill="none" stroke-linejoin="round"/>
+              <circle cx="28" cy="8" r="3.5" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".15"/>
+              <circle cx="8" cy="42" r="3.5" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".15"/>
+              <circle cx="48" cy="42" r="3.5" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".15"/>
+              <circle cx="28" cy="28" r="6" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".08"/>
+              <text x="28" y="10" text-anchor="middle" fill="var(--gold)" font-size="3.5" font-family="Montserrat" font-weight="500" letter-spacing=".5">P</text>
+              <text x="8" y="44" text-anchor="middle" fill="var(--gold)" font-size="3.5" font-family="Montserrat" font-weight="500" letter-spacing=".5">R</text>
+              <text x="48" y="44" text-anchor="middle" fill="var(--gold)" font-size="3.5" font-family="Montserrat" font-weight="500" letter-spacing=".5">T</text>
             </svg>
             <h3 class="protocol-hub-card__title">A Protocol<br>Filozófiája</h3>
             <p class="protocol-hub-card__desc">A három pillér lényege: miért nem elegendő egyetlen kezelés, és hogyan épül fel a Prepare–Treat–Recover rendszer.</p>
@@ -2120,9 +2127,16 @@
           <!-- 02 — Technológia -->
           <a href="#" class="protocol-hub-card" onclick="switchTab('hileft'); return false;">
             <span class="protocol-hub-card__num">02</span>
-            <svg class="protocol-hub-card__icon" viewBox="0 0 40 40" fill="none">
-              <path d="M8 28L16 16l6 8 5-7 5 11" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="32" cy="10" r="3" stroke="var(--gold)" stroke-width="1.2"/>
+            <svg class="protocol-hub-card__icon" viewBox="0 0 56 56" fill="none">
+              <!-- Fény + EMS hullámok -->
+              <path d="M10 40L18 24l8 10 7-14 8 16" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="18" cy="24" r="2.5" stroke="var(--gold)" stroke-width="0.8" fill="var(--gold)" fill-opacity=".12"/>
+              <circle cx="26" cy="34" r="2.5" stroke="var(--gold)" stroke-width="0.8" fill="var(--gold)" fill-opacity=".12"/>
+              <circle cx="33" cy="20" r="2.5" stroke="var(--gold)" stroke-width="0.8" fill="var(--gold)" fill-opacity=".12"/>
+              <!-- Fénysugarak -->
+              <path d="M44 8l-4 4M48 14l-5 2M44 20l-4-1" stroke="var(--gold)" stroke-width="0.8" stroke-linecap="round" opacity=".6"/>
+              <circle cx="44" cy="8" r="4" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".1"/>
+              <circle cx="44" cy="8" r="1.5" fill="var(--gold)" fill-opacity=".3"/>
             </svg>
             <h3 class="protocol-hub-card__title">Technológia</h3>
             <p class="protocol-hub-card__desc">Az ULTIMA HILEFT rendszer tudományos alapjai — fény, izom, szinergia.</p>
@@ -2130,13 +2144,18 @@
           </a>
 
           <!-- 03 — Eredmények -->
-          <a href="#protocol-results" class="protocol-hub-card" onclick="document.getElementById('protocol-results')?.scrollIntoView({behavior:'smooth', block:'start'}); return false;">
+          <a href="#eredmenyek-bizonyitekok" class="protocol-hub-card" onclick="document.getElementById('eredmenyek-bizonyitekok')?.scrollIntoView({behavior:'smooth', block:'start'}); return false;">
             <span class="protocol-hub-card__num">03</span>
-            <svg class="protocol-hub-card__icon" viewBox="0 0 40 40" fill="none">
-              <path d="M8 32L14 20l6 6 6-12 6 10" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="14" cy="20" r="2" stroke="var(--gold)" stroke-width="1"/>
-              <circle cx="20" cy="26" r="2" stroke="var(--gold)" stroke-width="1"/>
-              <circle cx="26" cy="14" r="2" stroke="var(--gold)" stroke-width="1"/>
+            <svg class="protocol-hub-card__icon" viewBox="0 0 56 56" fill="none">
+              <!-- Before/After oszlopdiagram -->
+              <rect x="8" y="30" width="8" height="18" rx="1" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".08"/>
+              <rect x="20" y="22" width="8" height="26" rx="1" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".15"/>
+              <rect x="32" y="14" width="8" height="34" rx="1" stroke="var(--gold)" stroke-width="1" fill="var(--gold)" fill-opacity=".22"/>
+              <!-- Felfelé nyíl a növekedést jelzi -->
+              <path d="M46 36V12" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M42 16l4-4 4 4" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Observ jelzés -->
+              <circle cx="46" cy="8" r="3" stroke="var(--gold)" stroke-width="0.8" fill="var(--gold)" fill-opacity=".1"/>
             </svg>
             <h3 class="protocol-hub-card__title">Eredmények<br>& Bizonyítékok</h3>
             <p class="protocol-hub-card__desc">Observ 520x kontrollvizsgálatok, Before/After eredmények és klinikai statisztikák.</p>
@@ -2146,10 +2165,17 @@
           <!-- 04 — Klinikai Kutatás -->
           <a href="#" class="protocol-hub-card" onclick="event.preventDefault(); event.stopPropagation(); openProtocolLightbox('kutatas');">
             <span class="protocol-hub-card__num">04</span>
-            <svg class="protocol-hub-card__icon" viewBox="0 0 40 40" fill="none">
-              <path d="M20 8L6 16l14 8 14-8-14-8z" stroke="var(--gold)" stroke-width="1.2" stroke-linejoin="round"/>
-              <path d="M10 20v8c0 0 4 4 10 4s10-4 10-4v-8" stroke="var(--gold)" stroke-width="1.2"/>
-              <path d="M34 16v8" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+            <svg class="protocol-hub-card__icon" viewBox="0 0 56 56" fill="none">
+              <!-- Mikroszkóp / kutatás szimbólum -->
+              <circle cx="22" cy="22" r="12" stroke="var(--gold)" stroke-width="1.2"/>
+              <circle cx="22" cy="22" r="7" stroke="var(--gold)" stroke-width="0.8" stroke-dasharray="3 2"/>
+              <circle cx="22" cy="22" r="3" fill="var(--gold)" fill-opacity=".15"/>
+              <!-- Nagyító nyele -->
+              <path d="M31 31l12 12" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
+              <!-- DNS spirál jelzés -->
+              <path d="M40 8c-3 4 3 8 0 12" stroke="var(--gold)" stroke-width="0.8" stroke-linecap="round" opacity=".5"/>
+              <path d="M44 8c-3 4 3 8 0 12" stroke="var(--gold)" stroke-width="0.8" stroke-linecap="round" opacity=".5"/>
+              <path d="M40 10h4M40 14h4M40 18h4" stroke="var(--gold)" stroke-width="0.6" opacity=".4"/>
             </svg>
             <h3 class="protocol-hub-card__title">Klinikai<br>Kutatás</h3>
             <p class="protocol-hub-card__desc">4 aktív pilot program, klinikai bizonyítékok és a sejtbiológiai mechanizmusok tudományos áttekintése.</p>
@@ -2159,7 +2185,200 @@
         </div>
       </section>
 
-      <!-- Akadémia szekció eltávolítva — a 04-es csempe mostantól a kutatas.html lightbox-ot nyitja meg -->
+      <!-- ── EREDMÉNYEK & BIZONYÍTÉKOK ── -->
+      <section class="results-evidence" id="eredmenyek-bizonyitekok">
+        <div class="container">
+
+          <div class="results__header">
+            <span class="section-label">Eredmények & Bizonyítékok</span>
+            <div class="divider"></div>
+            <h2 class="section-title">Mérhető változás,<br><em>dokumentált eredmények.</em></h2>
+            <p class="results__subtitle">Minden Protocol kezelés előtt és után Observ 520x bőrdiagnosztikával dokumentálunk. Az eredmények nem szubjektívek — klinikailag mértek és összehasonlíthatók.</p>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="results__stats">
+            <div class="results__stat">
+              <span class="results__stat-num">94%</span>
+              <span class="results__stat-label">vendég-elégedettség<br>az első Protocol ciklus után</span>
+            </div>
+            <div class="results__stat">
+              <span class="results__stat-num">3x</span>
+              <span class="results__stat-label">Observ-méréssel igazolt<br>bőrminőség javulás</span>
+            </div>
+            <div class="results__stat">
+              <span class="results__stat-num">87%</span>
+              <span class="results__stat-label">vendég folytatja<br>a Protocol programot</span>
+            </div>
+            <div class="results__stat">
+              <span class="results__stat-num">520x</span>
+              <span class="results__stat-label">nagyítású diagnosztika<br>minden kontrollponton</span>
+            </div>
+          </div>
+
+          <!-- B/A Cards -->
+          <div class="results__ba-grid">
+
+            <div class="results__ba-card">
+              <div class="results__ba-images">
+                <div class="results__ba-placeholder">
+                  <span class="results__ba-label">Before</span>
+                  <div class="results__ba-img-placeholder">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4"/><path d="M17 31c0-4 3-7 7-7s7 3 7 7" stroke="var(--gold)" stroke-width="1"/><circle cx="24" cy="19" r="4" stroke="var(--gold)" stroke-width="1"/></svg>
+                  </div>
+                </div>
+                <div class="results__ba-placeholder">
+                  <span class="results__ba-label">After</span>
+                  <div class="results__ba-img-placeholder results__ba-img-placeholder--after">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4"/><path d="M17 31c0-4 3-7 7-7s7 3 7 7" stroke="var(--gold)" stroke-width="1"/><circle cx="24" cy="19" r="4" stroke="var(--gold)" stroke-width="1"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="results__ba-info">
+                <h4>Arcfiatalítás — Protocol ciklus</h4>
+                <p>3 hónapos HILEFT + LED Mask kombinált kezelés. Observ 520x dokumentáció.</p>
+                <span class="results__ba-tag">Prepare → Treat → Recover</span>
+              </div>
+            </div>
+
+            <div class="results__ba-card">
+              <div class="results__ba-images">
+                <div class="results__ba-placeholder">
+                  <span class="results__ba-label">Before</span>
+                  <div class="results__ba-img-placeholder">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4"/><path d="M17 31c0-4 3-7 7-7s7 3 7 7" stroke="var(--gold)" stroke-width="1"/><circle cx="24" cy="19" r="4" stroke="var(--gold)" stroke-width="1"/></svg>
+                  </div>
+                </div>
+                <div class="results__ba-placeholder">
+                  <span class="results__ba-label">After</span>
+                  <div class="results__ba-img-placeholder results__ba-img-placeholder--after">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4"/><path d="M17 31c0-4 3-7 7-7s7 3 7 7" stroke="var(--gold)" stroke-width="1"/><circle cx="24" cy="19" r="4" stroke="var(--gold)" stroke-width="1"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="results__ba-info">
+                <h4>Bőrminőség regeneráció</h4>
+                <p>Hialuronsav szinergia program — HILEFT előkészítés + filler + LED regeneráció.</p>
+                <span class="results__ba-tag">Observ 520x kontroll</span>
+              </div>
+            </div>
+
+            <div class="results__ba-card">
+              <div class="results__ba-images">
+                <div class="results__ba-placeholder">
+                  <span class="results__ba-label">Before</span>
+                  <div class="results__ba-img-placeholder">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4"/><path d="M17 31c0-4 3-7 7-7s7 3 7 7" stroke="var(--gold)" stroke-width="1"/><circle cx="24" cy="19" r="4" stroke="var(--gold)" stroke-width="1"/></svg>
+                  </div>
+                </div>
+                <div class="results__ba-placeholder">
+                  <span class="results__ba-label">After</span>
+                  <div class="results__ba-img-placeholder results__ba-img-placeholder--after">
+                    <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="var(--gold)" stroke-width="1" stroke-dasharray="4 4"/><path d="M17 31c0-4 3-7 7-7s7 3 7 7" stroke="var(--gold)" stroke-width="1"/><circle cx="24" cy="19" r="4" stroke="var(--gold)" stroke-width="1"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="results__ba-info">
+                <h4>Szülés utáni regeneráció</h4>
+                <p>Hasfali rehabilitáció — neuromuszkuláris stimuláció + fotobiomoduláció kombináció.</p>
+                <span class="results__ba-tag">Clinical Program</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="results__note" style="text-align:center;">
+            <p>A fotókat és számadatokat a klinikai pilot programok lezárása után, valós eredményekkel frissítjük. Minden dokumentáció az Observ 520x rendszerrel készül.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+              <a href="protocol-hub.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.6rem;font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--charcoal);border:1px solid rgba(26,24,22,.2);transition:all .3s;">A Protocol megismerése →</a>
+              <a href="kutatas.html" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.6rem;font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--charcoal);border:1px solid rgba(26,24,22,.2);transition:all .3s;">Klinikai kutatás →</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── CLINICAL PROGRAMS (Eredmények csempe alá) ── -->
+      <section class="clinical-programs" id="clinical-programs">
+        <div class="container">
+
+          <div class="clinical__intro">
+            <div class="clinical__intro-left">
+              <span class="section-label">Clinical Programs</span>
+              <div class="divider"></div>
+              <h2 class="section-title">Strukturált<br><em>útvonalak</em></h2>
+              <div class="clinical__intro-badge">Korlátozott férőhely &middot; Aktív program</div>
+            </div>
+            <div class="clinical__intro-right">
+              <p>Nem egyedi kezeléseket kínálunk, hanem komplex, orvos által tervezett és felügyelt esztétikai útvonalakat. A programba való belépés korlátozott — ez biztosítja, hogy minden résztvevő kiemelt szakmai figyelmet kapjon.</p>
+              <p>Az egymásra épülő kezelések szinergiája érvényesül, az eredmények dokumentáltan, mérhető módon épülnek egymásra.</p>
+            </div>
+          </div>
+
+          <div class="clinical__benefits">
+            <div class="clinical__benefit">
+              <div class="clinical__benefit-num">01</div>
+              <div class="clinical__benefit-text">Részletes orvosi konzultáció és személyes állapotfelmérés</div>
+            </div>
+            <div class="clinical__benefit">
+              <div class="clinical__benefit-num">02</div>
+              <div class="clinical__benefit-text">Személyre szabott kezelési útvonal, protokoll szerint</div>
+            </div>
+            <div class="clinical__benefit">
+              <div class="clinical__benefit-num">03</div>
+              <div class="clinical__benefit-text">Kiemelt szakmai kontroll és strukturált utókövetés</div>
+            </div>
+            <div class="clinical__benefit">
+              <div class="clinical__benefit-num">04</div>
+              <div class="clinical__benefit-text">Korlátozott férőhelyes részvétel — exkluzív hozzáférés</div>
+            </div>
+            <div class="clinical__benefit">
+              <div class="clinical__benefit-num">05</div>
+              <div class="clinical__benefit-text">Dokumentált eredmények, professzionális fotódokumentáció</div>
+            </div>
+          </div>
+
+          <div class="clinical__grid">
+            <a href="protocol-szules-utani-regeneracio.html" class="clinical-card">
+              <span class="clinical-card__num">01</span>
+              <h3 class="clinical-card__title">Szülés utáni<br>regeneráció</h3>
+              <p class="clinical-card__desc">Strukturált, ULTIMA-alapú regenerációs program szülés után — hasfali rehabilitáció, bőrminőség helyreállítás és hormonális változások utáni esztétikai támogatás.</p>
+              <div class="clinical-card__footer">
+                <span class="clinical-card__tag">Aktív program</span>
+                <span class="clinical-card__arrow">&rarr;</span>
+              </div>
+            </a>
+
+            <a href="protocol-mini-facelift-integracio.html" class="clinical-card">
+              <span class="clinical-card__num">02</span>
+              <h3 class="clinical-card__title">Mini Facelift<br>Integráció</h3>
+              <p class="clinical-card__desc">Sebészeti beavatkozás előtti előkészítés és utáni regeneráció az ULTIMA rendszerrel. Gyorsabb felépülés, hosszabb tartósság.</p>
+              <div class="clinical-card__footer">
+                <span class="clinical-card__tag">Aktív program</span>
+                <span class="clinical-card__arrow">&rarr;</span>
+              </div>
+            </a>
+
+            <a href="protocol-hialuronsav-szinergia.html" class="clinical-card">
+              <span class="clinical-card__num">03</span>
+              <h3 class="clinical-card__title">Hialuronsav + HILEFT<br>Szinergia</h3>
+              <p class="clinical-card__desc">A hialuronsavas kezelések hatékonyságának fokozása neuromuszkuláris előkészítéssel és fotobiomodulációs regenerációval.</p>
+              <div class="clinical-card__footer">
+                <span class="clinical-card__tag">Aktív program</span>
+                <span class="clinical-card__arrow">&rarr;</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="clinical__cta">
+            <p>A programba kerülés orvosi konzultáció és szakmai kiválasztás alapján történik.</p>
+            <a href="clinical-program.html" class="cta-button">
+              Jelentkezés a programba →
+            </a>
+          </div>
+
+        </div>
+      </section>
 
       <!-- ── PHILOSOPHY DEEP DIVE ── -->
       <section class="protocol-philosophy" id="protocol-deep">
@@ -2765,6 +2984,15 @@
           </div>
         </div>
         <div>
+          <h4>Protocol & Kezelések</h4>
+          <ul>
+            <li><a href="#" onclick="switchTab('protocol'); return false;">Protocol</a></li>
+            <li><a href="protocol-hub.html">Protocol Hub</a></li>
+            <li><a href="clinical-program.html">Clinical Programs</a></li>
+            <li><a href="#" onclick="switchTab('program'); return false;">Program & Tagság</a></li>
+          </ul>
+        </div>
+        <div>
           <h4>Technológiák</h4>
           <ul>
             <li><a href="#" onclick="switchTab('mask'); return false;">ULTIMA LED Mask</a></li>
@@ -2773,11 +3001,11 @@
           </ul>
         </div>
         <div>
-          <h4>Információ</h4>
+          <h4>A Klinika</h4>
           <ul>
-            <li><a href="#" onclick="switchTab('home'); return false;">Főoldal</a></li>
-            <li><a href="#" onclick="switchTab('program'); return false;">Program</a></li>
-            <li><a href="#faq" onclick="switchTab('mask');">LED Mask GYIK</a></li>
+            <li><a href="klinika.html">Bemutatkozás</a></li>
+            <li><a href="akademia.html">Akadémia</a></li>
+            <li><a href="kutatas.html">Kutatás</a></li>
             <li><a href="#contact">Kapcsolat</a></li>
           </ul>
         </div>

@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tub-site",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/Users/theultimatebeautykrisztian/.claude/serve-tub.py"],
+      "port": 8080,
+      "autoPort": true
+    },
+    {
+      "name": "landing",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["/Users/theultimatebeautykrisztian/.claude/serve-landing.py"],
+      "port": 8081,
+      "autoPort": true
+    }
+  ]
+}

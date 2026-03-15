@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Ultimate Beauty Protocol — Nem kezeléseket kínálunk. Rendszert.</title>
   <meta name="description" content="A The Ultimate Beauty Protocol egy koordinált rendszer: Prepare–Treat–Recover. Nem kezeléseket kínálunk, hanem egy összehangolt útvonalat, ahol minden lépés a következőre épül.">
+  <meta property="og:title" content="The Ultimate Beauty Protocol — Nem kezeléseket kínálunk. Rendszert.">
+  <meta property="og:description" content="A The Ultimate Beauty Protocol egy koordinált rendszer: Prepare–Treat–Recover. Nem kezeléseket kínálunk, hanem egy összehangolt útvonalat, ahol minden lépés a következőre épül.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://theultimatebeauty.hu/protocol-hub.html">
+  <meta property="og:image" content="https://theultimatebeauty.hu/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.hu/protocol-hub.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -703,8 +709,16 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
+    .proto-card__icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.25rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .proto-card:hover .proto-card__icon { opacity: 1; }
     .proto-card__title {
       font-family: var(--font-display);
       font-size: 1.2rem;
@@ -1130,7 +1144,7 @@
       <li><a href="klinika.html" class="nav__link">Klinika</a></li>
       <li><a href="protocol-hub.html" class="nav__link active">Protocol</a></li>
       <li><a href="technologia-hileft.html" class="nav__link">Technol&oacute;gia</a></li>
-      <li><a href="program.html" class="nav__link">Program</a></li>
+      <li><a href="clinical-program.html" class="nav__link">Program</a></li>
       <li><a href="akademia.html" class="nav__link">Akad&eacute;mia</a></li>
     </ul>
     <a href="index.html#home-contact" class="nav__cta">Konzult&aacute;ci&oacute; &rarr;</a>
@@ -1402,6 +1416,13 @@
         <!-- Mini Facelift integráció -->
         <a href="protocol-mini-facelift-integracio.html" class="proto-card reveal">
           <span class="proto-card__badge">Signature Protocol</span>
+          <svg class="proto-card__icon" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6C18 6 14 10 13 16c-1 6 0 12 2 18h18c2-6 3-12 2-18-1-6-5-10-11-10z" stroke="var(--gold)" stroke-width="1.2"/>
+            <path d="M18 16c0 0 2 2 6 2s6-2 6-2" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="19" cy="20" r="1.2" fill="var(--gold)" fill-opacity=".3"/>
+            <circle cx="29" cy="20" r="1.2" fill="var(--gold)" fill-opacity=".3"/>
+            <path d="M15 34h18" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-dasharray="2 2"/>
+          </svg>
           <h3 class="proto-card__title">Mini Facelift<br>Integráció</h3>
           <p class="proto-card__desc">Sebészeti beavatkozás HILEFT előkészítéssel és LED Mask regenerációval — rövidebb lábadozás, hosszabb eredmény.</p>
           <span class="proto-card__arrow">&rarr;</span>
@@ -1410,30 +1431,55 @@
         <!-- Szülés utáni regeneráció -->
         <a href="protocol-szules-utani-regeneracio.html" class="proto-card reveal reveal-delay-1">
           <span class="proto-card__badge">Signature Protocol</span>
+          <svg class="proto-card__icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="18" r="10" stroke="var(--gold)" stroke-width="1.2"/>
+            <path d="M18 28c-4 2-6 5-6 9h24c0-4-2-7-6-9" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M24 12v4M21 18h6" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="24" cy="18" r="3" fill="var(--gold)" fill-opacity=".15"/>
+          </svg>
           <h3 class="proto-card__title">Szülés utáni<br>regeneráció</h3>
           <p class="proto-card__desc">Hasfalrekonstrukció, bőrfeszesítés és hormonális regeneráció — a test visszaállítása az anyaság után.</p>
           <span class="proto-card__arrow">&rarr;</span>
         </a>
 
-        <!-- Hialuronsav szinergia — nincs dedikált oldala, link a konzultációra -->
-        <a href="index.html#home-contact" class="proto-card reveal reveal-delay-2">
+        <!-- Hialuronsav szinergia -->
+        <a href="protocol-hialuronsav-szinergia.html" class="proto-card reveal reveal-delay-2">
           <span class="proto-card__badge">Signature Protocol</span>
+          <svg class="proto-card__icon" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6v12" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M18 18c0 0 0 14 6 22 6-8 6-22 6-22" stroke="var(--gold)" stroke-width="1.2" stroke-linejoin="round"/>
+            <circle cx="24" cy="30" r="5" fill="var(--gold)" fill-opacity=".12" stroke="var(--gold)" stroke-width="1"/>
+            <circle cx="24" cy="30" r="2" fill="var(--gold)" fill-opacity=".25"/>
+          </svg>
           <h3 class="proto-card__title">Hialuronsav<br>szinergia</h3>
           <p class="proto-card__desc">HA filler az aktivált szövetben — jobb integrálódás, természetesebb eredmény, hosszabb tartósság.</p>
           <span class="proto-card__arrow">&rarr;</span>
         </a>
 
         <!-- Anti-aging komplex -->
-        <a href="index.html#home-contact" class="proto-card reveal reveal-delay-3">
+        <a href="protocol-anti-aging-komplex.html" class="proto-card reveal reveal-delay-3">
           <span class="proto-card__badge">Signature Protocol</span>
+          <svg class="proto-card__icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="16" stroke="var(--gold)" stroke-width="1.2"/>
+            <circle cx="24" cy="24" r="10" stroke="var(--gold)" stroke-width="0.8" stroke-dasharray="3 3"/>
+            <circle cx="24" cy="24" r="4" fill="var(--gold)" fill-opacity=".15" stroke="var(--gold)" stroke-width="1"/>
+            <path d="M24 8v4M24 36v4M8 24h4M36 24h4" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
           <h3 class="proto-card__title">Anti-aging<br>komplex</h3>
           <p class="proto-card__desc">Botox + biostimulátorok + HILEFT + LED Mask — koordinált öregedésgátló rendszer egy orvos felügyeletével.</p>
           <span class="proto-card__arrow">&rarr;</span>
         </a>
 
         <!-- Bőrminőség -->
-        <a href="index.html#home-contact" class="proto-card reveal reveal-delay-4">
+        <a href="protocol-borminoseg-javitas.html" class="proto-card reveal reveal-delay-4">
           <span class="proto-card__badge">Signature Protocol</span>
+          <svg class="proto-card__icon" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="14" stroke="var(--gold)" stroke-width="1.2"/>
+            <path d="M16 20c2-3 5-5 8-5s6 2 8 5" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+            <path d="M14 28c3 4 6 6 10 6s7-2 10-6" stroke="var(--gold)" stroke-width="1" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="3" fill="var(--gold)" fill-opacity=".2"/>
+            <path d="M24 10v3M24 35v3" stroke="var(--gold)" stroke-width="0.8" stroke-linecap="round"/>
+          </svg>
           <h3 class="proto-card__title">Bőrminőség<br>javítás</h3>
           <p class="proto-card__desc">Textúra, tónus, fényesség — Observ diagnosztikára épülő bőrminőség-program otthoni LED karbantartással.</p>
           <span class="proto-card__arrow">&rarr;</span>
@@ -1442,6 +1488,11 @@
         <!-- További Protocols teaser -->
         <a href="index.html#home-contact" class="proto-card reveal reveal-delay-5">
           <span class="proto-card__badge">Hamarosan</span>
+          <svg class="proto-card__icon" viewBox="0 0 48 48" fill="none" style="opacity:.4">
+            <circle cx="16" cy="24" r="3" stroke="var(--gold)" stroke-width="1.2"/>
+            <circle cx="24" cy="24" r="3" stroke="var(--gold)" stroke-width="1.2"/>
+            <circle cx="32" cy="24" r="3" stroke="var(--gold)" stroke-width="1.2"/>
+          </svg>
           <h3 class="proto-card__title">További<br>Protocol útvonalak</h3>
           <p class="proto-card__desc">Akné, rosacea, pigmentáció, testformázás — újabb Signature Protocolok a konzultációs tapasztalataink alapján.</p>
           <span class="proto-card__arrow">&rarr;</span>
@@ -1554,7 +1605,7 @@
         </a>
 
         <!-- Program -->
-        <a href="program.html" class="hub-nav__card">
+        <a href="clinical-program.html" class="hub-nav__card">
           <svg class="hub-nav__card-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 6L32 12v10c0 7-5.5 11.5-12 14C13.5 33.5 8 29 8 22V12L20 6z" stroke="var(--gold)" stroke-width="1.2"/>
             <path d="M15 20l3.5 3.5L26 16" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round"/>
@@ -1629,7 +1680,7 @@
           <a href="protocol-hub.html" class="footer__link">Protocol Hub</a>
           <a href="protocol-mini-facelift-integracio.html" class="footer__link">Mini Facelift Protocol</a>
           <a href="protocol-szules-utani-regeneracio.html" class="footer__link">Szülés utáni regeneráció</a>
-          <a href="program.html" class="footer__link">Program</a>
+          <a href="clinical-program.html" class="footer__link">Program</a>
         </div>
         <div>
           <div class="footer__col-title">Technológia</div>
