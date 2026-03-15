@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TUB Landing — Szabálykönyv & Terv</title>
+  <style>
+    :root {
+      --ivory: #FDFAF6;
+      --cream: #F5F0E8;
+      --charcoal: #1A1816;
+      --gold: #B8965A;
+      --gold-light: #D4B077;
+      --red: #C0392B;
+      --green: #27AE60;
+      --blue: #2980B9;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      line-height: 1.6;
+      padding: 40px 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      border-bottom: 3px solid var(--gold);
+      padding-bottom: 12px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--gold);
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding: 10px 16px;
+      background: var(--charcoal);
+      color: var(--ivory);
+      border-radius: 6px;
+    }
+    h2 .emoji { margin-right: 8px; }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 8px;
+      color: var(--gold);
+    }
+    p, li { font-size: 0.95rem; }
+    p { margin-bottom: 12px; }
+    ul, ol { margin-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 6px; }
+
+    /* Szabály dobozok */
+    .rule-box {
+      border-left: 4px solid var(--red);
+      background: #FFF5F5;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .rule-box.green {
+      border-left-color: var(--green);
+      background: #F0FFF4;
+    }
+    .rule-box.blue {
+      border-left-color: var(--blue);
+      background: #F0F7FF;
+    }
+    .rule-box.gold {
+      border-left-color: var(--gold);
+      background: var(--cream);
+    }
+    .rule-box strong { display: block; margin-bottom: 4px; font-size: 1rem; }
+
+    /* Táblázatok */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--charcoal);
+      color: var(--ivory);
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #E0D8CC;
+    }
+    tr:nth-child(even) td { background: var(--cream); }
+
+    /* Státusz badge-ek */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: white;
+    }
+    .badge.done { background: var(--green); }
+    .badge.wip { background: #F39C12; }
+    .badge.todo { background: var(--red); }
+    .badge.parked { background: #95A5A6; }
+
+    /* Mappa fa */
+    .tree {
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.85rem;
+      background: var(--charcoal);
+      color: #CCC;
+      padding: 20px 24px;
+      border-radius: 8px;
+      margin: 16px 0;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+    .tree .folder { color: var(--gold-light); font-weight: 600; }
+    .tree .file { color: #AAA; }
+    .tree .active { color: var(--green); font-weight: 600; }
+    .tree .parked { color: #666; }
+    .tree .comment { color: #666; font-style: italic; }
+
+    /* Idővonal */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gold);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 20px;
+      padding: 12px 16px;
+      background: white;
+      border: 1px solid #E0D8CC;
+      border-radius: 8px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 16px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      border: 2px solid var(--ivory);
+    }
+    .timeline-item.done::before { background: var(--green); }
+    .timeline-item.current::before { background: var(--red); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+    .timeline-item strong { display: block; margin-bottom: 4px; }
+
+    .updated {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #999;
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid #E0D8CC;
+    }
+
+    @media print {
+      body { padding: 20px; }
+      .rule-box, .tree, .timeline-item { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>TUB Landing — Szabálykönyv & Terv</h1>
+<p class="subtitle">The Ultimate Beauty &middot; theultimatebeauty.net &middot; Boutique Clinic</p>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">🚨</span> 1. VAS SZABÁLYOK — Ezeket soha nem szegjük meg</h2>
+
+<div class="rule-box">
+  <strong>❌ TILOS: /tmp/tub-site/ módosítása</strong>
+  Az eredeti oldal másolata. Csak olvasni/másolni szabad, módosítani SOHA — csak kifejezett engedéllyel.
+</div>
+
+<div class="rule-box">
+  <strong>❌ TILOS: TUB Projekt/ mappa módosítása</strong>
+  Ez a theultimatebeauty<strong>.org</strong> Webflow prototípus-projekt. Félre van téve. Nem nyúlunk hozzá, hacsak Krisztián nem kéri.
+</div>
+
+<div class="rule-box green">
+  <strong>✅ MUNKAMAPPA: TUB.landing/</strong>
+  Minden fejlesztés KIZÁRÓLAG itt történik. Ez a theultimatebeauty<strong>.net</strong> live site forrása.<br>
+  Elérési út: <code>~/Documents/Ultima Beauty Site/TUB.landing/</code>
+</div>
+
+<div class="rule-box gold">
+  <strong>⚠️ Fájlokat NEM törlünk</strong>
+  Ha valami nem kell, <code>_archive/</code> mappába költöztetjük. A duplikátumok szándékos biztonsági másolatok.
+</div>
+
+<div class="rule-box gold">
+  <strong>⚠️ Fotók a végén</strong>
+  Először struktúra és tartalom. Placeholder-ek a képekhez. A valódi fotók akkor jönnek, ha Krisztián adja.
+</div>
+
+<div class="rule-box gold">
+  <strong>⚠️ Számok/árak a végén</strong>
+  A Program szintek, árazás, kedvezmények üresek maradnak amíg Henivel nem egyeztetünk.
+</div>
+
+<div class="rule-box">
+  <strong>📝 KÖTELEZŐ: Munkafolyamat bejegyzés</strong>
+  Minden munkafolyamat (session) végén KÖTELEZŐ bejegyzést készíteni ebbe a Szabálykönyvbe a Változásnapló (10.) szekcióba.<br>
+  Tartalmazza: dátum, elvégzett feladatok, módosított fájlok, következő lépések.
+</div>
+
+<div class="rule-box">
+  <strong>💾 KÖTELEZŐ: Backup munka előtt</strong>
+  Minden munkafolyamat indulása előtt KÖTELEZŐ biztonsági másolatot készíteni az érintett fájlokról.<br>
+  Cél: <code>_projekt/_archive/</code> mappa, fájlnév: <code>[eredeti-név]-BACKUP-[dátum].html</code><br>
+  A munkát CSAK a backup elkészülte után szabad megkezdeni. A tervet szinkronizálni kell a Szabálykönyvvel.
+</div>
+
+<div class="rule-box">
+  <strong>🔒 TERV módosítás CSAK engedéllyel</strong>
+  A Munkaterv (7.), Marketing Tölcsér (11.) és bármely stratégiai szekció módosítása KIZÁRÓLAG Krisztián kifejezett engedélyével történhet.<br>
+  Minden terv-módosítás esetén feljegyzés készül a Változásnaplóba: mi változott, miért, ki engedélyezte.
+</div>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">📂</span> 2. MAPPASTRUKTÚRA</h2>
+
+<div class="tree">
+<span class="folder">~/Documents/Ultima Beauty Site/</span>
+│
+├── <span class="active">TUB.landing/</span>              <span class="comment">← 🟢 MUNKAMAPPA (.net) — CSAK ITT DOLGOZUNK</span>
+│   ├── index.html                <span class="comment">← Főoldal (tab rendszer: Home, Protocol, stb.)</span>
+│   ├── klinika.html              <span class="comment">← Klinika bemutató</span>
+│   ├── protocol-hub.html         <span class="comment">← Protocol központ</span>
+│   ├── technologia-observ.html
+│   ├── technologia-hileft.html
+│   ├── technologia-led-mask.html
+│   ├── technologia-venus-legacy.html
+│   ├── protocol-mini-facelift-integracio.html
+│   ├── protocol-szules-utani-regeneracio.html
+│   ├── akademia.html
+│   ├── kutatas.html
+│   ├── clinical-program.html     <span class="comment">← Régi, átdolgozandó → program.html</span>
+│   ├── adatvedelem.html
+│   ├── aszf.html
+│   ├── css/
+│   │   ├── shared.css            <span class="comment">← Közös stílusok</span>
+│   │   ├── hub.css               <span class="comment">← index.html stílusok</span>
+│   │   ├── klinika.css
+│   │   ├── technologia-observ.css
+│   │   ├── technologia-hileft.css
+│   │   ├── technologia-led-mask.css
+│   │   └── protocol-szules.css
+│   ├── assets/images/ + docs/
+│   ├── SZABALYKONYV.html         <span class="comment">← Ez a dokumentum</span>
+│   ├── SZABALYKONYV.pdf          <span class="comment">← PDF verzió</span>
+│   ├── CNAME, robots.txt, sitemap.xml, favicon.svg
+│   └── apple-touch-icon.png, favicon-32x32.png, mask-hero.mp4
+│
+├── <span class="parked">_projekt/</span>                  <span class="comment">← ⚪ FÉLRETÉVE — minden ami NEM a live site</span>
+│   ├── <span class="parked">TUB Projekt/</span>           <span class="comment">← .org Webflow minta (18 HTML)</span>
+│   ├── <span class="parked">_archive/</span>              <span class="comment">← Régi backup fájlok</span>
+│   ├── TUB-PROJEKT-TERV.md
+│   ├── NYITO-TERV.md
+│   ├── generate_pdf.py
+│   ├── server.py, server.sh
+│   └── info/, PDF-ek
+│
+├── <span class="file">Gyökér HTML-ek + css/ + assets/</span>  <span class="comment">← gh-pages deploy fájlok (NEM NYÚLUNK HOZZÁ)</span>
+└── <span class="file">CNAME, .gitignore</span>
+</div>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">🔄</span> 3. DEPLOY FOLYAMAT</h2>
+
+<div class="rule-box blue">
+  <strong>GitHub Pages deploy lépések:</strong>
+  <ol style="margin-top: 8px;">
+    <li>Fejlesztés a <code>TUB.landing/</code> mappában (main branch)</li>
+    <li>Commit + push a main branch-re</li>
+    <li>Checkout <code>gh-pages</code> branch</li>
+    <li>Fájlok másolása a <code>TUB.landing/</code>-ból → gh-pages gyökérbe</li>
+    <li>Commit + push a gh-pages-re</li>
+    <li>Visszaváltás main-re</li>
+  </ol>
+</div>
+
+<table>
+  <tr><th>Branch</th><th>Mi van rajta</th><th>Deploy</th></tr>
+  <tr><td><code>main</code></td><td>TUB.landing/ + TUB Projekt/ + _archive/</td><td>Nem deploy-olódik</td></tr>
+  <tr><td><code>gh-pages</code></td><td>A TUB.landing/ tartalmának másolata (gyökérben)</td><td>✅ theultimatebeauty.net</td></tr>
+</table>
+
+<p><strong>Repo:</strong> <code>github.com/tianx75/the-ultimate-beauty-site</code></p>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">🎨</span> 4. DESIGN RENDSZER</h2>
+
+<h3>Színek</h3>
+<table>
+  <tr><th>Név</th><th>Kód</th><th>Használat</th></tr>
+  <tr><td>Ivory</td><td><code>#FDFAF6</code></td><td>Oldal háttér</td></tr>
+  <tr><td>Cream</td><td><code>#F5F0E8</code> / <code>#F8F4EE</code></td><td>Szekció háttér váltás</td></tr>
+  <tr><td>Charcoal</td><td><code>#1A1816</code></td><td>Szöveg, nav, dark szekciók</td></tr>
+  <tr><td>Gold</td><td><code>#B8965A</code></td><td>Kiemelés, CTA, border</td></tr>
+  <tr><td>Gold Light</td><td><code>#D4B077</code></td><td>Hover, alcím, dekoráció</td></tr>
+</table>
+
+<h3>Tipográfia</h3>
+<table>
+  <tr><th>Font</th><th>Szerep</th><th>Példa</th></tr>
+  <tr><td>Cormorant Garamond</td><td>Display / címek</td><td>h1, h2, hero szövegek</td></tr>
+  <tr><td>Montserrat</td><td>Body / UI / gombok</td><td>Paragrafusok, nav, badge-ek</td></tr>
+</table>
+
+<h3>Responsive breakpointok</h3>
+<table>
+  <tr><th>Breakpoint</th><th>Eszköz</th></tr>
+  <tr><td><code>1024px</code></td><td>Tablet</td></tr>
+  <tr><td><code>680px</code></td><td>Mobil</td></tr>
+</table>
+
+<h3>Stílus alapelvek</h3>
+<ul>
+  <li><strong>Luxus, de visszafogott</strong> — nem csillogós, hanem diszkrét elegancia</li>
+  <li><strong>Orvosi precízió</strong> — pontos, hiteles, nem túlígérő</li>
+  <li><strong>Boutique Clinic</strong> — exkluzív, személyre szabott, nem tömegkiszolgálás</li>
+  <li>Scroll reveal animációk (Intersection Observer, finom felúszás)</li>
+  <li>Ivory ↔ cream ↔ charcoal háttér ritmus a szekciók között</li>
+</ul>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">🧭</span> 5. NAVIGÁCIÓ (Egységes, minden aloldalon)</h2>
+
+<table>
+  <tr><th>Menüpont</th><th>Link</th><th>Megjegyzés</th></tr>
+  <tr><td>Klinika</td><td><code>klinika.html</code></td><td>—</td></tr>
+  <tr><td>Protocol</td><td><code>protocol-hub.html</code></td><td>A site szíve</td></tr>
+  <tr><td>Technológia</td><td><code>technologia-hileft.html</code></td><td>Tech hub oldal</td></tr>
+  <tr><td>Program</td><td><code>program.html</code></td><td>Membership/VIP</td></tr>
+  <tr><td>Akadémia</td><td><code>akademia.html</code></td><td>—</td></tr>
+  <tr><td>CTA gomb</td><td><code>index.html#home-contact</code></td><td>Személyes konzultáció →</td></tr>
+</table>
+
+<h3>Footer adatok</h3>
+<ul>
+  <li><strong>Cím:</strong> 1124 Budapest, Gyöngyvirág út 68.</li>
+  <li><strong>Telefon:</strong> +36 1 790 3017</li>
+  <li><strong>Logó:</strong> The Ultimate Beauty — Boutique Clinic</li>
+</ul>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">💡</span> 6. STRATÉGIAI NARRATÍVA</h2>
+
+<div class="rule-box gold">
+  <strong>A site egyetlen története:</strong>
+  Probléma (öregedés, széteső kezelések) → Protocol (Prepare / Treat / Recover) → Program (tagság, folytonosság)
+</div>
+
+<h3>3 Pillér — A Protocol rendszer</h3>
+<table>
+  <tr><th>Pillér</th><th>Fázis</th><th>Technológia</th><th>Lényeg</th></tr>
+  <tr><td>I.</td><td>Prepare</td><td>ULTIMA HILEFT</td><td>Neuromuszkuláris stimuláció + fotobiomoduláció (730nm + 940nm)</td></tr>
+  <tr><td>II.</td><td>Treat</td><td>Orvosesztétika</td><td>Botox, filler, mezoterápia — a Protocol keretében</td></tr>
+  <tr><td>III.</td><td>Recover</td><td>ULTIMA LED Mask</td><td>Otthoni regeneráció, 4 hullámhossz (415/590/630/850nm)</td></tr>
+</table>
+
+<h3>Kulcsüzenetek</h3>
+<ul>
+  <li>"Nem kezeléseket kínálunk, hanem rendszert" — paradigmaváltás</li>
+  <li>Boutique Clinic — max. exkluzivitás, személyre szabottság</li>
+  <li>Protocol-alapú modell vs. szolgáltatás-alapú modell</li>
+  <li>LED Mask = "Relationship Anchor" — a klinika és az otthon közötti híd</li>
+  <li>TUB = kizárólagos magyarországi LED Mask forgalmazó → B2B piac is</li>
+</ul>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">📋</span> 7. MUNKATERV — Fázisok és státusz</h2>
+
+<div class="timeline">
+
+  <div class="timeline-item done">
+    <strong>Fázis 0 — Mapparendezés</strong>
+    <span class="badge done">KÉSZ</span><br>
+    website/ → TUB Projekt/ átnevezés. _archive/ mappa létrehozva. Struktúra rendezve.
+  </div>
+
+  <div class="timeline-item current">
+    <strong>Fázis 1 — Protocol Hub újraépítés</strong>
+    <span class="badge wip">FOLYAMATBAN</span><br>
+    protocol-hub.html átdolgozása: 3 pilléres vizuális ív, paradigma összehasonlítás,
+    "Part of the Protocol" badge rendszer, patient journey timeline.<br>
+    <em>Megjegyzés: A TUB Projekt mappában van egy prototípus verzió — azt adaptáljuk a TUB.landing-ba.</em>
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 2 — Homepage Protocol szekció erősítés</strong>
+    <span class="badge todo">KÖVETKEZŐ</span><br>
+    A kompakt strip → erősebb 3-pilléres blokk. "Nem kezeléseket kínálunk, hanem rendszert."
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 3 — Program oldal (program.html)</strong>
+    <span class="badge todo">VÁRAKOZIK</span><br>
+    Membership/VIP oldal: Protocol Member / Inner Circle / Founding Member szintek.<br>
+    <em>⚠️ Árazás Henivel egyeztetés után. Struktúra most, számok később.</em>
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 4 — LED Mask integráció a fő oldalba</strong>
+    <span class="badge todo">VÁRAKOZIK</span><br>
+    B2C: "Part of the Protocol" badge + Program link a technologia-led-mask.html-en.<br>
+    B2B: Partner/wholesale szekció integrálása TUB stílusban (nem külön site!).<br>
+    <em>Később: külön ultimamask.com site a maszknak, partner portállal.</em>
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 5 — Nav egységesítés</strong>
+    <span class="badge todo">VÁRAKOZIK</span><br>
+    Minden aloldalon egyszerre: Klinika | Protocol | Technológia | Program | Akadémia + CTA.
+    A Program oldal kell hozzá (Fázis 3), ezért utána.
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 6 — Kezelések sidebar fix</strong>
+    <span class="badge todo">VÁRAKOZIK</span><br>
+    3 CTA csere: Observ diagnosztika + LED Mask + Protocol Program.
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 7 — Chatbot ikon</strong>
+    <span class="badge todo">VÁRAKOZIK</span><br>
+    LED Mask sziluett SVG, jobb alsó sarok, minden oldalon. Valódi chatbot (ChatGPT vagy Claude Max).<br>
+    <em>Utolsónak, mert minden oldalra megy — ha előbb fixáljuk a tartalmat, egyszer kell hozzáadni.</em>
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 8 — Hiányzó oldalak</strong>
+    <span class="badge todo">VÁRAKOZIK</span><br>
+    Klinika/Orvosok tartalom (Heni input után), Eredmények B/A, Sajtó & Partnerek.
+  </div>
+
+  <div class="timeline-item">
+    <strong>Fázis 9 — Fotók és számok</strong>
+    <span class="badge parked">A VÉGÉN</span><br>
+    Klinika fotók, orvos portrék, kezelés eredmények, Program árazás, LED Mask ár.
+  </div>
+
+</div>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">📄</span> 8. OLDALAK STÁTUSZA</h2>
+
+<table>
+  <tr><th>Oldal</th><th>Fájl</th><th>Státusz</th><th>Megjegyzés</th></tr>
+  <tr><td>Főoldal (tab rendszer)</td><td>index.html</td><td><span class="badge done">KÉSZ</span></td><td>Home, Protocol, Observ, HILEFT, LED Mask, Program tabok</td></tr>
+  <tr><td>Klinika</td><td>klinika.html</td><td><span class="badge done">KÉSZ</span></td><td>Boutique Clinic koncepció, galéria placeholder, csapat placeholder</td></tr>
+  <tr><td>Protocol Hub</td><td>protocol-hub.html</td><td><span class="badge wip">ÁTDOLGOZÁS</span></td><td>3 pillér, paradigma, patient journey — prototípus kész, adaptálni kell</td></tr>
+  <tr><td>Protocol — Mini Facelift</td><td>protocol-mini-facelift-integracio.html</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Protocol — Szülés utáni</td><td>protocol-szules-utani-regeneracio.html</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Technológia — HILEFT</td><td>technologia-hileft.html</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Technológia — Observ</td><td>technologia-observ.html</td><td><span class="badge done">KÉSZ</span></td><td>Galéria + lightbox kész</td></tr>
+  <tr><td>Technológia — LED Mask</td><td>technologia-led-mask.html</td><td><span class="badge wip">BŐVÍTÉS</span></td><td>Part of Protocol badge + B2B szekció kell</td></tr>
+  <tr><td>Technológia — Venus Legacy</td><td>technologia-venus-legacy.html</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Akadémia</td><td>akademia.html</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Kutatás</td><td>kutatas.html</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Program (Membership)</td><td>program.html</td><td><span class="badge todo">ÚJ</span></td><td>Prototípus a TUB Projekt-ben — adaptálni kell</td></tr>
+  <tr><td>Kezelések</td><td>—</td><td><span class="badge todo">HIÁNYZIK</span></td><td>Nincs a TUB.landing-ban</td></tr>
+  <tr><td>Konzultáció</td><td>—</td><td><span class="badge todo">HIÁNYZIK</span></td><td>Nincs a TUB.landing-ban</td></tr>
+  <tr><td>LED Mask Partner (B2B)</td><td>—</td><td><span class="badge todo">ÚJ</span></td><td>Integrált szekció a LED Mask oldalon</td></tr>
+  <tr><td>Adatvédelem</td><td>adatvedelem.html</td><td><span class="badge parked">PLACEHOLDER</span></td><td>—</td></tr>
+  <tr><td>ÁSZF</td><td>aszf.html</td><td><span class="badge parked">PLACEHOLDER</span></td><td>—</td></tr>
+</table>
+
+
+
+<!-- ============================== -->
+<h2><span class="emoji">📓</span> 10. VÁLTOZÁSNAPLÓ</h2>
+
+<p>Minden session és terv-módosítás itt kerül rögzítésre. A terven csak Krisztián engedélyével változtatunk.</p>
+
+<table>
+  <tr><th>Dátum</th><th>Típus</th><th>Leírás</th><th>Módosított fájlok</th></tr>
+  <tr>
+    <td>2026-03-15</td>
+    <td><span class="badge done">SESSION</span></td>
+    <td>
+      <strong>Szabálykönyv létrehozása + mapparendezés.</strong><br>
+      website/ → TUB Projekt/ átnevezés. _archive/ rendezés. TUB.landing/ kijelölve mint egyetlen munkamappa.
+      gh-pages szinkronizálás: klinika.html + nav/footer frissítés + Observ galéria feltöltve a live site-ra.
+    </td>
+    <td>SZABALYKONYV.html (új), TUB Projekt/ (átnevezés)</td>
+  </tr>
+  <tr>
+    <td>2026-03-15</td>
+    <td><span class="badge wip">TERV</span></td>
+    <td>
+      <strong>Marketing Tölcsér Terv hozzáadva (11. szekció).</strong><br>
+      PDF források alapján: Stratégiai Márkapozicionálási Terv + Háromszintű Edukációs Kvízkampány Stratégia.<br>
+      <em>Engedélyezte: Krisztián ("Most kérem a marketing és tölcsér tervet")</em>
+    </td>
+    <td>SZABALYKONYV.html</td>
+  </tr>
+  <tr>
+    <td>2026-03-15</td>
+    <td><span class="badge done">SESSION</span></td>
+    <td>
+      <strong>Végleges mapparendezés.</strong><br>
+      Nem-site fájlok áthelyezve: _projekt/ mappába kerültek: TUB Projekt/ (.org Webflow minta), _archive/ (régi backupok), TUB-PROJEKT-TERV.md, NYITO-TERV.md, server.py/sh, info/, PDF-ek, generate_pdf.py.<br>
+      TUB.landing/ mappából eltávolítva: duplikált szülés utáni fájl, NYITO-TERV.md, PDF, generate_pdf.py.<br>
+      Eredmény: Gyökérben csak gh-pages deploy fájlok + TUB.landing/ (munkamappa) + _projekt/ (félretéve).<br>
+      Szinkron-jelentés elkészült: Szabálykönyv vs. PDF források — 26/30 elem teljes szinkronban, 4 részleges (nem kritikus).
+    </td>
+    <td>Mappastruktúra, SZABALYKONYV.html (2. szekció frissítve)</td>
+  </tr>
+  <tr>
+    <td>2026-03-15</td>
+    <td><span class="badge done">SESSION</span></td>
+    <td>
+      <strong>Fázis 1: Protocol Hub újraépítés.</strong><br>
+      Backup: protocol-hub-LANDING-ORIGINAL.html → _projekt/_archive/<br>
+      Teljes újraépítés az elfogadott terv szerint:<br>
+      - Hero: "Nem kezeléseket kínálunk. Rendszert." sötét, statement jellegű<br>
+      - Paradigmaváltás szekció: régi modell vs Protocol modell összehasonlítás<br>
+      - 3 Pillér részletesen: Prepare (HILEFT/Observ) → Treat (orvosesztétika) → Recover (LED Mask)<br>
+      - Páciens útvonal: 5 lépéses vizuális timeline<br>
+      - Signature Protocols: 6 kártya (2 dedikált aloldal + 4 konzultáció)<br>
+      - Hub navigáció: kompakt 4 kártya (Technológia, Program, Akadémia, Kutatás)<br>
+      Törött linkek javítva: the-ultimate-beauty-protocol.html, protocol-treatments.html, kezelesek.html eltávolítva.<br>
+      Footer: 1124 Budapest, Gyöngyvirág út 68. + csak létező oldalak linkelve.<br>
+      Új szabály hozzáadva: KÖTELEZŐ backup minden munkafolyamat előtt.
+    </td>
+    <td>protocol-hub.html (újraépítve), SZABALYKONYV.html (changelog + új szabály)</td>
+  </tr>
+</table>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">🎯</span> 11. MARKETING TÖLCSÉR TERV</h2>
+
+<div class="rule-box gold">
+  <strong>A tölcsér alap-logikája (a site narratív ívére épül):</strong>
+  Felfedezés (hirdetés/tartalom) → Edukáció (Protocol megértése) → Elköteleződés (Program csatlakozás) → Lojalitás (LED Mask + visszatérés)
+</div>
+
+<h3>11.1. A Tölcsér Vizuális Áttekintése</h3>
+
+<div class="tree" style="line-height: 2.2; text-align: center;">
+<span class="folder" style="font-size: 1.1rem;">━━━━━━━━━━━━ AWARENESS ━━━━━━━━━━━━</span>
+<span class="file">Instagram/Facebook hirdetés · Edukációs Reels · Kvíz kampány · SEO/Blog</span>
+<span class="file">Célcsoport: 25–55 éves nők, Buda, HNWI szegmens</span>
+
+<span class="folder" style="font-size: 1.05rem;">━━━━━━━━━ ÉRDEKLŐDÉS ━━━━━━━━━</span>
+<span class="file">Landing page · Kezdő kvíz (4-6 kérdés) · Lead magnet (mini-ebook / 5% kupon)</span>
+<span class="file">→ Email cím gyűjtés · Szegmentálás (bőrtípus, érdeklődés)</span>
+
+<span class="folder" style="font-size: 1rem;">━━━━━━ EDUKÁCIÓ ━━━━━━</span>
+<span class="file">Protocol oldal · Haladó kvíz · Oktatóvideók · Email nurture sorozat</span>
+<span class="file">→ "Nem kezelés, hanem rendszer" megértése</span>
+
+<span class="folder" style="font-size: 0.95rem;">━━━━ KONVERZIÓ ━━━━</span>
+<span class="active">Observ konzultáció foglalás · Program csatlakozás</span>
+<span class="active">→ Személyes találkozó a klinikán</span>
+
+<span class="folder" style="font-size: 0.9rem;">━━ LOJALITÁS ━━</span>
+<span class="active">LED Mask · Protocol Member · Ajánlói program</span>
+</div>
+
+<!-- SZINT 1: AWARENESS -->
+<h3>11.2. 1. Szint — AWARENESS (Felfedezés)</h3>
+<p><strong>Cél:</strong> A célcsoport elérése és első kapcsolat kialakítása. Nem eladunk, hanem felkeltjük az érdeklődést.</p>
+
+<table>
+  <tr><th>Csatorna</th><th>Tartalom</th><th>KPI</th></tr>
+  <tr>
+    <td>Instagram / Facebook hirdetés</td>
+    <td>
+      Vizuális: a TUB luxus-klinikai esztétika (ivory/gold, nem akciós)<br>
+      Üzenet: "Mi lenne, ha a szépülés nem kezelés lenne, hanem rendszer?"<br>
+      Lokális célzás: Budapest, Buda oldal, 25-55 éves nők
+    </td>
+    <td>Elérés, CTR, CPC</td>
+  </tr>
+  <tr>
+    <td>Edukációs Reels / Stories</td>
+    <td>
+      1-2 perces videók: "Miért nem működik az izolált Botox?" · "3 dolog amit a legtöbb klinika nem mond el"<br>
+      Cél: paradigmaváltás kommunikálása, nem eladás
+    </td>
+    <td>Megtekintések, mentések, megosztások</td>
+  </tr>
+  <tr>
+    <td>SEO / Akadémia tartalom</td>
+    <td>
+      akademia.html bővítése cikkekkel: "Mi az a Protocol-alapú szépülés?" · "HILEFT technológia — tudományos háttér"<br>
+      Long-tail kulcsszavak: "boutique esztétikai klinika budapest" · "protocol alapú arcfiatalítás"
+    </td>
+    <td>Organikus forgalom, bounce rate</td>
+  </tr>
+  <tr>
+    <td>Kvízkampány — Kezdő szint</td>
+    <td>
+      4-6 kérdéses könnyed kvíz (Jotform): bőrápolás alapok, anti-aging fogalmak<br>
+      Azonnali jutalom: 5% kupon VAGY mini-ebook ("7 tipp az otthoni bőrápoláshoz")<br>
+      CTA-lánc: hirdetés → landing page → "Kezdd el a kvízt" → Jotform → regisztráció
+    </td>
+    <td>Lead szám, regisztrációs arány, email lista méret</td>
+  </tr>
+</table>
+
+<div class="rule-box blue">
+  <strong>Weboldal szerepe az Awareness fázisban:</strong>
+  <ul style="margin-top: 8px;">
+    <li><strong>Homepage Hero</strong> → azonnali pozicionálás: "Boutique Clinic · Protocol-alapú szépülés"</li>
+    <li><strong>Akadémia oldal</strong> → SEO tartalom-hub, edukációs cikkek landing page-je</li>
+    <li><strong>Protocol Hub</strong> → a hirdetésekből ide érkeznek, itt értik meg a rendszert</li>
+  </ul>
+</div>
+
+<!-- SZINT 2: ÉRDEKLŐDÉS / EDUKÁCIÓ -->
+<h3>11.3. 2. Szint — EDUKÁCIÓ (Megértés és elköteleződés)</h3>
+<p><strong>Cél:</strong> A Protocol rendszer megértése. Az érdeklődő megtanulja, miért más a TUB, mint a többi klinika.</p>
+
+<table>
+  <tr><th>Eszköz</th><th>Tartalom</th><th>KPI</th></tr>
+  <tr>
+    <td>Email nurture sorozat (8-12 email)</td>
+    <td>
+      A kvízre regisztráltak kapják, személyre szabva a válaszaik alapján:<br>
+      1. hét: "Köszönjük + Az Ön bőrtípusához javasolt Protocol"<br>
+      2. hét: "Miért rendszer, nem kezelés?" (edukáció)<br>
+      3. hét: "Ismerje meg az ULTIMA technológiát" (videó)<br>
+      4. hét: "Pácienseink eredményei" (B/A, testimonial)<br>
+      5. hét: "Személyes konzultáció — foglaljon időpontot"
+    </td>
+    <td>Open rate, click rate, unsubscribe rate</td>
+  </tr>
+  <tr>
+    <td>Haladó kvíz + oktatóvideók</td>
+    <td>
+      Mélyebb kérdések: sejtszintű mechanizmusok, kezelés-kombinációk<br>
+      1-2 perces szakértői videók minden kérdéshez<br>
+      VIP jutalom: 10% kedvezmény, VIP esemény meghívó, sorsjegy
+    </td>
+    <td>Kitöltési arány, videó megtekintés, VIP regisztráció</td>
+  </tr>
+  <tr>
+    <td>Protocol Hub oldal (website)</td>
+    <td>
+      A 3 pillér részletes bemutatása<br>
+      Paradigma összehasonlítás (régi modell vs. Protocol)<br>
+      Patient Journey vizualizáció<br>
+      "Part of the Protocol" badge rendszer
+    </td>
+    <td>Oldal időtöltés, scroll depth, CTA kattintás</td>
+  </tr>
+  <tr>
+    <td>Zárt Facebook csoport / Közösség</td>
+    <td>
+      "TUB Insider" — exkluzív tartalom, élő Q&A az orvossal<br>
+      Heti 1 poszt: kezelési tipp, technológia bemutató, eredmény
+    </td>
+    <td>Csoporttagok, aktivitás, átkattintás a site-ra</td>
+  </tr>
+</table>
+
+<div class="rule-box blue">
+  <strong>Weboldal szerepe az Edukáció fázisban:</strong>
+  <ul style="margin-top: 8px;">
+    <li><strong>Protocol Hub</strong> → a fő edukációs landing page, ide jönnek az emailből és a hirdetésekből</li>
+    <li><strong>Technológia aloldalak</strong> (HILEFT, Observ, LED Mask, Venus) → részletes technológiai háttér</li>
+    <li><strong>Kutatás oldal</strong> → tudományos validáció, hitelesség</li>
+    <li><strong>Protocol aloldalak</strong> (Mini Facelift, Szülés utáni, stb.) → specifikus használati esetek</li>
+  </ul>
+</div>
+
+<!-- SZINT 3: KONVERZIÓ -->
+<h3>11.4. 3. Szint — KONVERZIÓ (Foglalás és Program csatlakozás)</h3>
+<p><strong>Cél:</strong> Az érdeklődőt páciensé alakítani. Két konverziós pont: Observ konzultáció VAGY Program csatlakozás.</p>
+
+<table>
+  <tr><th>Konverziós pont</th><th>Mit kap a páciens</th><th>Hogyan mérjük</th></tr>
+  <tr>
+    <td><strong>Observ 520x Konzultáció</strong><br>(alacsonyabb belépési küszöb)</td>
+    <td>
+      Ingyenes vagy kedvezményes bőrdiagnosztika<br>
+      Személyre szabott Protocol terv javaslat<br>
+      "Látja a saját bőrét belülről" — erős wow-faktor
+    </td>
+    <td>Foglalások száma, show-up rate, konverzió kezelésre</td>
+  </tr>
+  <tr>
+    <td><strong>Protocol Program csatlakozás</strong><br>(magasabb elköteleződés)</td>
+    <td>
+      Protocol Member: Observ + személyre szabott terv + LED Mask kedvezmény<br>
+      Inner Circle: rendszeres ULTIMA kúra + orvosesztétika + LED Mask csomag<br>
+      Founding Member: teljes Protocol ciklus + exkluzív hozzáférés + éves terv
+    </td>
+    <td>Csatlakozások száma, szint eloszlás, MRR</td>
+  </tr>
+  <tr>
+    <td><strong>Mester kvíz konverzió</strong></td>
+    <td>
+      15-20 kérdéses modul, esettanulmányok<br>
+      Végén: személyre szabott PDF összefoglaló + közvetlen időpontfoglaló<br>
+      Fődíj: ingyenes konzultáció + kezelési kredit (csak 3. szint teljesítőknek)
+    </td>
+    <td>Kitöltési arány, foglalás a kvíz végéről</td>
+  </tr>
+</table>
+
+<div class="rule-box blue">
+  <strong>Weboldal szerepe a Konverzió fázisban:</strong>
+  <ul style="margin-top: 8px;">
+    <li><strong>Program oldal</strong> (program.html) → a 3 szint bemutatása, csatlakozási CTA</li>
+    <li><strong>Konzultáció foglalás</strong> → minden oldal CTA-ja ide mutat (Jotform / beépített form)</li>
+    <li><strong>Klinika oldal</strong> → bizalomnövelés: orvosok, hely, atmoszféra</li>
+    <li><strong>Chatbot</strong> → azonnali válaszok, konzultáció foglalás bármely oldalról</li>
+  </ul>
+</div>
+
+<!-- SZINT 4: LOJALITÁS -->
+<h3>11.5. 4. Szint — LOJALITÁS (Visszatérés és terjesztés)</h3>
+<p><strong>Cél:</strong> A pácienst hűséges taggá és ajánlóvá alakítani. A LED Mask az otthoni híd, a Program a keretrendszer.</p>
+
+<table>
+  <tr><th>Eszköz</th><th>Hogyan működik</th><th>Hatás</th></tr>
+  <tr>
+    <td><strong>LED Mask — "Relationship Anchor"</strong></td>
+    <td>
+      A Protocol III. pillére: otthoni regeneráció<br>
+      A páciens MINDEN NAP használja → a klinika jelen van az életében<br>
+      "A kezelés nem ér véget a klinika ajtajában"
+    </td>
+    <td>Visszatérési ráta növelés, brand-jelenlét, upsell lehetőség</td>
+  </tr>
+  <tr>
+    <td><strong>Protocol Program — folyamatos tagság</strong></td>
+    <td>
+      Rendszeres Observ kontroll + ULTIMA kúrák + orvosesztétika<br>
+      Személyre szabott éves terv<br>
+      Exkluzív hozzáférés: új kezelések, események, tartalmak
+    </td>
+    <td>LTV növelés, prediktálható bevétel (MRR)</td>
+  </tr>
+  <tr>
+    <td><strong>Ajánlói program</strong></td>
+    <td>
+      Egyedi ajánlókód minden tagnak<br>
+      Jutalom: ha az ismerős foglal, az ajánló kap kedvezményt/kreditet<br>
+      "ULTIMA Nagykövet" státusz a legaktívabb ajánlóknak
+    </td>
+    <td>Organikus növekedés, alacsony akvizíciós költség</td>
+  </tr>
+  <tr>
+    <td><strong>Utókövetés és nurture</strong></td>
+    <td>
+      30/60/90 napos automatikus emlékeztetők<br>
+      Személyes kapcsolattartó (VIP ügyfélmenedzser Inner Circle felett)<br>
+      Szezonális ajánlatok és események
+    </td>
+    <td>Churn csökkentés, upsell, cross-sell</td>
+  </tr>
+</table>
+
+<div class="rule-box blue">
+  <strong>Weboldal szerepe a Lojalitás fázisban:</strong>
+  <ul style="margin-top: 8px;">
+    <li><strong>LED Mask oldal</strong> → termékoldal (B2C) + "Hogyan használd a Protocol részeként" szekció</li>
+    <li><strong>Program oldal</strong> → tagok számára: szint-upgrade, előnyök áttekintése</li>
+    <li><strong>Eredmények oldal</strong> (jövőben) → B/A fotók, testimonialok — social proof</li>
+    <li><strong>LED Mask Partner oldal</strong> (B2B) → szalonok, klinikák számára wholesale lehetőség</li>
+  </ul>
+</div>
+
+<!-- KVÍZ KAMPÁNY RÉSZLETES -->
+<h3>11.6. Kvízkampány — Részletes Terv (3 szint)</h3>
+
+<p>A háromszintű edukációs kvízkampány a tölcsér motorja. Minden szint mélyebb elköteleződést hoz.</p>
+
+<table>
+  <tr><th>Szint</th><th>Név</th><th>Kérdések</th><th>Jutalom</th><th>CTA</th></tr>
+  <tr>
+    <td style="background: var(--cream);"><strong>1. Kezdő</strong></td>
+    <td>Bőrápolás Alapok</td>
+    <td>4-6 kérdés: bőrtípus, anti-aging fogalmak, kezelés ismeretek</td>
+    <td>5% kupon VAGY mini-ebook</td>
+    <td>Haladó kvíz indítása VAGY email feliratkozás</td>
+  </tr>
+  <tr>
+    <td style="background: #F0F7FF;"><strong>2. Haladó</strong></td>
+    <td>Protocol Ismeretek</td>
+    <td>8-10 kérdés + oktatóvideók: technológia mechanizmusok, kezelés-kombinációk</td>
+    <td>10% kedvezmény + VIP esemény meghívó + sorsjegy</td>
+    <td>Mester kvíz VAGY konzultáció foglalás</td>
+  </tr>
+  <tr>
+    <td style="background: var(--cream);"><strong>3. Mester</strong></td>
+    <td>Protocol Expert</td>
+    <td>15-20 kérdés: esettanulmányok, igaz/hamis, döntési szituációk</td>
+    <td>Fődíj (konzultáció + kezelési kredit) + PDF összefoglaló + "ULTIMA Nagykövet" badge</td>
+    <td>Időpont foglalás (előre kitöltött form)</td>
+  </tr>
+</table>
+
+<h3>11.7. Kampány Ütemezés (4-6 hét)</h3>
+<table>
+  <tr><th>Hét</th><th>Fázis</th><th>Tevékenység</th></tr>
+  <tr><td>1.</td><td>Teaser & Start</td><td>Hirdetés indítás, Kezdő kvíz elérhetővé tétel, első lead-ek gyűjtése</td></tr>
+  <tr><td>2.</td><td>Haladó megnyitás</td><td>Haladó szint feloldása, oktatóvideók, VIP tartalom</td></tr>
+  <tr><td>3.</td><td>Retargeting</td><td>Nem-teljesítők újracélzása, emlékeztetők, A/B teszt eredmények</td></tr>
+  <tr><td>4.</td><td>Mester kvíz & Sorsolás</td><td>Mester szint megnyitása, fődíj sorsolás, foglalási roham</td></tr>
+  <tr><td>5-6.</td><td>Eredmény & Utókövetés</td><td>Nyertes bejelentése, vigaszdíjak, nurture sorozat indítása, 30 napos follow-up</td></tr>
+</table>
+
+<h3>11.8. Mérés — KPI-k</h3>
+<table>
+  <tr><th>Fázis</th><th>KPI</th><th>Cél (benchmark)</th></tr>
+  <tr><td>Awareness</td><td>Elérés, CTR, CPC</td><td>CTR > 1.5%, CPC < 150 Ft</td></tr>
+  <tr><td>Érdeklődés</td><td>Lead szám, kvíz kitöltési arány</td><td>Havi 200+ lead, 60%+ kitöltés</td></tr>
+  <tr><td>Edukáció</td><td>Email open rate, videó megtekintés, Haladó kvíz részvétel</td><td>Open > 35%, videó > 50% befejezés</td></tr>
+  <tr><td>Konverzió</td><td>Konzultáció foglalás, Program csatlakozás, foglalás/lead arány</td><td>Foglalás > 15% a lead-ekből</td></tr>
+  <tr><td>Lojalitás</td><td>Visszatérési ráta, LTV, ajánlói konverzió, churn</td><td>LTV > 500.000 Ft, churn < 10%/hó</td></tr>
+</table>
+
+<!-- SZÜKSÉGES WEBOLDALAK -->
+<h3>11.9. A Tölcsérhez Szükséges Weboldalak</h3>
+
+<table>
+  <tr><th>Tölcsér fázis</th><th>Szükséges oldal</th><th>Státusz</th><th>Prioritás</th></tr>
+  <tr><td>Awareness</td><td>Homepage (index.html)</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Awareness</td><td>Akadémia (akademia.html) — SEO tartalom</td><td><span class="badge wip">BŐVÍTENDŐ</span></td><td>Közepes</td></tr>
+  <tr><td>Awareness</td><td>Kvíz landing page</td><td><span class="badge todo">ÚJ</span></td><td>Magas</td></tr>
+  <tr><td>Edukáció</td><td>Protocol Hub (protocol-hub.html)</td><td><span class="badge wip">ÁTDOLGOZÁS</span></td><td><strong>KRITIKUS</strong></td></tr>
+  <tr><td>Edukáció</td><td>Technológia oldalak (4 db)</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Edukáció</td><td>Protocol aloldalak (3 db)</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Konverzió</td><td>Program oldal (program.html)</td><td><span class="badge todo">ÚJ</span></td><td><strong>KRITIKUS</strong></td></tr>
+  <tr><td>Konverzió</td><td>Klinika oldal (klinika.html)</td><td><span class="badge done">KÉSZ</span></td><td>—</td></tr>
+  <tr><td>Konverzió</td><td>Konzultáció foglalás (form)</td><td><span class="badge todo">HIÁNYZIK</span></td><td>Magas</td></tr>
+  <tr><td>Lojalitás</td><td>LED Mask B2C (technologia-led-mask.html)</td><td><span class="badge wip">BŐVÍTENDŐ</span></td><td>Magas</td></tr>
+  <tr><td>Lojalitás</td><td>LED Mask B2B Partner szekció</td><td><span class="badge todo">ÚJ</span></td><td>Közepes</td></tr>
+  <tr><td>Lojalitás</td><td>Eredmények / B-A (eredmenyek.html)</td><td><span class="badge todo">ÚJ</span></td><td>Közepes</td></tr>
+  <tr><td>Mindegyik</td><td>Chatbot (minden oldalon)</td><td><span class="badge todo">HIÁNYZIK</span></td><td>A végén</td></tr>
+</table>
+
+
+<!-- ============================== -->
+<h2><span class="emoji">🔗</span> 12. FONTOS LINKEK & ELÉRHETŐSÉGEK</h2>
+
+<table>
+  <tr><th>Mi</th><th>Hol</th></tr>
+  <tr><td>Live site</td><td><a href="https://theultimatebeauty.net">theultimatebeauty.net</a></td></tr>
+  <tr><td>GitHub repo</td><td><a href="https://github.com/tianx75/the-ultimate-beauty-site">tianx75/the-ultimate-beauty-site</a></td></tr>
+  <tr><td>Deploy branch</td><td><code>gh-pages</code></td></tr>
+  <tr><td>Munkamappa</td><td><code>~/Documents/Ultima Beauty Site/TUB.landing/</code></td></tr>
+  <tr><td>TUB Projekt (félretéve)</td><td><code>~/Documents/Ultima Beauty Site/TUB Projekt/</code></td></tr>
+  <tr><td>Régi Mask partner site (referencia)</td><td><a href="https://tianx75.github.io/Ultima-Mask-web/">tianx75.github.io/Ultima-Mask-web/</a></td></tr>
+  <tr><td>Klinika cím</td><td>1124 Budapest, Gyöngyvirág út 68.</td></tr>
+  <tr><td>Telefon</td><td>+36 1 790 3017</td></tr>
+</table>
+
+<p class="updated">Utolsó frissítés: 2026. március 15. — Ez a dokumentum a TUB.landing/ munkamappában él.</p>
+
+</body>
+</html>
