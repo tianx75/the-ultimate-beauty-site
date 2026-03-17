@@ -2160,14 +2160,14 @@
     }
     .protocol-card-desc {
       font-size: 0.88rem;
-      color: #6B6B6B;
-      line-height: 1.7;
+      color: #5C5652;
+      line-height: 1.75;
       margin-bottom: 20px;
     }
     .protocol-card-link {
       font-size: 0.82rem;
       font-weight: 600;
-      color: #4A4A4A;
+      color: #4A4540;
       text-decoration: none;
       transition: var(--transition);
     }
@@ -2180,46 +2180,48 @@
 
     /* Treatment Chips on Protocol Cards */
     .protocol-card-treatments {
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(26,24,22,0.07);
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(26,24,22,0.08);
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
     .protocol-card-treatments-label {
       display: block;
       width: 100%;
-      font-size: 0.6rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+      color: #7A756F;
+      margin-bottom: 6px;
     }
     .treatment-chip {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      padding: 7px 18px;
-      border: 1px solid rgba(184,150,90,0.35);
-      background: rgba(184,150,90,0.06);
-      color: #8A7245;
+      padding: 9px 20px;
+      border: 1.5px solid rgba(184,150,90,0.45);
+      background: rgba(184,150,90,0.05);
+      color: #6B5D3F;
       cursor: pointer;
       border-radius: 100px;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       font-family: 'Montserrat', sans-serif;
       position: relative;
       overflow: hidden;
+      letter-spacing: 0.01em;
     }
     .treatment-chip:hover {
       background: var(--gold);
       color: #fff;
       border-color: var(--gold);
       transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(184,150,90,0.25);
+      box-shadow: 0 4px 14px rgba(184,150,90,0.22);
     }
     .treatment-chip:active {
       transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(184,150,90,0.18);
     }
 
     .protocol-footer-text {
