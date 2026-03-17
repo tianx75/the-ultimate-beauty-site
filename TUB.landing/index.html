@@ -2105,7 +2105,7 @@
         <div class="protocol-cards-grid">
 
           <!-- 01 — A Protocol Filozófiája (FEATURED — span 2) -->
-          <a href="#protocol-deep" class="protocol-hub-card protocol-hub-card--featured">
+          <a href="protocol-hub.html" class="protocol-hub-card protocol-hub-card--featured">
             <span class="protocol-hub-card__num">01</span>
             <svg class="protocol-hub-card__icon" viewBox="0 0 56 56" fill="none">
               <!-- Háromszög: Prepare-Treat-Recover -->
@@ -4524,6 +4524,37 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 60000);
+  })();
+  </script>
+
+  <!-- Golden Sweep Observer -->
+  <script>
+  (function(){
+    var cards = document.querySelectorAll('.protocol-card:not(.protocol-card-coming)');
+    if (!cards.length) return;
+    var sweepInterval;
+
+    function runSweep(){
+      cards.forEach(function(card, i){
+        card.classList.remove('sweep-active');
+        setTimeout(function(){
+          card.classList.add('sweep-active');
+          setTimeout(function(){ card.classList.remove('sweep-active'); }, 2000);
+        }, i * 400);
+      });
+    }
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          setTimeout(runSweep, 600);
+          sweepInterval = setInterval(runSweep, 7000);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(document.querySelector('.protocol-grid'));
   })();
   </script>
 
