@@ -4,18 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Klinika — The Ultimate Beauty Boutique Clinic</title>
-  <meta name="description" content="The Ultimate Beauty Boutique Clinic — prémium esztétikai klinika Budán. Maximum napi 3 vendég, személyre szabott Protocol rendszer. 1124 Budapest, Gyöngyvirág út 68.">
+  <meta name="description" content="The Ultimate Beauty Boutique Clinic — prémium esztétikai klinika Budán. Személyre szabott Protocol rendszer, kizárólag időpontra. 1124 Budapest, Németvölgyi út 68.">
   <meta property="og:title" content="A Klinika — The Ultimate Beauty Boutique Clinic">
-  <meta property="og:description" content="The Ultimate Beauty Boutique Clinic — prémium esztétikai klinika Budán. Maximum napi 3 vendég, személyre szabott Protocol rendszer. 1124 Budapest, Gyöngyvirág út 68.">
+  <meta property="og:description" content="The Ultimate Beauty Boutique Clinic — prémium esztétikai klinika Budán. Személyre szabott Protocol rendszer, kizárólag időpontra. 1124 Budapest, Németvölgyi út 68.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theultimatebeauty.hu/klinika.html">
-  <meta property="og:image" content="https://theultimatebeauty.hu/assets/images/og-cover.jpg">
-  <link rel="canonical" href="https://theultimatebeauty.hu/klinika.html">
+  <meta property="og:url" content="https://theultimatebeauty.net/klinika.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/klinika.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/klinika.css">
+  <!-- Mapbox -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/tub-map.css">
 </head>
 <body>
 
@@ -46,12 +49,12 @@
           <h1 class="klinika-hero__brand">The Ultimate<br><span>Beauty</span></h1>
           <div class="klinika-hero__sub">Boutique Clinic</div>
           <p class="klinika-hero__desc">
-            Pr&eacute;mium boutique eszt&eacute;tikai klinika Bud&aacute;n. Maximum napi 3 vend&eacute;g, szem&eacute;lyre szabott Protocol rendszer, kiz&aacute;r&oacute;lagos technol&oacute;gi&aacute;k &mdash; egyetlen, &ouml;sszehangolt rendszerben.
+            Pr&eacute;mium boutique eszt&eacute;tikai klinika Bud&aacute;n. Szem&eacute;lyre szabott Protocol rendszer, kiz&aacute;r&oacute;lag id&odblac;pontra, kiz&aacute;r&oacute;lagos technol&oacute;gi&aacute;k &mdash; egyetlen, &ouml;sszehangolt rendszerben.
           </p>
           <div class="klinika-hero__meta">
             <div class="klinika-hero__meta-item">
-              <span class="klinika-hero__meta-label">Vend&eacute;g/nap</span>
-              <span class="klinika-hero__meta-value">Max. 3</span>
+              <span class="klinika-hero__meta-label">El&eacute;rhet&odblac;s&eacute;g</span>
+              <span class="klinika-hero__meta-value">Kiz&aacute;r&oacute;lag id&odblac;pontra</span>
             </div>
             <div class="klinika-hero__meta-item">
               <span class="klinika-hero__meta-label">Megk&ouml;zel&iacute;t&eacute;s</span>
@@ -59,13 +62,12 @@
             </div>
             <div class="klinika-hero__meta-item">
               <span class="klinika-hero__meta-label">Helysz&iacute;n</span>
-              <span class="klinika-hero__meta-value">Gy&ouml;ngyvirág &uacute;t</span>
+              <span class="klinika-hero__meta-value">N&eacute;metv&ouml;lgyi &uacute;t</span>
             </div>
           </div>
         </div>
         <div class="klinika-hero__visual">
-          <span class="klinika-hero__visual-label">Klinika fot&oacute;</span>
-          <!-- <img src="assets/images/klinika-hero.jpg" alt="The Ultimate Beauty Boutique Clinic"> -->
+          <img src="assets/images/clinic/waiting-room-2.webp" alt="The Ultimate Beauty Clinic — váróterem" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" loading="eager" />
         </div>
       </div>
     </div>
@@ -89,7 +91,7 @@
           <div class="boutique-card__icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
           </div>
-          <div class="boutique-card__title">Maximum 3 vend&eacute;g naponta</div>
+          <div class="boutique-card__title">Kiz&aacute;r&oacute;lag id&odblac;pontra</div>
           <p class="boutique-card__desc">Nem t&ouml;megtermel&eacute;s. Minden vend&eacute;g teljes figyelmet kap &mdash; a diagnosztik&aacute;t&oacute;l a kezel&eacute;sen &aacute;t az ut&oacute;k&ouml;vet&eacute;sig. Ez a boutique l&eacute;nyege.</p>
         </div>
         <div class="boutique-card">
@@ -120,29 +122,24 @@
         <span class="label">A klinika</span>
         <div class="divider"></div>
         <h2 class="display-md">Ahol a <em>prec&iacute;zi&oacute;</em> otthonra tal&aacute;l</h2>
-        <p>Diszkr&eacute;t, nyugodt k&ouml;rnyezet Buda sz&iacute;v&eacute;ben &mdash; a Gy&ouml;ngyvirág &uacute;ton.</p>
+        <p>Diszkr&eacute;t, nyugodt k&ouml;rnyezet Buda sz&iacute;v&eacute;ben &mdash; a N&eacute;metv&ouml;lgyi &uacute;ton.</p>
       </div>
 
       <div class="klinika-gallery__grid reveal reveal-delay-1">
         <div class="klinika-gallery__item klinika-gallery__item--hero">
-          <span class="klinika-gallery__placeholder">F&#337; klinika k&eacute;p</span>
-          <!-- <img src="assets/images/klinika-01.jpg" alt="Klinika belső"> -->
+          <img src="assets/images/clinic/waiting-room-1.webp" alt="The Ultimate Beauty Clinic — elegáns váróterem" style="width:100%; height:100%; object-fit:cover;" loading="lazy" />
         </div>
         <div class="klinika-gallery__item">
-          <span class="klinika-gallery__placeholder">Kezel&#337;</span>
-          <!-- <img src="assets/images/klinika-02.jpg" alt="Kezelő"> -->
+          <img src="assets/images/clinic/waiting-room-2.webp" alt="The Ultimate Beauty Clinic — recepció" style="width:100%; height:100%; object-fit:cover;" loading="lazy" />
         </div>
         <div class="klinika-gallery__item">
-          <span class="klinika-gallery__placeholder">Recepci&oacute;</span>
-          <!-- <img src="assets/images/klinika-03.jpg" alt="Recepció"> -->
+          <img src="assets/images/team/doctor-portrait.webp" alt="Dr. Hladkova Tetiana — dermatológus, kozmetológus" style="width:100%; height:100%; object-fit:cover; object-position: center 15%;" loading="lazy" />
         </div>
         <div class="klinika-gallery__item">
-          <span class="klinika-gallery__placeholder">Technol&oacute;gia</span>
-          <!-- <img src="assets/images/klinika-04.jpg" alt="Technológia"> -->
+          <img src="assets/images/team/doctor-patient.webp" alt="Orvosi konzultáció a klinikán" style="width:100%; height:100%; object-fit:cover; object-position: center 20%;" loading="lazy" />
         </div>
         <div class="klinika-gallery__item">
-          <span class="klinika-gallery__placeholder">R&eacute;szlet</span>
-          <!-- <img src="assets/images/klinika-05.jpg" alt="Klinika részlet"> -->
+          <img src="assets/images/team/team-together.webp" alt="A The Ultimate Beauty csapata" style="width:100%; height:100%; object-fit:cover; object-position: center 20%;" loading="lazy" />
         </div>
       </div>
     </div>
@@ -199,22 +196,22 @@
       <div class="reveal">
         <span class="label">Megk&ouml;zel&iacute;t&eacute;s</span>
         <div class="divider"></div>
-        <h2 class="display-lg color-ivory">Gy&ouml;ngyvirág &uacute;t 68.<br><em>Buda sz&iacute;v&eacute;ben.</em></h2>
+        <h2 class="display-lg color-ivory">N&eacute;metv&ouml;lgyi &uacute;t 68.<br><em>Buda sz&iacute;v&eacute;ben.</em></h2>
       </div>
 
       <div class="location-grid">
         <div class="location-info reveal reveal-delay-1">
           <div class="location-item">
             <div class="location-item__label">C&iacute;m</div>
-            <div class="location-item__value">1124 Budapest<br>Gy&ouml;ngyvirág &uacute;t 68.</div>
+            <div class="location-item__value">1124 Budapest<br>N&eacute;metv&ouml;lgyi &uacute;t 68.</div>
           </div>
           <div class="location-item">
             <div class="location-item__label">Telefon</div>
-            <div class="location-item__value">+36 1 790 3017</div>
+            <div class="location-item__value"><a href="tel:+3617903017" style="color:inherit; text-decoration:none;">+36 1 790 3017</a></div>
           </div>
           <div class="location-item">
             <div class="location-item__label">E-mail</div>
-            <div class="location-item__value">info@theultimatebeauty.net</div>
+            <div class="location-item__value"><a href="mailto:info@theultimatebeauty.net" style="color:inherit; text-decoration:none;">info@theultimatebeauty.net</a></div>
           </div>
           <div class="location-item">
             <div class="location-item__label">Nyitvatart&aacute;s</div>
@@ -224,9 +221,21 @@
             <div class="location-item__label">Parkol&aacute;s</div>
             <div class="location-item__value">Ingyenes parkol&aacute;si lehet&#337;s&eacute;g a klinika el&#337;tt</div>
           </div>
+          <div class="location-item" style="margin-top:12px;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=47.49201,19.01115" target="_blank" rel="noopener" style="color:#B8965A; text-decoration:none; font-size:0.85rem; font-weight:500; letter-spacing:0.5px;">&uacute;tvonaltervez&eacute;s &rarr;</a>
+          </div>
         </div>
         <div class="location-map reveal reveal-delay-2">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2696.5!2d18.9876!3d47.4876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDI5JzE1LjQiTiAxOMKwNTknMTUuNCJF!5e0!3m2!1shu!2shu!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="The Ultimate Beauty Clinic t&eacute;rk&eacute;p"></iframe>
+          <!-- MAPBOX TÉRKÉP -->
+          <div class="tub-map-wrap">
+            <div id="tub-map"></div>
+          </div>
+          <div class="tub-map-info">
+            <div class="tub-map-info__left">
+              <div class="tub-map-info__name">The Ultimate Beauty Clinic</div>
+              <div class="tub-map-info__address">1124 Budapest, N&eacute;metv&ouml;lgyi &uacute;t 68. &middot; Kiz&aacute;r&oacute;lag id&#337;pontra</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -244,11 +253,11 @@
         Az els&#337; l&eacute;p&eacute;s egy 60 perces Observ b&#337;rdiagnosztika &mdash; amelyet a nyit&aacute;si id&#337;szakban aj&aacute;nd&eacute;kba kap.
       </p>
       <div class="cta-banner__actions reveal reveal-delay-2">
-        <a href="index.html#home-contact" class="btn-gold">
+        <a href="index.html#home-contact" class="btn-premium btn-m">
           Konzult&aacute;ci&oacute; foglal&aacute;sa
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="protocol-hub.html" class="btn-outline-light">A Protocol megismer&eacute;se &rarr;</a>
+        <a href="protocol-hub.html" class="btn-soft btn-m">A Protocol megismer&eacute;se &rarr;</a>
       </div>
     </div>
   </section>
@@ -323,5 +332,8 @@
     reveals.forEach(el => observer.observe(el));
   </script>
 
+  <!-- Mapbox GL JS + TUB Map -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+  <script src="js/tub-map.js"></script>
 </body>
 </html>

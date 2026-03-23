@@ -8,9 +8,9 @@
   <meta property="og:title" content="The Ultimate Beauty Protocol — Nem kezeléseket kínálunk. Rendszert.">
   <meta property="og:description" content="A The Ultimate Beauty Protocol egy koordinált rendszer: Prepare–Treat–Recover. Nem kezeléseket kínálunk, hanem egy összehangolt útvonalat, ahol minden lépés a következőre épül.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theultimatebeauty.hu/protocol-hub.html">
-  <meta property="og:image" content="https://theultimatebeauty.hu/assets/images/og-cover.jpg">
-  <link rel="canonical" href="https://theultimatebeauty.hu/protocol-hub.html">
+  <meta property="og:url" content="https://theultimatebeauty.net/protocol-hub.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/protocol-hub.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -243,6 +243,17 @@
       border-color: rgba(255,255,255,0.5);
       color: var(--ivory);
     }
+
+    /* ═══ LUXURY BUTTON SYSTEM ═══ */
+    .btn-s { padding: 9px 22px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; border-radius: 100px; }
+    .btn-m { padding: 13px 30px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; border-radius: 2px; }
+    .btn-l { padding: 16px 38px; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; border-radius: 2px; }
+    .btn-frame { display: inline-flex; align-items: center; gap: 0.75rem; text-transform: uppercase; background: rgba(184,150,90,0.04); border: 1.5px solid rgba(184,150,90,0.40); color: #6B5D3F; border-radius: 100px !important; transition: all 0.3s; }
+    .btn-frame:hover { background: var(--gold); color: #fff; border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(184,150,90,0.22); }
+    .btn-soft { display: inline-flex; align-items: center; gap: 0.75rem; text-transform: uppercase; background: rgba(245,240,232,0.8); border: 1px solid rgba(26,24,22,0.08); color: var(--charcoal); border-radius: 100px !important; transition: all 0.3s; }
+    .btn-soft:hover { background: rgba(245,240,232,1); border-color: rgba(184,150,90,0.3); color: #4A4540; transform: translateY(-1px); box-shadow: 0 3px 12px rgba(26,24,22,0.06); }
+    .btn-premium { display: inline-flex; align-items: center; gap: 0.75rem; text-transform: uppercase; background: var(--charcoal); color: var(--gold-light); border: 1px solid rgba(255,255,255,0.06); border-radius: 2px; letter-spacing: 0.18em; position: relative; overflow: hidden; transition: all 0.3s; }
+    .btn-premium:hover { background: #2A2622; color: var(--gold); transform: translateY(-1px); box-shadow: 0 6px 24px rgba(26,24,22,0.25); }
 
     /* ═══════════════════════════════════════════════════════
        HERO — Full-width, dark, statement
@@ -1173,11 +1184,11 @@
       </p>
 
       <div class="proto-hero__actions">
-        <a href="#pillarek" class="btn-gold">
+        <a href="#pillarek" class="btn-frame btn-m">
           A h&aacute;rom pill&eacute;r
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7l5 5 5-5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
-        <a href="index.html#home-contact" class="btn-outline-light">Konzult&aacute;ci&oacute; foglal&aacute;sa</a>
+        <a href="index.html#home-contact" class="btn-premium btn-m">Konzult&aacute;ci&oacute; foglal&aacute;sa</a>
       </div>
     </div>
 
@@ -1226,7 +1237,7 @@
             <li><span class="paradigm__list-icon">&check;</span> Szem&eacute;lyre szabott &uacute;tvonal, Observ diagnosztik&aacute;val</li>
             <li><span class="paradigm__list-icon">&check;</span> HILEFT szövetelőkészítés minden beavatkozás előtt</li>
             <li><span class="paradigm__list-icon">&check;</span> Otthoni regener&aacute;ci&oacute; LED Mask-kal</li>
-            <li><span class="paradigm__list-icon">&check;</span> Max. 3 vend&eacute;g naponta &mdash; boutique min&odblac;s&eacute;g</li>
+            <li><span class="paradigm__list-icon">&check;</span> Kiz&aacute;r&oacute;lag id&odblac;pontra &mdash; boutique min&odblac;s&eacute;g</li>
           </ul>
         </div>
       </div>
@@ -1572,7 +1583,7 @@
 
       <div class="clinical__cta reveal">
         <p>A programba kerülés orvosi konzultáció és szakmai kiválasztás alapján történik.</p>
-        <a href="clinical-program.html" class="btn-primary">
+        <a href="clinical-program.html" class="btn-frame btn-m">
           Jelentkezés a programba
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -1651,7 +1662,7 @@
         Egy 60 perces konzultáción feltérképezzük, hol tart a bőre, mit szeretne elérni — és összerakjuk a személyre szabott Protocol útvonalat.
       </p>
       <div class="cta-banner__actions reveal reveal-delay-2">
-        <a href="index.html#home-contact" class="btn-gold">
+        <a href="index.html#home-contact" class="btn-premium btn-l">
           Konzultáció foglalása
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -1670,7 +1681,7 @@
           <div class="footer__logo">The Ultimate Beauty.</div>
           <p class="footer__tagline">Boutique esztétikai klinika Budán. Személyre szabott orvosesztétika és ULTIMA technológia, egyetlen összehangolt rendszerben.</p>
           <div class="footer__contact">
-            <p class="footer__contact-item">1124 Budapest, Gyöngyvirág út 68.</p>
+            <p class="footer__contact-item">1124 Budapest, Németvölgyi út 68.</p>
             <p class="footer__contact-item">+36 1 790 3017</p>
             <p class="footer__contact-item">info@theultimatebeauty.net</p>
           </div>
@@ -1698,7 +1709,7 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>&copy; 2026 The Ultimate Beauty. Minden jog fenntartva. &middot; 1124 Budapest, Gyöngyvirág út 68.</span>
+        <span>&copy; 2026 The Ultimate Beauty. Minden jog fenntartva. &middot; 1124 Budapest, Németvölgyi út 68.</span>
         <div class="footer__legal">
           <a href="adatvedelem.html" class="footer__link footer__link--inline">Adatvédelem</a>
           <a href="aszf.html" class="footer__link footer__link--inline">ÁSZF</a>

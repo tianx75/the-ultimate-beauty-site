@@ -8,14 +8,15 @@
   <meta property="og:title" content="ULTIMA LED Beauty Mask — The Ultimate Beauty Clinic Technológia">
   <meta property="og:description" content="ULTIMA LED Beauty Mask — 4 hullámhossz, 93g, IP67 védelem. Otthoni fotobiomodulációs aftercare a Prepare–Treat–Recover rendszer részeként.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://theultimatebeauty.hu/technologia-led-mask.html">
-  <meta property="og:image" content="https://theultimatebeauty.hu/assets/images/og-cover.jpg">
-  <link rel="canonical" href="https://theultimatebeauty.hu/technologia-led-mask.html">
+  <meta property="og:url" content="https://theultimatebeauty.net/technologia-led-mask.html">
+  <meta property="og:image" content="https://theultimatebeauty.net/assets/images/og-cover.jpg">
+  <link rel="canonical" href="https://theultimatebeauty.net/technologia-led-mask.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/technologia-led-mask.css">
+  <link rel="stylesheet" href="css/jotform-lightbox.css">
 </head>
 <body>
 
@@ -32,7 +33,7 @@
       <li><a href="clinical-program.html" class="nav__link">Program</a></li>
       <li><a href="akademia.html" class="nav__link">Akad&eacute;mia</a></li>
     </ul>
-    <a href="index.html#home-contact" class="nav__cta">Konzult&aacute;ci&oacute; &rarr;</a>
+    <button class="nav__cta" data-jf-form="led-mask" data-jf-source="tech-mask-nav">Mask &eacute;rdekl&#337;d&eacute;s &rarr;</button>
   </nav>
 
 
@@ -55,29 +56,35 @@
 ═══════════════════════════════════ -->
 <section class="compact-hero">
   <div class="container">
-    <div class="compact-hero__inner">
-      <span class="label compact-hero__label">Otthoni Protokoll</span>
-      <div class="divider" style="background:var(--gold-light)"></div>
-      <h1 class="compact-hero__title">ULTIMA<br><em>Beauty Mask.</em></h1>
-      <p class="compact-hero__subtitle">4 hullámhossz, 93 gramm, IP67 védelem. Professzionális szintű fotobiomoduláció otthoni aftercare-ként — a Prepare–Treat–Recover rendszer harmadik pillére.</p>
+    <div class="compact-hero__inner" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+      <div>
+        <span class="label compact-hero__label">Otthoni Protokoll</span>
+        <div class="divider" style="background:var(--gold-light)"></div>
+        <h1 class="compact-hero__title">ULTIMA<br><em>Beauty Mask.</em></h1>
+        <p class="compact-hero__subtitle">4 hullámhossz, 93 gramm, IP67 védelem. Professzionális szintű fotobiomoduláció otthoni aftercare-ként — a Prepare–Treat–Recover rendszer harmadik pillére.</p>
 
-      <div class="hero-meta">
-        <div class="hero-meta__item">
-          <span class="hero-meta__label">Hullámhossz</span>
-          <span class="hero-meta__value">4 (415–850nm)</span>
+        <div class="hero-meta">
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">Hullámhossz</span>
+            <span class="hero-meta__value">4 (415–850nm)</span>
+          </div>
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">Súly</span>
+            <span class="hero-meta__value">93g</span>
+          </div>
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">Védelem</span>
+            <span class="hero-meta__value">IP67</span>
+          </div>
+          <div class="hero-meta__item">
+            <span class="hero-meta__label">Használat</span>
+            <span class="hero-meta__value">10–20 perc/nap</span>
+          </div>
         </div>
-        <div class="hero-meta__item">
-          <span class="hero-meta__label">Súly</span>
-          <span class="hero-meta__value">93g</span>
-        </div>
-        <div class="hero-meta__item">
-          <span class="hero-meta__label">Védelem</span>
-          <span class="hero-meta__value">IP67</span>
-        </div>
-        <div class="hero-meta__item">
-          <span class="hero-meta__label">Használat</span>
-          <span class="hero-meta__value">10–20 perc/nap</span>
-        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <img src="assets/images/mask-real/mask-blue-light.webp" alt="ULTIMA LED Mask — kék fényterápia" style="width:100%; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.3);" loading="eager" />
+        <img src="assets/images/mask-waterproof.jpg" alt="ULTIMA LED Mask — IP67 vízálló" style="width:100%; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.3);" loading="eager" />
       </div>
     </div>
   </div>
@@ -129,10 +136,8 @@
       </div>
 
       <div class="reveal reveal-delay-2">
-        <div class="mask-visual">
-          <div class="mask-glow">
-            <div class="mask-inner"></div>
-          </div>
+        <div class="mask-visual" style="padding:0;">
+          <img src="assets/images/mask-real/heni-mask-red.webp" alt="ULTIMA LED Mask — piros fényterápia" style="width:100%; border-radius:12px;" loading="lazy" />
         </div>
         <div class="mask-quote">
           <p>"Az otthoni utóápolás nem opció — hanem a tartós eredmény biológiai feltétele."</p>
@@ -262,13 +267,13 @@
       Az ULTIMA LED Mask személyes konzultáció után, a kezelési tervhez igazítva válik elérhetővé. Nem termék — hanem a rendszer része.
     </p>
     <div class="cta-banner__actions reveal reveal-delay-2">
-      <a href="index.html#home-contact" class="btn-gold">
-        Konzultáció foglalása
+      <button class="btn-premium btn-m" data-jf-form="led-mask" data-jf-source="tech-mask-cta">
+        Mask rendelés / érdeklődés
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
           <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-      </a>
-      <a href="index.html" class="btn-outline-light">← Vissza a Főoldalra</a>
+      </button>
+      <button class="btn-soft btn-m" data-jf-form="konzultacio" data-jf-source="tech-mask-consult">Személyes konzultáció →</button>
     </div>
   </div>
 </section>
@@ -284,7 +289,7 @@
         <div class="footer__logo">The Ultimate Beauty Clinic.</div>
         <p class="footer__tagline">Beauty technológia stúdió Budán. Személyre szabott ULTIMA technológia és professzionális bőrelemzés, egyetlen összehangolt rendszerben.</p>
         <div class="footer__contact">
-          <p class="footer__contact-item">1124 Budapest, Gyöngyvirág út 68.</p>
+          <p class="footer__contact-item">1124 Budapest, Németvölgyi út 68.</p>
           <p class="footer__contact-item">+36 1 790 3017</p>
           <p class="footer__contact-item">info@theultimatebeauty.net</p>
           <p class="footer__contact-item">H–P: 9:00–18:00 · Szombat: előjegyzés alapján</p>
@@ -325,5 +330,6 @@
 <!-- ═══════════════════════════════════
      SCRIPTS
 ═══════════════════════════════════ -->
+<script src="js/jotform-lightbox.js"></script>
 </body>
 </html>

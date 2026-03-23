@@ -371,7 +371,13 @@
       .extras-grid--dark { grid-template-columns: 1fr; }
     }
 
-    /* ═══ GOMBOK ═══ */
+    /* ═══════════════════════════════════════
+       LUXURY BUTTON DESIGN SYSTEM
+       3-tier hierarchy: Frame · Soft · Premium
+       3 sizes: S · M · L
+    ═══════════════════════════════════════ */
+
+    /* ─── BASE BUTTON RESET ─── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -380,15 +386,117 @@
       border: none;
       cursor: pointer;
       text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 0;
       font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ─── SIZE SYSTEM ─── */
+    /* S — chips, filters, micro-CTAs */
+    .btn-s, .btn.btn-s {
+      padding: 9px 22px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border-radius: 100px;
+    }
+    /* M — secondary CTAs, standard buttons */
+    .btn-m, .btn.btn-m {
+      padding: 13px 30px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      border-radius: 2px;
+    }
+    /* L — main CTAs, hero, consultation, featured */
+    .btn-l, .btn.btn-l {
+      padding: 16px 38px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      border-radius: 2px;
+    }
+
+    /* ─── A. GOLD FRAME — elegant outline ─── */
+    /* For: treatment chips, category buttons, micro-CTAs */
+    .btn-frame {
+      background: rgba(184,150,90,0.04);
+      border: 1.5px solid rgba(184,150,90,0.40);
+      color: #6B5D3F;
+      border-radius: 100px !important;
+    }
+    .btn-frame:hover {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(184,150,90,0.22);
+    }
+    .btn-frame:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(184,150,90,0.15);
+    }
+
+    /* ─── B. SOFT PILL — warm secondary ─── */
+    /* For: secondary actions, informational, support */
+    .btn-soft {
+      background: rgba(245,240,232,0.8);
+      border: 1px solid rgba(26,24,22,0.08);
+      color: var(--charcoal);
+      border-radius: 100px !important;
+    }
+    .btn-soft:hover {
+      background: rgba(245,240,232,1);
+      border-color: rgba(184,150,90,0.3);
+      color: #4A4540;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 12px rgba(26,24,22,0.06);
+    }
+    .btn-soft:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    /* ─── C. BLACK PREMIUM — dominant CTA ─── */
+    /* For: consultation, booking, key conversions */
+    .btn-premium {
+      background: var(--charcoal);
+      color: var(--gold-light);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 2px;
+      letter-spacing: 0.18em;
+    }
+    .btn-premium::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,150,90,0.15), transparent);
+      pointer-events: none;
+    }
+    .btn-premium:hover {
+      background: #2A2622;
+      color: var(--gold);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(26,24,22,0.25);
+    }
+    .btn-premium:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 12px rgba(26,24,22,0.2);
+    }
+
+    /* ─── LEGACY BUTTON COMPAT (existing classes) ─── */
+    .btn:not(.btn-s):not(.btn-m):not(.btn-l):not(.btn-frame):not(.btn-soft):not(.btn-premium) {
+      padding: 14px 28px;
       font-weight: 600;
       font-size: 0.78rem;
       letter-spacing: 1.8px;
-      text-transform: uppercase;
-      transition: var(--transition);
-      user-select: none;
+      border-radius: 0;
     }
 
     .btn-gold {
@@ -408,6 +516,19 @@
     .btn-ghost:hover {
       border-color: var(--gold);
       color: var(--gold);
+      transform: translateY(-1px);
+    }
+
+    /* ─── OUTLINE LIGHT (dark backgrounds) ─── */
+    .btn-outline-light {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.55);
+      border-radius: 100px;
+    }
+    .btn-outline-light:hover {
+      border-color: rgba(255,255,255,0.45);
+      color: var(--ivory);
       transform: translateY(-1px);
     }
 
