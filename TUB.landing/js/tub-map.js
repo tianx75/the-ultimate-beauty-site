@@ -7,8 +7,8 @@
   'use strict';
 
   // ─── CONFIG ─────────────────────────────────────────────────
-  // ↓↓↓ IDE KELL A MAPBOX ACCESS TOKEN ↓↓↓
-  var MAPBOX_TOKEN = 'pk.eyJ1IjoidGlhbng3NSIsImEiOiJjbW4zbG82enQxMWVhMnJwZGR5ZGM0a29tIn0.NO2WViz52WBNqoL1Cg14kw';
+  // Token loaded from map-config.js
+  var MAPBOX_TOKEN = window.TUB_MAPBOX_TOKEN || '';
 
   var CLINIC = {
     lng: 19.01115,
