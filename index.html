@@ -4603,29 +4603,6 @@
 
   </div><!-- .site-wrap -->
 
-  <!-- Régi form rendszer eltávolítva — JotForm lightbox használatban -->
-
-  <!-- Form Modals (popup forms triggered by CTA buttons) -->
-  <script>
-  (function() {
-    // Create modal containers for popup forms
-    var modalsHtml = '';
-    modalsHtml += TUB_MODAL('modal-observ', TUB_FORM_OBSERV('modal'));
-    modalsHtml += TUB_MODAL('modal-konzultacio', TUB_FORM_KONZULTACIO('modal'));
-    modalsHtml += TUB_MODAL('modal-founding', TUB_FORM_FOUNDING('modal'));
-    modalsHtml += TUB_MODAL('modal-led-mask', TUB_FORM_LED_MASK('modal'));
-
-    var modalContainer = document.createElement('div');
-    modalContainer.innerHTML = modalsHtml;
-    document.body.appendChild(modalContainer);
-
-    // Re-init forms engine for the newly added modal forms
-    if (window.TUBForms && window.TUBForms.init) {
-      window.TUBForms.init();
-    }
-  })();
-  </script>
-
   <!-- JotForm Lightbox -->
   <script src="js/jotform-lightbox.js"></script>
   <!-- Mapbox -->

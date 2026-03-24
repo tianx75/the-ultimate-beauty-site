@@ -16,6 +16,46 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/shared.css">
   <link rel="stylesheet" href="css/klinika.css">
+  <!-- Structured Data: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "The Ultimate Beauty Clinic",
+    "description": "Prémium boutique esztétikai klinika Budán. Személyre szabott Protocol rendszer, kizárólag időpontra.",
+    "url": "https://theultimatebeauty.net/klinika.html",
+    "telephone": "+36 1 790 3017",
+    "email": "info@theultimatebeauty.net",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Németvölgyi út 68.",
+      "addressLocality": "Budapest",
+      "postalCode": "1124",
+      "addressCountry": "HU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 47.49201,
+      "longitude": 19.01115
+    },
+    "image": "https://theultimatebeauty.net/assets/images/og-cover.jpg",
+    "priceRange": "$$$$",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "15:00"
+      }
+    ]
+  }
+  </script>
   <!-- Mapbox -->
   <link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
   <link rel="stylesheet" href="css/tub-map.css">
@@ -334,7 +374,6 @@
 
   <!-- Mapbox GL JS + TUB Map -->
   <script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
-  <script src="js/map-config.js"></script>
   <script src="js/tub-map.js"></script>
 </body>
 </html>
